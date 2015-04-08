@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/3.8">
+	<id>com.cap377.TowerDefense</id>
+	<name>Tower Defense</name>
+	<versionNumber>15.02.02</versionNumber>
+	<filename>Tower Defense</filename>
+	<initialWindow>
+		<content>td.swf</content>
+		<renderMode>direct</renderMode>
+		<autoOrients>false</autoOrients>
+		<aspectRatio>landscape</aspectRatio>
+	</initialWindow>
+</application>
