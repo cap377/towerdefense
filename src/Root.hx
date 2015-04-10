@@ -14,6 +14,30 @@ class Root extends Sprite {
 
 	public function start(startup:Startup) {
 		assets = new AssetManager();
+		assets.enqueue("assets/grass.png");
+		assets.enqueue("assets/entry.png");
+		assets.enqueue("assets/path.png");
+		assets.enqueue("assets/finish.png");
+		assets.enqueue("assets/build.png");
+		assets.enqueue("assets/tree.png");
+		
+		
+		assets.enqueue("assets/tower1.png");
+		assets.enqueue("assets/tower2.png");
+		assets.enqueue("assets/towerMenu.png");
+		
+		assets.enqueue("assets/towerButton1.png");
+		assets.enqueue("assets/createTowerMenu.png");
+		assets.enqueue("assets/button.png");
+		
+		
+		assets.enqueue("assets/W.png");
+		assets.enqueue("assets/E.png");
+		assets.enqueue("assets/S.png");
+		
+		
+		assets.enqueue("assets/level1.txt");
+		assets.enqueue("assets/level2.txt");
 
 		
 		assets.loadQueue(function onProgress(ratio:Float) {
@@ -27,7 +51,7 @@ class Root extends Sprite {
 				});
 				
 				//Starting point for the game
-				//addChild();
+				addChild(new Game());
 			}
 		});
 	}
