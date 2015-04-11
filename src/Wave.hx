@@ -81,7 +81,7 @@ class Wave
 				//////////////////////////////
 				//
 				//Case for each possible enemy
-				//Each possible enemy would require and different letter or symbol or number
+				//Each possible enemy would require a different letter, symbol or number
 				//Upper and lower case letters could be used to represent the same enemy with different attributes (speed, health, value)
 				//
 				/////////////////////////////

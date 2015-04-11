@@ -29,8 +29,8 @@ class Game extends Sprite
 	//The enemies that have be spawned in
 	private var spawnedEnemies : Array<Enemy>;
 	//The entry point for the waves
-	private var waveX : Float;
-	private var waveY : Float;
+	private var entryX : Array<Float>;
+	private var entryY : Array<Float>;
 	//What wave we are currently on
 	private var waveNum : Int;
 	
@@ -51,6 +51,9 @@ class Game extends Sprite
 	public function run()
 	{
 		waveNum = 0;
+		entryX = new Array();
+		entryY = new Array();
+		
 		/////////////////////////////////
 		//
 		//Code for starting the next level would go right here
@@ -63,7 +66,7 @@ class Game extends Sprite
 		var rawData = LoadMap.load("level" + currentLevel);
 		//Get the map portion of the raw data
 		map = GenerateMap.getMap(rawData);
-		//Get the wave portion of the rawdata
+		//Get the wave portion of the raw data
 		waves = GenerateWaves.generate(rawData, this);
 		
 		drawMap();
@@ -108,6 +111,14 @@ class Game extends Sprite
 		}
 	}
 	
+	//////////////////////
+	//
+	//Case for each possible map type
+	//Each possible type would require a different letter, symbol or number
+	//Upper and lower case letters could be used to represent the same type with different attributes (ie g = grass, G = taller grass)
+	//
+	/////////////////////
+	
 	//Interpret and draw the map based on the loaded text file
 	public function drawMap()
 	{
@@ -131,8 +142,8 @@ class Game extends Sprite
 						var entry = new Image(Root.assets.getTexture("entry"));
 						entry.x = x * size;
 						entry.y = y * size;
-						waveX = entry.x;
-						waveY = entry.y;
+						entryX.push(entry.x);
+						entryY.push(entry.y);
 						addChild(entry);
 					case "f":
 						var finish = new Image(Root.assets.getTexture("finish"));
@@ -150,8 +161,8 @@ class Game extends Sprite
 						build.y = y * size;
 						build.addEventListener(Event.TRIGGERED, function()
 						{
-							var createTower = new CreateTower(this, build.x, build.y);
-							addChild(createTower);
+							var buildMenu = new BuildMenu(this, build.x, build.y);
+							addChild(buildMenu);
 							
 						});
 						addChild(build);
@@ -172,10 +183,17 @@ class Game extends Sprite
 			timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(e:TimerEvent)
 			{
 				//Start the wave at the entry point
-				//Currently only starts at the last added entry point
-				//And only spawns at one entry point
-				waves[waveNum].getEnemy(j).x = waveX + Std.random(16);
-				waves[waveNum].getEnemy(j).y = waveY + Std.random(16);
+				//Supports multiple entry points just not perfectly
+				if ( j > waves[waveNum].getLength() / 2)
+				{
+					waves[waveNum].getEnemy(j).x = entryX[1] + Std.random(16);
+					waves[waveNum].getEnemy(j).y = entryY[1] + Std.random(16);
+				}
+				else 
+				{
+					waves[waveNum].getEnemy(j).x = entryX[0] + Std.random(16);
+					waves[waveNum].getEnemy(j).y = entryY[0] + Std.random(16);
+				}
 				spawnedEnemies.push(waves[waveNum].getEnemy(j));
 				addChild(spawnedEnemies[j]);
 			});
@@ -221,12 +239,12 @@ class Game extends Sprite
 		switch (spawnedEnemies[waveEnemy].currentDirection)
 		{
 			case 0:
-				//Check the slightly in front of the enemy's current direction to see if the path changes or if it is still the same
+				//Check slightly in front of the enemy's current direction to see if the path changes or if it is still the same
 				if (map[Std.int((spawnedEnemies[waveEnemy].y - 8) / size)][Std.int((spawnedEnemies[waveEnemy].x) / size)] != 'p' && map[Std.int((spawnedEnemies[waveEnemy].y - 8) / size)][Std.int((spawnedEnemies[waveEnemy].x) / size)] != 'f')
 				{
 					//If the path changes check the two orthoganol directions to determine which way to move
 					//We don't allow them to move backwards as this should never be an option.
-					//Change the enemy's current direction reflect the direction change
+					//Change the enemy's current direction that reflects the direction change
 					if (map[Std.int((waves[waveNum].getEnemy(waveEnemy).y) / size)][Std.int((spawnedEnemies[waveEnemy].x - 24) / size)] == 'p')
 					{
 						spawnedEnemies[waveEnemy].currentDirection = 3;

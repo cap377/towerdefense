@@ -8,7 +8,7 @@ import starling.text.TextField;
 import starling.core.Starling;
 
 
-class CreateTower extends Sprite
+class BuildMenu extends Sprite
 {
 	private var game : Game;
 	private var bg : Image;
@@ -30,12 +30,17 @@ class CreateTower extends Sprite
 		//We could change this so the clicking the tower brings up stats about the tower
 		//with a seperate button to purchase the currently selected tower
 		//
+		//When adding elements to the build menu make sure tha the x and y values are
+		//based on the x and y of the menu background and not the game window
+		//and that all elements are added as children to this object and not the game object
+		//Unless it's something you want to exist outside of this menu
+		//
 		/////////////////////////////
 		
 		//Create a button for each type of tower
 		var towerButton1 = new Button(Root.assets.getTexture("towerButton1"));
-		towerButton1.x = Starling.current.stage.stageWidth / 2 - towerButton1.width;
-		towerButton1.y = (640 - towerButton1.height) / 2;
+		towerButton1.x = bg.x + bg.width / 2 - towerButton1.width;
+		towerButton1.y = bg.y + (bg.height - towerButton1.height) / 2;
 		towerButton1.addEventListener(Event.TRIGGERED, function()
 		{
 			buyTower(1, 100, x, y);
@@ -43,8 +48,8 @@ class CreateTower extends Sprite
 		addChild(towerButton1);
 		
 		var towerButton2 = new Button(Root.assets.getTexture("towerButton1"));
-		towerButton2.x = Starling.current.stage.stageWidth / 2;
-		towerButton2.y = (640 - towerButton2.height) / 2;
+		towerButton2.x = bg.x + bg.width / 2;
+		towerButton2.y = bg.y + (bg.height - towerButton2.height) / 2;
 		towerButton2.addEventListener(Event.TRIGGERED, function()
 		{
 			buyTower(2, 150, x, y);
@@ -74,6 +79,7 @@ class CreateTower extends Sprite
 				//Create the tower at the specified coordinates of the build spot
 				var tower = new Tower(game);
 				var temp = tower.createTower(towerNum, x, y);
+				//Add the new tower to the game
 				game.addChild(temp);
 				//Remove the coins from the player
 				game.setCoins( -cost);

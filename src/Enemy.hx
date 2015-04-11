@@ -2,6 +2,12 @@ import starling.display.Sprite;
 import starling.display.Image;
 
 
+///////////////////////
+//
+//All other enemies should extend this class
+//
+///////////////////////
+
 class Enemy extends Sprite
 {
 	private var game : Game;
@@ -25,13 +31,15 @@ class Enemy extends Sprite
 		addChild(image);
 	}
 	
+	//Apply hit damage
 	public function hit(damage : Float)
 	{
 		health = health - damage;
+		//If health is to low give the player coins and kill the enemy
 		if (health < 0.1)
 		{
 			game.setCoins(value);
-			game.removeChild(this);
+			alive = false;
 		}
 	}
 }
