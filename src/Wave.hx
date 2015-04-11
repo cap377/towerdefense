@@ -1,4 +1,4 @@
-import starling.display.Sprite;
+//import starling.display.Sprite;
 import starling.display.Image;
 
 
@@ -14,28 +14,39 @@ class Wave
 		wave = new Array();
 		stringWave = new Array();
 		interpret(string);
-		getImages();
+		createEnemies();
 	}
 	
+	//Parse through the string built by generate wave
 	private function interpret(string : String)
 	{
+		//Pointer to the current position
+		//Should only point at the characters in the string
 		var index = 0;
+		//Go through the string until the end symbol is found of the index is the length of the string
 		while (string.charAt(index) != '>' && index < string.length)
 		{
 			var count = 0;
+			//Scan from the current position to the next comma or end
 			while (string.charAt(index + count) != ',' && string.charAt(index + count) != '>')
 			{
 				count++;
 			}
+			//Check that we are pointing at a Letter and not a number or some other character
 			if (Std.parseInt(string.charAt(index)) == null && string.charAt(index) != ',' && count > 0)
 			{
+				//Create a string of the amount of this type of enemies, ie <W99> becomes 99
 				var stringAmount = "";
+				//Skip the first position which is the letter we want
 				for (i in 1...count)
 				{
+					//Append the next number to the string
 					stringAmount = stringAmount + string.charAt(index + i);
 				}
+				//Build the wave based on the number of character and the amount of that character
 				buildWave(string.charAt(index), Std.parseInt(stringAmount));
 			}
+			//Update index
 			if (count > 0)
 				index = index + count;
 			else
@@ -45,34 +56,48 @@ class Wave
 	
 	private function buildWave(char : String, amount : Int)
 	{
+		//Add the character to the string array based on the number of times it should show up
+		//ie <W3,E2,S4> becomes WWWEESSSS
 		for (i in 0...amount)
 		{
 			stringWave.push(char);
 		}
 	}
 	
-	private function getImages()
+	//Creates the enemies and adds them to the wave based on the string array that was generated
+	private function createEnemies()
 	{
 		for (i in 0...stringWave.length)
 		{
 			switch (stringWave[i])
 			{
 				case 'W':
+					//Set up as the (current game, the enemy name, speed, health, value)
 					wave.push(new Wolf(game, stringWave[i], .7, 15, 5));
 				case 'E':
 					wave.push(new Elephant(game, stringWave[i], .3, 50, 30));
 				case 'S':
 					wave.push(new Sabretooth(game, stringWave[i], 1.1, 15, 10));
+				//////////////////////////////
+				//
+				//Case for each possible enemy
+				//Each possible enemy would require and different letter or symbol or number
+				//Upper and lower case letters could be used to represent the same enemy with different attributes (speed, health, value)
+				//
+				/////////////////////////////
 					
 			}
 		}
 	}
 	
+	//Getter functions
+	//Returns the enemy at index
 	public function getEnemy(index : Int)
 	{
 		return wave[index];
 	}
 	
+	//Returns the length of the wave
 	public function getLength()
 	{
 		return wave.length;

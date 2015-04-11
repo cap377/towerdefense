@@ -3,21 +3,24 @@
 
 class GenerateWaves
 {
-	public static function generate(loadedMap : Array<Array<String>>, game : Game)
+	public static function generate(rawData : Array<Array<String>>, game : Game)
 	{
 		
 		var waves : Array<Wave> = new Array();
 		
 		var cnt = 0;
-		for (y in 0...loadedMap.length)
+		for (y in 0...rawData.length)
 		{
-			if (loadedMap[y][0] == '<')
+			//Loop through until we get to the start of the wave data
+			if (rawData[y][0] == '<')
 			{
-				var string = loadedMap[y][1];
-				for (x in 2...loadedMap[y].length)
+				//Create a string from this wave data to be parsed the Wave class
+				var string = rawData[y][1];
+				for (x in 2...rawData[y].length)
 				{
-					string = string + loadedMap[y][x];
+					string = string + rawData[y][x];
 				}
+				//Create a new wave with the generated string
 				waves[cnt++] = new Wave(string, game);
 			}
 		}
