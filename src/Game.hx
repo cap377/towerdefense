@@ -50,7 +50,7 @@ class Game extends Sprite
 	//Entry point game to run
 	public function run()
 	{
-		waveNum = 0;
+		//Hold the entry points
 		entryX = new Array();
 		entryY = new Array();
 		
@@ -88,6 +88,7 @@ class Game extends Sprite
 		//Code for starting the next wave would go right here
 		//
 		////////////////////////////////
+		waveNum = 0;
 		startWave(waveNum);
 		
 		this.addEventListener(EnterFrameEvent.ENTER_FRAME, onEnterFrame);
@@ -96,6 +97,19 @@ class Game extends Sprite
 	//Anything that needs to be updated continuously goes here
 	public function onEnterFrame(event:EnterFrameEvent)
 	{
+		////////////////////
+		//
+		//If we want it to pause when we open one of the menus
+		//we could add a boolean that is checked each frame
+		//and if its true the game is paused and unpaused otherwise
+		//which can then be switched when a menu is created/closed
+		//to pause/unpause the game
+		//if(!paused)
+		//	do the game logic here
+		//
+		////////////////////
+		
+		
 		//Update the coin and villagers to reflect the new values
 		villagerText.text = "Villagers: " + villagers;
 		coinText.text = "Coins: " + coins;
@@ -182,20 +196,28 @@ class Game extends Sprite
 			timer.start();
 			timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(e:TimerEvent)
 			{
+				///////////////////////////
+				//
+				//Currently the entry point is randomly decided for each enemy
+				//It could maybe switch back and forth depending on the level
+				//
+				///////////////////////////
+				
 				//Start the wave at the entry point
 				//Supports multiple entry points just not perfectly
-				if ( j > waves[waveNum].getLength() / 2)
-				{
-					waves[waveNum].getEnemy(j).x = entryX[1] + Std.random(16);
-					waves[waveNum].getEnemy(j).y = entryY[1] + Std.random(16);
-				}
-				else 
-				{
-					waves[waveNum].getEnemy(j).x = entryX[0] + Std.random(16);
-					waves[waveNum].getEnemy(j).y = entryY[0] + Std.random(16);
-				}
+				var entry = Std.random(entryX.length);
+				waves[waveNum].getEnemy(j).x = entryX[entry] + Std.random(16);
+				waves[waveNum].getEnemy(j).y = entryY[entry] + Std.random(16);
 				spawnedEnemies.push(waves[waveNum].getEnemy(j));
 				addChild(spawnedEnemies[j]);
+				
+				///////////////////////
+				//
+				//Depending if we want the tower to be able to be drawn over
+				//things in the background (what is done with tower 2)
+				//we will need to change the when enemies are spawned
+				//
+				///////////////////////
 			});
 		}
 	}
