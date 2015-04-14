@@ -12,8 +12,7 @@ class Tower extends Sprite
 	private var game : Game;
 	
 	public var level : Int;
-	public var maxLevel : Int;
-	public var upgradeCost : Int;
+	public var upgradeBaseCost : Int;
 	public var radius : Int;
 	public var speed : Int;
 	public var attack : Int;
@@ -22,16 +21,17 @@ class Tower extends Sprite
 	{
 		super();
 		level = 1;
-		upgradeCost = 50;
-		maxLevel = 3;
-		radius = 2;
-		speed = 1;
-		attack = 1;
 		this.game = game;
 	}
 	
-	public function createTower(towerNum : Int, x : Float, y : Float)
+	public function createTower(towerNum : Int, x : Float, y : Float, initialStats : Array<Int>)
 	{
+		//Initial stats: speed, radius, attack, upgradeCost
+		speed = initialStats[0];
+		radius = initialStats[1];
+		attack = initialStats[2];
+		upgradeBaseCost = initialStats[3];
+		
 		///////////////////////
 		//
 		//The Image is currently created as a button, but a better option would
@@ -57,26 +57,30 @@ class Tower extends Sprite
 	{
 		////////////////////////
 		//
-		//Currently all towers have the same stats and upgrades
-		//The stats could be passed in as parameters when the tower is initially created
+		//Currently all towers have the same upgrades
+		//The upgrade costs also need to be adjusted better
 		//
 		////////////////////////
 		switch (level)
 		{
 			case 1:
-				upgradeCost = 100;
 				attack += 2;
 			case 2:
-				upgradeCost = 150;
+				upgradeBaseCost += 50;
 				radius += 1;
 				speed += 1;
 			case 3:
+				upgradeBaseCost += 50;
 				radius += 1;
 				speed += 1;
 				attack += 1;
 		}
+		level++;
 	}
 }
+
+
+
 
 
 class TowerMenu extends Sprite
@@ -110,9 +114,9 @@ class TowerMenu extends Sprite
 		upgrade.addEventListener(Event.TRIGGERED, function()
 		{
 			//Check to make sure the player has enough coins
-			if (game.getCoins() >= tower.upgradeCost)
+			if (game.getCoins() >= tower.upgradeBaseCost)
 			{
-				game.setCoins( -tower.upgradeCost);
+				game.setCoins( -tower.upgradeBaseCost);
 				tower.upgrade();
 				text.text = "Attack Radius: " + tower.radius + "\nAttack Speed: " + tower.speed + "\nAttack Power: " + tower.attack;
 			}
@@ -131,6 +135,7 @@ class TowerMenu extends Sprite
 				});
 			}
 		});
+		
 		
 		//Create an exit button to close the tower menu
 		var exit = new Button(Root.assets.getTexture("button"), "Exit");

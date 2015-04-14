@@ -35,10 +35,10 @@ class Enemy extends Sprite
 	public function hit(damage : Float)
 	{
 		health = health - damage;
-		//If health is to low give the player coins and kill the enemy
-		if (health < 0.1)
+		//If health is to low give the create a coin and kill the enemy
+		if (health <= 0)
 		{
-			game.setCoins(value);
+			var coin = new Coin(game, value, this.x, this.y);
 			alive = false;
 		}
 	}

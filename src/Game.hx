@@ -22,6 +22,8 @@ class Game extends Sprite
 	private var coins : Int;
 	private var coinText : TextField;
 	
+	private var numEnemies : TextField;
+	
 	//Map of the level
 	private var map : Array<Array<String>>;
 	//All the waves for this level
@@ -33,6 +35,8 @@ class Game extends Sprite
 	private var entryY : Array<Float>;
 	//What wave we are currently on
 	private var waveNum : Int;
+	
+	private var flag : Bool = false;
 	
 	public function new()
 	{
@@ -58,10 +62,11 @@ class Game extends Sprite
 		//
 		//Code for starting the next level would go right here
 		//Could also have a level select from the main menu
+		//nextLevel()
 		//
 		/////////////////////////////////
 		
-		currentLevel = 1;
+		currentLevel = 2;
 		//Load in the text (map and waves) based on the current level
 		var rawData = LoadMap.load("level" + currentLevel);
 		//Get the map portion of the raw data
@@ -70,28 +75,61 @@ class Game extends Sprite
 		waves = GenerateWaves.generate(rawData, this);
 		
 		drawMap();
+		loadEnemies();
+		waveNum = 0;
+		
+		
+		numEnemies = new TextField(100, 50, "Enemies Left:\n" + waves[waveNum].getLength() + "/" + waves[waveNum].getLength());
+		numEnemies.x = Starling.current.stage.stageWidth - numEnemies.width - 15;
+		numEnemies.y = 5;
+		addChild(numEnemies);
 		
 		villagers = 10;
-		villagerText = new TextField(75, 50, "Villagers: " + villagers);
-		villagerText.x = Starling.current.stage.stageWidth - villagerText.width * 2;
+		villagerText = new TextField(75, 50, "Villagers:\n" + villagers);
+		villagerText.x = numEnemies.x - villagerText.width ;
 		villagerText.y = 5;
 		addChild(villagerText);
 		
 		coins = 250;
-		coinText = new TextField(50, 50, "Coins: " + coins);
-		coinText.x = Starling.current.stage.stageWidth - coinText.width - 15;
+		coinText = new TextField(50, 50, "Coins:\n" + coins);
+		coinText.x = villagerText.x - coinText.width;
 		coinText.y = 5;
 		addChild(coinText);
 		
-		/////////////////////////////////
-		//
-		//Code for starting the next wave would go right here
-		//
-		////////////////////////////////
-		waveNum = 0;
-		startWave(waveNum);
+		
+		startWave();
 		
 		this.addEventListener(EnterFrameEvent.ENTER_FRAME, onEnterFrame);
+	}
+	
+	//Generate the next level
+	public function nextLevel()
+	{
+		
+	}
+	
+	//Creates a button that starts the next wave
+	//When all waves are finished it calls the next level function
+	public function nextWave()
+	{
+		if (waveNum != waves.length)
+		{
+			flag = false;
+			
+			var nextWave = new Button(Root.assets.getTexture("button"), "Next Wave");
+			nextWave.x = Starling.current.stage.stageWidth - nextWave.width;
+			nextWave.y = Starling.current.stage.stageHeight - nextWave.height;
+			nextWave.addEventListener(Event.TRIGGERED, function()
+			{
+				spawnedEnemies = new Array();
+				waveNum++;
+				startWave();
+				removeChild(nextWave);
+			});
+			addChild(nextWave);
+		}
+		else
+			nextLevel();
 	}
 	
 	//Anything that needs to be updated continuously goes here
@@ -111,8 +149,10 @@ class Game extends Sprite
 		
 		
 		//Update the coin and villagers to reflect the new values
-		villagerText.text = "Villagers: " + villagers;
-		coinText.text = "Coins: " + coins;
+		villagerText.text = "Villagers:\n" + villagers;
+		coinText.text = "Coins:\n" + coins;
+		var numEnemiesLeft = enemiesLeft();
+		numEnemies.text = "Enemies Left:\n" + numEnemiesLeft + "/" + waves[waveNum].getLength();
 		
 		//Move all spawned enemies that are still alive and check their position
 		for (i in 0...spawnedEnemies.length)
@@ -123,6 +163,23 @@ class Game extends Sprite
 				checkPosition(i);
 			}
 		}
+		
+		//Check if all the enemies are dead
+		if (numEnemiesLeft == 0 && flag)
+		{
+			nextWave();
+		}
+	}
+	
+	private function enemiesLeft()
+	{
+		var count = waves[waveNum].getLength();
+		for (i in 0...spawnedEnemies.length)
+		{
+			if (!spawnedEnemies[i].alive)
+				count--;
+		}
+		return count;
 	}
 	
 	//////////////////////
@@ -165,7 +222,8 @@ class Game extends Sprite
 						finish.y = y * size;
 						addChild(finish);
 					case "t":
-						var tree = new Image(Root.assets.getTexture("tree"));
+						//Randomly choose a tree from all possible trees
+						var tree = new Image(Root.assets.getTexture("tree" + (Std.random(2) + 1)));
 						tree.x = x * size;
 						tree.y = y * size;
 						addChild(tree);
@@ -180,13 +238,31 @@ class Game extends Sprite
 							
 						});
 						addChild(build);
+					case "h":
+						var hill = new Image(Root.assets.getTexture("hill"));
+						hill.x = x * size;
+						hill.y = y * size;
+						addChild(hill);
 				}
 			}
 		}
 	}
 	
+	//Load all the enemies for this level right away to prevent any of them from being placed over other game objects
+	private function loadEnemies()
+	{
+		for (i in 0...waves.length)
+			for (j in 0...waves[i].getLength())
+			{
+				//Add the enemies to some point outside of the map
+				waves[i].getEnemy(j).x = -100;
+				waves[i].getEnemy(j).y = -100;
+				addChild(waves[i].getEnemy(j));
+			}
+	}
+	
 	//Prime the wave to enter the game world
-	public function startWave(waveNum : Int)
+	public function startWave()
 	{
 		//Loop through all enemies in the current wave
 		for (j in 0...waves[waveNum].getLength())
@@ -199,25 +275,18 @@ class Game extends Sprite
 				///////////////////////////
 				//
 				//Currently the entry point is randomly decided for each enemy
-				//It could maybe switch back and forth depending on the level
+				//It could maybe switch back and forth depending on the wave
 				//
 				///////////////////////////
 				
 				//Start the wave at the entry point
 				//Supports multiple entry points just not perfectly
 				var entry = Std.random(entryX.length);
-				waves[waveNum].getEnemy(j).x = entryX[entry] + Std.random(16);
-				waves[waveNum].getEnemy(j).y = entryY[entry] + Std.random(16);
+				waves[waveNum].getEnemy(j).x = entryX[entry] + 8;
+				waves[waveNum].getEnemy(j).y = entryY[entry] + 8;
 				spawnedEnemies.push(waves[waveNum].getEnemy(j));
-				addChild(spawnedEnemies[j]);
-				
-				///////////////////////
-				//
-				//Depending if we want the tower to be able to be drawn over
-				//things in the background (what is done with tower 2)
-				//we will need to change the when enemies are spawned
-				//
-				///////////////////////
+				if (j == 1)
+					flag = true;
 			});
 		}
 	}
@@ -281,13 +350,13 @@ class Game extends Sprite
 			case 1:
 				if (map[Std.int((spawnedEnemies[waveEnemy].y) / size)][Std.int((spawnedEnemies[waveEnemy].x + 24) / size)] != 'p' && map[Std.int((spawnedEnemies[waveEnemy].y) / size)][Std.int((spawnedEnemies[waveEnemy].x + 24) / size)] != 'f')
 				{
-					if (map[Std.int((spawnedEnemies[waveEnemy].y - 24) / size)][Std.int((spawnedEnemies[waveEnemy].x) / size)] == 'p')
-					{
-						spawnedEnemies[waveEnemy].currentDirection = 0;
-					}
-					else if (map[Std.int((spawnedEnemies[waveEnemy].y + 24) / size)][Std.int((spawnedEnemies[waveEnemy].x) / size)] == 'p')
+					if (map[Std.int((spawnedEnemies[waveEnemy].y + 24) / size)][Std.int((spawnedEnemies[waveEnemy].x) / size)] == 'p')
 					{
 						spawnedEnemies[waveEnemy].currentDirection = 2;
+					}
+					else if (map[Std.int((spawnedEnemies[waveEnemy].y - 24) / size)][Std.int((spawnedEnemies[waveEnemy].x) / size)] == 'p')
+					{
+						spawnedEnemies[waveEnemy].currentDirection = 0;
 					}
 				}
 				return spawnedEnemies[waveEnemy].currentDirection;
@@ -307,13 +376,13 @@ class Game extends Sprite
 			case 3:
 				if (map[Std.int((spawnedEnemies[waveEnemy].y) / 32)][Std.int((spawnedEnemies[waveEnemy].x - 8) / 32)] != 'p' && map[Std.int((spawnedEnemies[waveEnemy].y) / 32)][Std.int((spawnedEnemies[waveEnemy].x - 24) / 32)] != 'f')
 				{
-					if (map[Std.int((spawnedEnemies[waveEnemy].y - 24) / 32)][Std.int((spawnedEnemies[waveEnemy].x) / 32)] == 'p')
-					{
-						spawnedEnemies[waveEnemy].currentDirection = 0;
-					}
-					else if (map[Std.int((spawnedEnemies[waveEnemy].y + 24) / 32)][Std.int((spawnedEnemies[waveEnemy].x) / 32)] == 'p')
+					if (map[Std.int((spawnedEnemies[waveEnemy].y + 24) / 32)][Std.int((spawnedEnemies[waveEnemy].x) / 32)] == 'p')
 					{
 						spawnedEnemies[waveEnemy].currentDirection = 2;
+					}
+					else if (map[Std.int((spawnedEnemies[waveEnemy].y - 24) / 32)][Std.int((spawnedEnemies[waveEnemy].x) / 32)] == 'p')
+					{
+						spawnedEnemies[waveEnemy].currentDirection = 0;
 					}
 				}
 				return spawnedEnemies[waveEnemy].currentDirection;

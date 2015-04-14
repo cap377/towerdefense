@@ -6,8 +6,8 @@ ggggbpggtggttttgttgg
 gtgggpbgggbtgttgttgt
 gttttppppppttgttggtg
 ggggggbggbpppppppppe
-ggggggggggpggggggggg
-gggggggggbpbgggggggg
+ggh ggggggpggggggggg
+gg  gggggbpbgggggggg
 ggggggggggpbggggttgg
 gggtgggggbppppgggggg
 gtggggbbggbbbpbggggg
