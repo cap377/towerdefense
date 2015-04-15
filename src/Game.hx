@@ -35,6 +35,8 @@ class Game extends Sprite
 	private var entryY : Array<Float>;
 	//What wave we are currently on
 	private var waveNum : Int;
+	//All the towers in the list
+	public var towerList : Array<Tower>;
 	
 	private var flag : Bool = false;
 	
@@ -48,6 +50,7 @@ class Game extends Sprite
 		/////////////////////
 		
 		spawnedEnemies = new Array();
+		towerList = new Array();
 		run();
 	}
 	
@@ -161,6 +164,17 @@ class Game extends Sprite
 			{
 				moveEnemy(i);
 				checkPosition(i);
+
+				if (towerList.length > 0){
+					for (j in 0...towerList.length){
+						if (towerList[j].x - 32 < spawnedEnemies[i].x && towerList[j].x + 32 > spawnedEnemies[i].x && towerList[j].y - 32 < spawnedEnemies[i].y && towerList[j].y + 32 > spawnedEnemies[i].y)
+						{
+							spawnedEnemies[i].hit(-1);
+						}
+					}
+				}
+
+
 			}
 		}
 		
