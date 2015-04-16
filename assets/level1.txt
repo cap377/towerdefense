@@ -18,6 +18,5 @@ gtgggpbgggggbgggggtg
 ggggbpppppppppfggggg
 gggttgbggbbgbggggggg
 ggtggggggggggggtttgg
-<W9,E1,S2>
-<W5,E2,S3>
-<W8,E1,S4>
+<S2>
+<S1>

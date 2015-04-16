@@ -47,16 +47,12 @@ class Game extends Sprite
 		//
 		/////////////////////
 		
-		spawnedEnemies = new Array();
 		run();
 	}
 	
 	//Entry point game to run
 	public function run()
 	{
-		//Hold the entry points
-		entryX = new Array();
-		entryY = new Array();
 		
 		/////////////////////////////////
 		//
@@ -66,7 +62,27 @@ class Game extends Sprite
 		//
 		/////////////////////////////////
 		
-		currentLevel = 2;
+		currentLevel = 1;
+		
+		initialize();
+		startWave();
+		
+		
+		this.addEventListener(EnterFrameEvent.ENTER_FRAME, onEnterFrame);
+	}
+	
+	public function initialize()
+	{
+		removeChildren();
+		
+		//Hold the entry points
+		entryX = new Array();
+		entryY = new Array();
+		
+		//Hold the enemies
+		spawnedEnemies = new Array();
+		
+		
 		//Load in the text (map and waves) based on the current level
 		var rawData = LoadMap.load("level" + currentLevel);
 		//Get the map portion of the raw data
@@ -95,24 +111,21 @@ class Game extends Sprite
 		coinText.x = villagerText.x - coinText.width;
 		coinText.y = 5;
 		addChild(coinText);
-		
-		
-		startWave();
-		
-		this.addEventListener(EnterFrameEvent.ENTER_FRAME, onEnterFrame);
 	}
 	
 	//Generate the next level
 	public function nextLevel()
 	{
-		
+		currentLevel++;
+		initialize();
+		startWave();
 	}
 	
 	//Creates a button that starts the next wave
 	//When all waves are finished it calls the next level function
 	public function nextWave()
 	{
-		if (waveNum != waves.length)
+		if (waveNum != waves.length - 1)
 		{
 			flag = false;
 			
@@ -285,7 +298,7 @@ class Game extends Sprite
 				waves[waveNum].getEnemy(j).x = entryX[entry] + 8;
 				waves[waveNum].getEnemy(j).y = entryY[entry] + 8;
 				spawnedEnemies.push(waves[waveNum].getEnemy(j));
-				if (j == 1)
+				if (j == 0)
 					flag = true;
 			});
 		}
