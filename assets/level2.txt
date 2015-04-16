@@ -1,8 +1,8 @@
 geggggggbgggtggggggg
-gpgbppppppppppppppppp
-gppppbggtgggbbgggtggp
-gggbgggbggggggggbgggp
-ggppppppppppppppppppp
+gpgbpppppppppppppppp
+gppppbggtgggbbgggtgp
+gggbgggbggggggggbggp
+ggpppppppppppppppppp
 ggpbgggggggggggggggg
 ggpggggggggggtgggggg
 ggpbggggtggggggggggg
@@ -16,7 +16,7 @@ ggggggpggggpgggpbggg
 ggtgggpbggbpggbpgggg
 ggggggppppppbggpgggg
 gggh ggggbgggggpbggg
-ggg  ggtgggggggpppppe
+ggg  ggtgggggggppppe
 ggtgggggtgggggggggtg
 <W5,S5>
 <W7,S2,W3,E1>

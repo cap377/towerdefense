@@ -2,3 +2,13 @@
 
 # towerdefense
 Our final project for cs413
+
+ToDo:
+- Tower/Enemy collision
+- Assets!
+- Levels
+- Enemies drop coin?
+- Menu
+- Game Over
+- Win
+- Music

@@ -116,6 +116,11 @@ class BuildMenu extends Sprite
 			game.setCoins( -cost);
 			//Remove the menu as no more towers should be purchased in this location
 			game.removeChild(this);
+			//Adding tower to the tower array
+			game.towerList.push(new Tower(game));
+			trace("Xpos: "+tower.x + ", Ypos: "+tower.y);
+			trace(game.towerList);
+
 		}
 		//If not enough coins let the player know
 		else
