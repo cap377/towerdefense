@@ -101,23 +101,28 @@ class BuildMenu extends Sprite
 		if (game.getCoins() >= cost)
 		{
 			//Create the tower at the specified coordinates of the build spot
-			var tower = new Tower(game);
-			var temp = tower.createTower(towerNum, x, y, initialStats);
+			var tower = new Tower(game, towerNum, x, y, initialStats);
 			
 			//If the tower's height or width are greater than the standard 32x32
 			//adjust their postision accordingly
-			if (temp.height > 32)
-				temp.y = temp.y - (temp.height - 32);
-			if (temp.width > 32)
-				temp.x = temp.x - (temp.height - 32);
+			if (tower.image.height > 32)
+			{
+				tower.y = tower.y - (tower.height - 32);
+			}
+			if (tower.width > 32)
+			{
+				tower.x = tower.x - (tower.width - 32);
+			}
+				
+				
 			//Add the new tower to the game
-			game.addChild(temp);
+			game.addChild(tower);
 			//Remove the coins from the player
 			game.setCoins( -cost);
 			//Remove the menu as no more towers should be purchased in this location
 			game.removeChild(this);
 			//Adding tower to the tower array
-			game.towerList.push(new Tower(game));
+			game.towerList.push(tower);
 			trace("Xpos: "+tower.x + ", Ypos: "+tower.y);
 			trace(game.towerList);
 
@@ -140,4 +145,7 @@ class BuildMenu extends Sprite
 			});
 		}
 	}
+	
+	
+	
 }
