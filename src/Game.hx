@@ -43,14 +43,11 @@ class Game extends Sprite
 
 	private var rootObject : Root;
 	
+
 	public function new(root:Root, level:Int)
+
 	{
 		super();
-		//////////////////////
-		//
-		//Call to the main menu would go right here
-		//
-		/////////////////////
 		
 		this.currentLevel = level + 1;
 		this.rootObject = root;
@@ -68,8 +65,8 @@ class Game extends Sprite
 		//Could also have a level select from the main menu
 		//nextLevel()
 		//
-		/////////////////////////////////
-		
+		////////////////////////////////
+
 		initialize();
 		startWave();
 		
@@ -126,13 +123,39 @@ class Game extends Sprite
 	public function nextLevel()
 	{
 		
-		//var bg = new Image(Root.assets.getTexture("towerMenu"));
-		//bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
-		//bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
+		var bg = new Image(Root.assets.getTexture("towerMenu"));
+		bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
+		bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
 		
-		rootObject.level++;
-		rootObject.removeChild(this);
-		rootObject.addChild(new Menu(rootObject));
+		var score = villagers * 5 + coins;
+		var scoreText = new TextField(100, 50, "Score: " + score);
+		scoreText.x = bg.x + (bg.width - scoreText.width) / 2;
+		scoreText.y = bg.y + (bg.height - scoreText.height) / 2;
+		addChild(scoreText);
+		addChild(scoreText);
+		
+		var nextLevelButton = new Button(Root.assets.getTexture("button"), "Next Level");
+		nextLevelButton.x = bg.x + (bg.width - 2 * nextLevelButton.width) / 2;
+		nextLevelButton.y = bg.y + bg.height - (nextLevelButton.height + 15);
+		nextLevelButton.addEventListener(Event.TRIGGERED, function()
+		{
+			currentLevel++;
+			rootObject.level++;
+			initialize();
+			startWave();
+		});
+		addChild(nextLevelButton);
+		
+		var mainMenu = new Button(Root.assets.getTexture("button"), "Main Menu");
+		mainMenu.x = nextLevelButton.x + nextLevelButton.width + mainMenu.width;
+		mainMenu.y = nextLevelButton.y;
+		mainMenu.addEventListener(Event.TRIGGERED, function()
+		{
+			rootObject.level++;
+			rootObject.removeChild(this);
+			rootObject.addChild(new Menu(rootObject));
+		});
+		addChild(mainMenu);
 	}
 	
 	//Creates a button that starts the next wave
@@ -191,7 +214,7 @@ class Game extends Sprite
 
 				if (towerList.length > 0){
 					for (j in 0...towerList.length){
-						if (towerList[j].x - 32 < spawnedEnemies[i].x && towerList[j].x + 32 > spawnedEnemies[i].x && towerList[j].y - 32 < spawnedEnemies[i].y && towerList[j].y + 32 > spawnedEnemies[i].y)
+						if(towerList[j].x - 32 < spawnedEnemies[i].x && towerList[j].x + 32 + towerList[j].width > spawnedEnemies[i].x && towerList[j].y - 32 < spawnedEnemies[i].y && towerList[j].y + (32 + towerList[j].height) > spawnedEnemies[i].y)
 						{
 							spawnedEnemies[i].hit(5);
 							trace("hit");
