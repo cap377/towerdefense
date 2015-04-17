@@ -19,13 +19,14 @@ class Root extends Sprite {
 	public function start(startup:Startup) {
 		assets = new AssetManager();
 		assets.enqueue("assets/grass.png");
+		assets.enqueue("assets/grass1.png");
 		assets.enqueue("assets/entry.png");
 		assets.enqueue("assets/path.png");
 		assets.enqueue("assets/finish.png");
 		assets.enqueue("assets/build.png");
-		assets.enqueue("assets/hill.png");
-		assets.enqueue("assets/tree1.png");
-		assets.enqueue("assets/tree2.png");
+		assets.enqueue("assets/stone.png");
+		assets.enqueue("assets/rock.png");
+		assets.enqueue("assets/dirt.png");
 		assets.enqueue("assets/coin.png");
 		
 		
