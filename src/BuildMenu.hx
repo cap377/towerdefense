@@ -123,8 +123,8 @@ class BuildMenu extends Sprite
 			game.removeChild(this);
 			//Adding tower to the tower array
 			game.towerList.push(tower);
-			trace("Xpos: "+tower.x + ", Ypos: "+tower.y);
-			trace(game.towerList);
+			//trace("Xpos: "+tower.x + ", Ypos: "+tower.y);
+			//trace(game.towerList);
 
 		}
 		//If not enough coins let the player know

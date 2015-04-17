@@ -7,7 +7,7 @@ gtgggpbgggbtgttgttgt
 gttttppppppttgttggtg
 ggggggbggbpppppppppe
 ggh ggggggpggggggggg
-g   gggggbpbgggggggg
+gg  gggggbpbgggggggg
 ggggggggggpbggggttgg
 gggtgggggbppppgggggg
 gtggggbbggbbbpbggggg
