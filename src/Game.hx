@@ -7,6 +7,7 @@ import flash.utils.Timer;
 import flash.events.TimerEvent;
 import starling.text.TextField;
 import starling.core.Starling;
+import Root;
 
 
 class Game extends Sprite
@@ -39,14 +40,18 @@ class Game extends Sprite
 	public var towerList : Array<Tower>;
 	
 	private var flag : Bool = false;
+
+	private var rootObject : Root;
 	
-	
-	public function new(level : Int)
+
+	public function new(root:Root, level:Int)
+
 	{
 		super();
 		
-		currentLevel = level + 1;
-		
+		this.currentLevel = level + 1;
+		this.rootObject = root;
+
 		run();
 	}
 	
@@ -54,6 +59,14 @@ class Game extends Sprite
 	public function run()
 	{
 		
+		/////////////////////////////////
+		//
+		//Code for starting the next level would go right here
+		//Could also have a level select from the main menu
+		//nextLevel()
+		//
+		////////////////////////////////
+
 		initialize();
 		startWave();
 		
@@ -127,7 +140,7 @@ class Game extends Sprite
 		nextLevelButton.addEventListener(Event.TRIGGERED, function()
 		{
 			currentLevel++;
-			//Root.level++;
+			rootObject.level++;
 			initialize();
 			startWave();
 		});
@@ -138,11 +151,11 @@ class Game extends Sprite
 		mainMenu.y = nextLevelButton.y;
 		mainMenu.addEventListener(Event.TRIGGERED, function()
 		{
-			//new Menu(Root);
-			//Root.removeChild(this);
+			rootObject.level++;
+			rootObject.removeChild(this);
+			rootObject.addChild(new Menu(rootObject));
 		});
 		addChild(mainMenu);
-		
 	}
 	
 	//Creates a button that starts the next wave
@@ -251,12 +264,12 @@ class Game extends Sprite
 						grass.y = y * size;
 						addChild(grass);
 					case "p":
-						var path = new Image(Root.assets.getTexture("path"));
-						path.x = x * size;
-						path.y = y * size;
-						addChild(path);
+						var dirt = new Image(Root.assets.getTexture("dirt"));
+						dirt.x = x * size;
+						dirt.y = y * size;
+						addChild(dirt);
 					case "e":
-						var entry = new Image(Root.assets.getTexture("entry"));
+						var entry = new Image(Root.assets.getTexture("dirt"));
 						entry.x = x * size;
 						entry.y = y * size;
 						entryX.push(entry.x);
@@ -269,10 +282,10 @@ class Game extends Sprite
 						addChild(finish);
 					case "t":
 						//Randomly choose a tree from all possible trees
-						var tree = new Image(Root.assets.getTexture("tree" + (Std.random(2) + 1)));
-						tree.x = x * size;
-						tree.y = y * size;
-						addChild(tree);
+						var rock = new Image(Root.assets.getTexture("rock"));
+						rock.x = x * size;
+						rock.y = y * size;
+						addChild(rock);
 					case "b":
 						var build = new Button(Root.assets.getTexture("build"));
 						build.x = x * size;
@@ -285,10 +298,10 @@ class Game extends Sprite
 						});
 						addChild(build);
 					case "h":
-						var hill = new Image(Root.assets.getTexture("hill"));
-						hill.x = x * size;
-						hill.y = y * size;
-						addChild(hill);
+						var stone = new Image(Root.assets.getTexture("stone"));
+						stone.x = x * size;
+						stone.y = y * size;
+						addChild(stone);
 				}
 			}
 		}
