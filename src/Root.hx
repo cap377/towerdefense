@@ -140,7 +140,9 @@ class Levels extends Sprite {
 		});
 
 		//Create a button for each level
-		for(i in 0...5) {
+		var x = 0;
+		var y = 0;
+		for(i in 0...15) {
 			var levelButton:Button;
 			//Check if level is unlocked
 			if(i <= root.level) {
@@ -152,9 +154,16 @@ class Levels extends Sprite {
 			} else {
 				levelButton = new Button(Root.assets.getTexture("bluemenubutton"));
 			}
-			levelButton.y = 200;
-			levelButton.x = i * 50;
+			if (x * levelButton.width > 640 - levelButton.width)
+			{
+				y++;
+				x = 0;
+			}
+			levelButton.x = 10 + x * (levelButton.width + 5);
+			levelButton.y = 200 + (levelButton.height + 5) * y;
 			addChild(levelButton);
+			
+			x++;
 		}
 
 		addChild(backButton);

@@ -126,6 +126,7 @@ class Game extends Sprite
 		var bg = new Image(Root.assets.getTexture("towerMenu"));
 		bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
 		bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
+		addChild(bg);
 		
 		var score = villagers * 5 + coins;
 		var scoreText = new TextField(100, 50, "Score: " + score);
