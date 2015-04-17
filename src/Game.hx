@@ -190,7 +190,8 @@ class Game extends Sprite
 					for (j in 0...towerList.length){
 						if (towerList[j].x - 32 < spawnedEnemies[i].x && towerList[j].x + 32 > spawnedEnemies[i].x && towerList[j].y - 32 < spawnedEnemies[i].y && towerList[j].y + 32 > spawnedEnemies[i].y)
 						{
-							spawnedEnemies[i].hit(-1);
+							spawnedEnemies[i].hit(5);
+							trace("hit");
 						}
 					}
 				}
