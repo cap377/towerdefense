@@ -7,6 +7,7 @@ import flash.utils.Timer;
 import flash.events.TimerEvent;
 import starling.text.TextField;
 import starling.core.Starling;
+import Root;
 
 
 class Game extends Sprite
@@ -39,8 +40,10 @@ class Game extends Sprite
 	public var towerList : Array<Tower>;
 	
 	private var flag : Bool = false;
+
+	private var rootObject : Root;
 	
-	public function new()
+	public function new(root:Root, level:Int)
 	{
 		super();
 		//////////////////////
@@ -49,6 +52,8 @@ class Game extends Sprite
 		//
 		/////////////////////
 		
+		this.currentLevel = level + 1;
+		this.rootObject = root;
 
 		run();
 	}
@@ -64,8 +69,6 @@ class Game extends Sprite
 		//nextLevel()
 		//
 		/////////////////////////////////
-		
-		currentLevel = 1;
 		
 		initialize();
 		startWave();
@@ -127,9 +130,9 @@ class Game extends Sprite
 		//bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
 		//bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
 		
-		currentLevel++;
-		initialize();
-		startWave();
+		rootObject.level++;
+		rootObject.removeChild(this);
+		rootObject.addChild(new Menu(rootObject));
 	}
 	
 	//Creates a button that starts the next wave
