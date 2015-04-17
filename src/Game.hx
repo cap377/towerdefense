@@ -112,7 +112,7 @@ class Game extends Sprite
 		villagerText.y = 5;
 		addChild(villagerText);
 		
-		coins = 250;
+		coins = 2500;
 		coinText = new TextField(50, 50, "Coins:\n" + coins);
 		coinText.x = villagerText.x - coinText.width;
 		coinText.y = 5;
@@ -122,6 +122,11 @@ class Game extends Sprite
 	//Generate the next level
 	public function nextLevel()
 	{
+		
+		//var bg = new Image(Root.assets.getTexture("towerMenu"));
+		//bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
+		//bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
+		
 		currentLevel++;
 		initialize();
 		startWave();

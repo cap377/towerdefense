@@ -10,23 +10,22 @@ import starling.core.Starling;
 class Tower extends Sprite
 {
 	private var game : Game;
-	
+	public var image : Image;
+	public var button : Button;
 	public var level : Int;
 	public var upgradeBaseCost : Int;
 	public var radius : Int;
 	public var speed : Int;
 	public var attack : Int;
 	
-	public function new (game : Game)
+	public function new (game : Game, towerNum : Int, x : Float, y : Float, initialStats : Array<Int>)
 	{
 		super();
 		level = 1;
 		this.game = game;
-	}
-	
-	public function createTower(towerNum : Int, x : Float, y : Float, initialStats : Array<Int>)
-	{
-
+		this.x = x;
+		this.y = y;
+		
 		//Initial stats: speed, radius, attack, upgradeCost
 		speed = initialStats[0];
 		radius = initialStats[1];
@@ -41,17 +40,18 @@ class Tower extends Sprite
 		//
 		///////////////////////
 		
+		image = new Image(Root.assets.getTexture("tower" + towerNum));
+		addChild(image);
+		
+		
 		//Create a new tower based on the tower clicked and set it to the correct position
-		var button = new Button(Root.assets.getTexture("tower" + towerNum));
-		button.x = x;
-		button.y = y;
+		button = new Button(Root.assets.getTexture("towerButton"));
 		button.addEventListener(Event.TRIGGERED, function()
 		{
 			//When clicked create a new tower menu
 			game.addChild(new TowerMenu(game, this));
 		});
-		
-		return button;
+		addChild(button);
 	}
 	
 	public function upgrade()
@@ -79,8 +79,6 @@ class Tower extends Sprite
 		level++;
 	}
 }
-
-
 
 
 
