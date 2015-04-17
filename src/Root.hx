@@ -84,18 +84,18 @@ class Menu extends Sprite {
 		startButton.x = 200;
 		startButton.y = 200;
 		startButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Levels(root));
-			});
+			root.removeChild(this);
+			root.addChild(new Levels(root));
+		});
 
 		var creditsButton = new Button(Root.assets.getTexture("bluemenubutton"));
 		creditsButton.text = "Credits";
 		creditsButton.x = 200;
 		creditsButton.y = 350;
 		creditsButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Credits(root));
-			});
+			root.removeChild(this);
+			root.addChild(new Credits(root));
+		});
 
 		addChild(background);
 		addChild(startButton);
@@ -113,9 +113,9 @@ class Credits extends Sprite {
 		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
 		backButton.text = "Back";
 		backButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Menu(root));
-			});
+			root.removeChild(this);
+			root.addChild(new Menu(root));
+		});
 
 		addChild(background);
 		addChild(backButton);
@@ -134,9 +134,9 @@ class Levels extends Sprite {
 		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
 		backButton.text = "Back";
 		backButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Menu(root));
-			});
+			root.removeChild(this);
+			root.addChild(new Menu(root));
+		});
 
 		//Create a button for each level
 		for(i in 0...5) {
@@ -170,18 +170,18 @@ class LevelPreview extends Sprite {
 		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
 		backButton.text = "Back";
 		backButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Levels(root));
-			});
+			root.removeChild(this);
+			root.addChild(new Levels(root));
+		});
 
 		var startButton = new Button(Root.assets.getTexture("redmenubutton"));
 		startButton.text = "Play";
 		startButton.x = 200;
 		startButton.y = 200;
 		startButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Game());
-			});
+			root.removeChild(this);
+			root.addChild(new Game());
+		});
 
 		addChild(background);
 		addChild(backButton);
