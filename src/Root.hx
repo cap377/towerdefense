@@ -10,6 +10,7 @@ import starling.text.TextField;
 
 class Root extends Sprite {
 
+	public var level:Int;
 	public static var assets: AssetManager;
 
 	public function new() {
@@ -84,18 +85,18 @@ class Menu extends Sprite {
 		startButton.x = 200;
 		startButton.y = 200;
 		startButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Game());
-			});
+			root.removeChild(this);
+			root.addChild(new Levels(root));
+		});
 
 		var creditsButton = new Button(Root.assets.getTexture("bluemenubutton"));
 		creditsButton.text = "Credits";
 		creditsButton.x = 200;
 		creditsButton.y = 350;
 		creditsButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Credits(root));
-			});
+			root.removeChild(this);
+			root.addChild(new Credits(root));
+		});
 
 		addChild(background);
 		addChild(startButton);
@@ -113,12 +114,79 @@ class Credits extends Sprite {
 		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
 		backButton.text = "Back";
 		backButton.addEventListener(Event.TRIGGERED, function() {
-				root.removeChild(this);
-				root.addChild(new Menu(root));
-			});
+			root.removeChild(this);
+			root.addChild(new Menu(root));
+		});
 
 		addChild(background);
 		addChild(backButton);
+
+		root.addChild(this);
+	}
+}
+
+class Levels extends Sprite {
+
+	public function new(root:Root) {
+		super();
+		var background = new Image(Root.assets.getTexture("menu"));
+		addChild(background);
+
+		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
+		backButton.text = "Back";
+		backButton.addEventListener(Event.TRIGGERED, function() {
+			root.removeChild(this);
+			root.addChild(new Menu(root));
+		});
+
+		//Create a button for each level
+		for(i in 0...5) {
+			var levelButton:Button;
+			//Check if level is unlocked
+			if(i <= root.level) {
+				levelButton = new Button(Root.assets.getTexture("redmenubutton"));
+				levelButton.addEventListener(Event.TRIGGERED, function() {
+					root.removeChild(this);
+					root.addChild(new LevelPreview(root, i));
+				});
+			} else {
+				levelButton = new Button(Root.assets.getTexture("bluemenubutton"));
+			}
+			levelButton.y = 200;
+			levelButton.x = i * 50;
+			addChild(levelButton);
+		}
+
+		addChild(backButton);
+
+		root.addChild(this);
+	}
+}
+
+class LevelPreview extends Sprite {
+
+	public function new(root:Root, level:Int) {
+		super();
+		var background = new Image(Root.assets.getTexture("menu"));
+		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
+		backButton.text = "Back";
+		backButton.addEventListener(Event.TRIGGERED, function() {
+			root.removeChild(this);
+			root.addChild(new Levels(root));
+		});
+
+		var startButton = new Button(Root.assets.getTexture("redmenubutton"));
+		startButton.text = "Play";
+		startButton.x = 200;
+		startButton.y = 200;
+		startButton.addEventListener(Event.TRIGGERED, function() {
+			root.removeChild(this);
+			root.addChild(new Game(level));
+		});
+
+		addChild(background);
+		addChild(backButton);
+		addChild(startButton);
 
 		root.addChild(this);
 	}
