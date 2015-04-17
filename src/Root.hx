@@ -5,6 +5,7 @@ import starling.animation.Transitions;
 import starling.events.Event;
 import starling.display.Image;
 import starling.display.Button;
+import starling.text.TextField;
 
 
 class Root extends Sprite {
@@ -47,6 +48,11 @@ class Root extends Sprite {
 		assets.enqueue("assets/level2.txt");
 
 		assets.enqueue("assets/menu.png");
+		assets.enqueue("assets/redmenubutton.png");
+		assets.enqueue("assets/bluemenubutton.png");
+
+		assets.enqueue("assets/font.png");
+		assets.enqueue("assets/font.fnt");
 
 		
 		assets.loadQueue(function onProgress(ratio:Float) {
@@ -71,16 +77,19 @@ class Menu extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets.getTexture("menu"));
-		var startButton = new Button(Root.assets.getTexture("button"));
-		startButton.text = "Start Game";
+		var startButton = new Button(Root.assets.getTexture("redmenubutton"));
+		startButton.text = "Play";
+		startButton.x = 200;
+		startButton.y = 200;
 		startButton.addEventListener(Event.TRIGGERED, function() {
 				root.removeChild(this);
 				root.addChild(new Game());
 			});
 
-		var creditsButton = new Button(Root.assets.getTexture("button"));
-		creditsButton.y = 50;
+		var creditsButton = new Button(Root.assets.getTexture("bluemenubutton"));
 		creditsButton.text = "Credits";
+		creditsButton.x = 200;
+		creditsButton.y = 350;
 		creditsButton.addEventListener(Event.TRIGGERED, function() {
 				root.removeChild(this);
 				root.addChild(new Credits(root));
@@ -99,7 +108,7 @@ class Credits extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets.getTexture("menu"));
-		var backButton = new Button(Root.assets.getTexture("button"));
+		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
 		backButton.text = "Back";
 		backButton.addEventListener(Event.TRIGGERED, function() {
 				root.removeChild(this);

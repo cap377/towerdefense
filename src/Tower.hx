@@ -26,6 +26,7 @@ class Tower extends Sprite
 	
 	public function createTower(towerNum : Int, x : Float, y : Float, initialStats : Array<Int>)
 	{
+
 		//Initial stats: speed, radius, attack, upgradeCost
 		speed = initialStats[0];
 		radius = initialStats[1];
