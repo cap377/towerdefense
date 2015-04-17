@@ -43,9 +43,10 @@ class Tower extends Sprite
 		image = new Image(Root.assets.getTexture("tower" + towerNum));
 		addChild(image);
 		
-		
 		//Create a new tower based on the tower clicked and set it to the correct position
 		button = new Button(Root.assets.getTexture("towerButton"));
+		button.height = image.height;
+		button.width = image.width;
 		button.addEventListener(Event.TRIGGERED, function()
 		{
 			//When clicked create a new tower menu

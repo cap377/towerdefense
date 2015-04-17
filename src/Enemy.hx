@@ -40,6 +40,7 @@ class Enemy extends Sprite
 		{
 			var coin = new Coin(game, value, this.x, this.y);
 			alive = false;
+			game.removeChild(this);
 		}
 	}
 }
