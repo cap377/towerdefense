@@ -2,6 +2,10 @@ import starling.display.Sprite;
 import starling.utils.AssetManager;
 import starling.core.Starling;
 import starling.animation.Transitions;
+import starling.events.Event;
+import starling.display.Image;
+import starling.display.Button;
+import starling.text.TextField;
 
 
 class Root extends Sprite {
@@ -44,6 +48,13 @@ class Root extends Sprite {
 		assets.enqueue("assets/level1.txt");
 		assets.enqueue("assets/level2.txt");
 
+		assets.enqueue("assets/menu.png");
+		assets.enqueue("assets/redmenubutton.png");
+		assets.enqueue("assets/bluemenubutton.png");
+
+		assets.enqueue("assets/font.png");
+		assets.enqueue("assets/font.fnt");
+
 		
 		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
@@ -56,8 +67,58 @@ class Root extends Sprite {
 				});
 				
 				//Starting point for the game
-				addChild(new Game());
+				addChild(new Menu(this));
 			}
 		});
+	}
+}
+
+class Menu extends Sprite {
+
+	public function new(root:Root) {
+		super();
+		var background = new Image(Root.assets.getTexture("menu"));
+		var startButton = new Button(Root.assets.getTexture("redmenubutton"));
+		startButton.text = "Play";
+		startButton.x = 200;
+		startButton.y = 200;
+		startButton.addEventListener(Event.TRIGGERED, function() {
+				root.removeChild(this);
+				root.addChild(new Game());
+			});
+
+		var creditsButton = new Button(Root.assets.getTexture("bluemenubutton"));
+		creditsButton.text = "Credits";
+		creditsButton.x = 200;
+		creditsButton.y = 350;
+		creditsButton.addEventListener(Event.TRIGGERED, function() {
+				root.removeChild(this);
+				root.addChild(new Credits(root));
+			});
+
+		addChild(background);
+		addChild(startButton);
+		addChild(creditsButton);
+
+		root.addChild(this);
+	}
+}
+
+class Credits extends Sprite {
+
+	public function new(root:Root) {
+		super();
+		var background = new Image(Root.assets.getTexture("menu"));
+		var backButton = new Button(Root.assets.getTexture("redmenubutton"));
+		backButton.text = "Back";
+		backButton.addEventListener(Event.TRIGGERED, function() {
+				root.removeChild(this);
+				root.addChild(new Menu(root));
+			});
+
+		addChild(background);
+		addChild(backButton);
+
+		root.addChild(this);
 	}
 }
