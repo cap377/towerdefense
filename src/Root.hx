@@ -180,7 +180,7 @@ class LevelPreview extends Sprite {
 		startButton.y = 200;
 		startButton.addEventListener(Event.TRIGGERED, function() {
 			root.removeChild(this);
-			root.addChild(new Game());
+			root.addChild(new Game(level));
 		});
 
 		addChild(background);

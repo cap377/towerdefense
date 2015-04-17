@@ -40,32 +40,19 @@ class Game extends Sprite
 	
 	private var flag : Bool = false;
 	
-	public function new()
+	
+	public function new(level : Int)
 	{
 		super();
-		//////////////////////
-		//
-		//Call to the main menu would go right here
-		//
-		/////////////////////
 		
-
+		currentLevel = level + 1;
+		
 		run();
 	}
 	
 	//Entry point game to run
 	public function run()
 	{
-		
-		/////////////////////////////////
-		//
-		//Code for starting the next level would go right here
-		//Could also have a level select from the main menu
-		//nextLevel()
-		//
-		/////////////////////////////////
-		
-		currentLevel = 1;
 		
 		initialize();
 		startWave();
@@ -123,13 +110,39 @@ class Game extends Sprite
 	public function nextLevel()
 	{
 		
-		//var bg = new Image(Root.assets.getTexture("towerMenu"));
-		//bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
-		//bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
+		var bg = new Image(Root.assets.getTexture("towerMenu"));
+		bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
+		bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
 		
-		currentLevel++;
-		initialize();
-		startWave();
+		var score = villagers * 5 + coins;
+		var scoreText = new TextField(100, 50, "Score: " + score);
+		scoreText.x = bg.x + (bg.width - scoreText.width) / 2;
+		scoreText.y = bg.y + (bg.height - scoreText.height) / 2;
+		addChild(scoreText);
+		addChild(scoreText);
+		
+		var nextLevelButton = new Button(Root.assets.getTexture("button"), "Next Level");
+		nextLevelButton.x = bg.x + (bg.width - 2 * nextLevelButton.width) / 2;
+		nextLevelButton.y = bg.y + bg.height - (nextLevelButton.height + 15);
+		nextLevelButton.addEventListener(Event.TRIGGERED, function()
+		{
+			currentLevel++;
+			//Root.level++;
+			initialize();
+			startWave();
+		});
+		addChild(nextLevelButton);
+		
+		var mainMenu = new Button(Root.assets.getTexture("button"), "Main Menu");
+		mainMenu.x = nextLevelButton.x + nextLevelButton.width + mainMenu.width;
+		mainMenu.y = nextLevelButton.y;
+		mainMenu.addEventListener(Event.TRIGGERED, function()
+		{
+			//new Menu(Root);
+			//Root.removeChild(this);
+		});
+		addChild(mainMenu);
+		
 	}
 	
 	//Creates a button that starts the next wave
