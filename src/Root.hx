@@ -7,12 +7,14 @@ import starling.display.Image;
 import starling.display.Button;
 import starling.text.TextField;
 import flash.media.*;
+import starling.animation.IAnimatable;
 
 class Root extends Sprite {
 
 	public var level:Int;
 	public static var assets: AssetManager;
 	public var tdintro: SoundChannel;
+	public var repeatsong: IAnimatable;
 
 	public function new() {
 		super();
@@ -71,7 +73,8 @@ class Root extends Sprite {
 				Starling.juggler.tween(startup.loadingBitmap, 1.0, {
 					transition:Transitions.EASE_OUT, delay:0.5, alpha: 0, onComplete: function() {
 						startup.removeChild(startup.loadingBitmap);
-						Root.assets.playSound("tdintro", 0, 1000);
+						Root.assets.playSound("tdintro", 120, 0);
+						repeatsong = Starling.juggler.repeatCall(musicLoop, 20.1, 0);
 					}
 				});
 				
@@ -79,6 +82,9 @@ class Root extends Sprite {
 				addChild(new Menu(this));
 			}
 		});
+	}
+	public function musicLoop(){
+		Root.assets.playSound("tdintro", 120, 0);
 	}
 }
 

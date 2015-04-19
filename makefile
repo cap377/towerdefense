@@ -1,4 +1,4 @@
-FLEX_SDK ?= C:/flexsdk
+FLEX_SDK ?= C:/flex
 
 APP=td
 APP_XML=$(APP).xml
