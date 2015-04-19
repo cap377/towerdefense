@@ -6,12 +6,13 @@ import starling.events.Event;
 import starling.display.Image;
 import starling.display.Button;
 import starling.text.TextField;
-
+import flash.media.*;
 
 class Root extends Sprite {
 
 	public var level:Int;
 	public static var assets: AssetManager;
+	public var tdintro: SoundChannel;
 
 	public function new() {
 		super();
@@ -30,6 +31,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/dirt.png");
 		assets.enqueue("assets/coin.png");
 		
+		assets.enqueue("assets/tdintro.mp3");
 		
 		assets.enqueue("assets/caveman_left1");
 		assets.enqueue("assets/caveman_left2");
@@ -69,6 +71,7 @@ class Root extends Sprite {
 				Starling.juggler.tween(startup.loadingBitmap, 1.0, {
 					transition:Transitions.EASE_OUT, delay:0.5, alpha: 0, onComplete: function() {
 						startup.removeChild(startup.loadingBitmap);
+						Root.assets.playSound("tdintro", 0, 1000);
 					}
 				});
 				
@@ -84,6 +87,7 @@ class Menu extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets.getTexture("menu"));
+		
 		var startButton = new Button(Root.assets.getTexture("redmenubutton"));
 		startButton.text = "Play";
 		startButton.x = 200;
