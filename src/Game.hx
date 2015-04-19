@@ -39,6 +39,8 @@ class Game extends Sprite
 	//All the towers in the list
 	public var towerList : Array<Tower>;
 	
+	private var paused : Bool;
+	
 	private var flag : Bool = false;
 
 	private var rootObject : Root;
@@ -87,6 +89,9 @@ class Game extends Sprite
 		
 		//Hold the towers
 		towerList = new Array();
+		
+		//Make sure the game isn't pause or vice versa
+		paused = false;
 		
 		
 		//Load in the text (map and waves) based on the current level
@@ -186,19 +191,13 @@ class Game extends Sprite
 	//Anything that needs to be updated continuously goes here
 	public function onEnterFrame(event:EnterFrameEvent)
 	{
-		////////////////////
-		//
-		//If we want it to pause when we open one of the menus
-		//we could add a boolean that is checked each frame
-		//and if its true the game is paused and unpaused otherwise
-		//which can then be switched when a menu is created/closed
-		//to pause/unpause the game
-		//if(!paused)
-		//	do the game logic here
-		//
-		////////////////////
-		
-		
+		if (!paused)
+			gameLogic();
+	}
+	
+	//Player movement, tower attacks, etc.
+	public function gameLogic()
+	{
 		//Update the coin and villagers to reflect the new values
 		villagerText.text = "Villagers:\n" + villagers;
 		coinText.text = "Coins:\n" + coins;
@@ -229,6 +228,7 @@ class Game extends Sprite
 		{
 			nextWave();
 		}
+		
 	}
 	
 	private function enemiesLeft()
@@ -295,6 +295,7 @@ class Game extends Sprite
 						{
 							var buildMenu = new BuildMenu(this, build.x, build.y);
 							addChild(buildMenu);
+							pause();
 							
 						});
 						addChild(build);
@@ -460,5 +461,14 @@ class Game extends Sprite
 	public function setCoins(amount : Int)
 	{
 		coins = coins + amount;
+	}
+	
+	public function pause()
+	{
+		paused = true;
+	}
+	public function unpause()
+	{
+		paused = false;
 	}
 }

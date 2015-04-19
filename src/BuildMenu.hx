@@ -85,6 +85,9 @@ class BuildMenu extends Sprite
 		exit.addEventListener(Event.TRIGGERED, function()
 		{
 			game.removeChild(this);
+			
+			//Unpause the game
+			game.unpause();
 		});
 		addChild(exit);
 	}
@@ -125,6 +128,9 @@ class BuildMenu extends Sprite
 			game.towerList.push(tower);
 			//trace("Xpos: "+tower.x + ", Ypos: "+tower.y);
 			//trace(game.towerList);
+			
+			//Unpause the game
+			game.unpause();
 
 		}
 		//If not enough coins let the player know

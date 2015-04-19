@@ -32,13 +32,6 @@ class Tower extends Sprite
 		attack = initialStats[2];
 		upgradeBaseCost = initialStats[3];
 		
-		///////////////////////
-		//
-		//The Image is currently created as a button, but a better option would
-		//be to create movie clip (or whatever for animation) and then draw
-		//a transparent button over it so that it is still clickable
-		//
-		///////////////////////
 		
 		image = new Image(Root.assets.getTexture("tower" + towerNum));
 		addChild(image);
@@ -49,7 +42,8 @@ class Tower extends Sprite
 		button.width = image.width;
 		button.addEventListener(Event.TRIGGERED, function()
 		{
-			//When clicked create a new tower menu
+			//When clicked create a new tower menu an pause the game
+			game.pause();
 			game.addChild(new TowerMenu(game, this));
 		});
 		addChild(button);
@@ -66,6 +60,7 @@ class Tower extends Sprite
 		switch (level)
 		{
 			case 1:
+				upgradeBaseCost += 50;
 				attack += 2;
 			case 2:
 				upgradeBaseCost += 50;
@@ -102,7 +97,7 @@ class TowerMenu extends Sprite
 		//
 		/////////////////////////
 		
-		//Create a textfield taht lists the stats of the tower
+		//Create a textfield that lists the stats of the tower
 		var text = new TextField(150, 100, "Attack Radius: " + tower.radius + "\nAttack Speed: " + tower.speed + "\nAttack Power: " + tower.attack);
 		text.x = bg.x + 5;
 		text.y = bg.y + (bg.width - text.width) / 2;
@@ -136,6 +131,21 @@ class TowerMenu extends Sprite
 			}
 		});
 		
+		//Create sell button to sell the tower for the current tower upgrade amount
+		var sell = new Button(Root.assets.getTexture("button"), "Sell");
+		sell.x = upgrade.x;
+		sell.y = upgrade.y  + sell.height;
+		sell.addEventListener(Event.TRIGGERED, function()
+		{
+			game.setCoins(tower.upgradeBaseCost);
+			game.removeChild(tower);
+			game.removeChild(this);
+			
+			//Unpause the game
+			game.unpause();
+		});
+		
+		
 		
 		//Create an exit button to close the tower menu
 		var exit = new Button(Root.assets.getTexture("button"), "Exit");
@@ -144,10 +154,14 @@ class TowerMenu extends Sprite
 		exit.addEventListener(Event.TRIGGERED, function()
 		{
 			game.removeChild(this);
+			
+			//Unpause the game
+			game.unpause();
 		});
 		
 		addChild(bg);
 		addChild(upgrade);
+		addChild(sell);
 		addChild(exit);
 		addChild(text);
 	}
