@@ -50,11 +50,12 @@ class Enemy extends Sprite
 		//Until the assets are completed, it will not work
 		//Assets for animation must also be texture packed
 		/*
-		game.removeChild(animation);
+		removeChild(image);
+		removeChild(animation);
 		var atlas = Root.assets.getTextureAtlas("assets");
 		animation = new MovieClipPlus(atlas.getTextures(name + "_" + direction), 8);
 		animation.loop = true;
-		game.addChild(animation);
+		addChild(animation);
 		animation.play();
 		*/
 	}
