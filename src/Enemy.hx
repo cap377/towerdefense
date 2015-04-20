@@ -12,6 +12,7 @@ class Enemy extends Sprite
 {
 	private var game : Game;
 	private var image : Image;
+	private var animation : MovieClipPlus;
 	public var speed : Float;
 	public var health : Float;
 	public var value : Int;
@@ -42,5 +43,20 @@ class Enemy extends Sprite
 			alive = false;
 			game.removeChild(this);
 		}
+	}
+
+	public function playAnimation(direction: Int) {
+		//This code will handle animations for enemies
+		//Until the assets are completed, it will not work
+		//Assets for animation must also be texture packed
+		/*
+		removeChild(image);
+		removeChild(animation);
+		var atlas = Root.assets.getTextureAtlas("assets");
+		animation = new MovieClipPlus(atlas.getTextures(name + "_" + direction), 8);
+		animation.loop = true;
+		addChild(animation);
+		animation.play();
+		*/
 	}
 }
