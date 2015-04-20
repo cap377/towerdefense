@@ -154,13 +154,13 @@ class Levels extends Sprite {
 			var levelButton:Button;
 			//Check if level is unlocked
 			if(i <= root.level) {
-				levelButton = new Button(Root.assets.getTexture("redmenubutton"));
+				levelButton = new Button(Root.assets.getTexture("redmenubutton"), "Level " + i);
 				levelButton.addEventListener(Event.TRIGGERED, function() {
 					root.removeChild(this);
 					root.addChild(new LevelPreview(root, i));
 				});
 			} else {
-				levelButton = new Button(Root.assets.getTexture("bluemenubutton"));
+				levelButton = new Button(Root.assets.getTexture("bluemenubutton"), "Level " + i);
 			}
 			if (x * levelButton.width > 640 - levelButton.width)
 			{
