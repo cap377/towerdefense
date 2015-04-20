@@ -23,28 +23,13 @@ class Enemy extends Sprite
 	{
 		super();
 		this.game = game;
-		//image = new Image(Root.assets.getTexture(name));
-
-		/*
-		Replaced the image with an animation
-		Curently only uses one image, but when more assets are done they can be added to the animation
-		*/
-		//var atlas = Root.assets.getTextureAtlas("assets);  //This line will work once assets have been texture packed
-		var vector = new flash.Vector<starling.textures.Texture>();
-		vector.push(Root.assets.getTexture(name));
-		this.animation = new MovieClipPlus(vector, 8);
-		animation.loop = true;
-		addChild(animation);
-		animation.play();
-		
-
-		this.name = name;
+		image = new Image(Root.assets.getTexture(name));
 		this.speed = speed;
 		this.health = health;
 		this.value = value;
 		currentDirection = 2;
 		alive = true;
-		//addChild(image);
+		addChild(image);
 	}
 	
 	//Apply hit damage
@@ -58,5 +43,19 @@ class Enemy extends Sprite
 			alive = false;
 			game.removeChild(this);
 		}
+	}
+
+	public function playAnimation(direction: Int) {
+		//This code will handle animations for enemies
+		//Until the assets are completed, it will not work
+		//Assets for animation must also be texture packed
+		/*
+		game.removeChild(animation);
+		var atlas = Root.assets.getTextureAtlas("assets");
+		animation = new MovieClipPlus(atlas.getTextures(name + "_" + direction), 8);
+		animation.loop = true;
+		game.addChild(animation);
+		animation.play();
+		*/
 	}
 }

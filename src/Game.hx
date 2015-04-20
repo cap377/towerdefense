@@ -370,7 +370,13 @@ class Game extends Sprite
 	private function moveEnemy(waveEnemy : Int)
 	{
 		//Get either the current direction or the new direction
-		switch (getDirection(waveEnemy))
+		var oldDirection = spawnedEnemies[waveEnemy].currentDirection;
+		var newDirection = getDirection(waveEnemy);
+		if (oldDirection != newDirection) {
+			//If new direction is different, play new animation
+			spawnedEnemies[waveEnemy].playAnimation(newDirection);
+		}
+		switch (newDirection)
 		{
 			case 0:
 				spawnedEnemies[waveEnemy].y -= spawnedEnemies[waveEnemy].speed;
