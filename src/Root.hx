@@ -34,6 +34,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/coin.png");
 		
 		assets.enqueue("assets/tdintro.mp3");
+		assets.enqueue("assets/Pickup_Coin.mp3");
 		
 		assets.enqueue("assets/caveman_left1");
 		assets.enqueue("assets/caveman_left2");

@@ -16,6 +16,7 @@ class Coin extends Sprite
 		var collect = new Button(Root.assets.getTexture("coin"));
 		collect.addEventListener(Event.TRIGGERED, function()
 		{
+			Root.assets.playSound("Pickup_Coin", 0, 0);
 			game.setCoins(value);
 			game.removeChild(this);
 		});
