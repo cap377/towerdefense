@@ -139,6 +139,7 @@ class TowerMenu extends Sprite
 		{
 			game.setCoins(tower.upgradeBaseCost);
 			game.removeChild(tower);
+			game.towerList.remove(tower);
 			game.removeChild(this);
 			
 			//Unpause the game
