@@ -66,6 +66,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/font.png");
 		assets.enqueue("assets/font.fnt");
 
+		assets.enqueue("assets/projectile.png");
 		
 		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {

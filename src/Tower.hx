@@ -17,6 +17,7 @@ class Tower extends Sprite
 	public var radius : Int;
 	public var speed : Int;
 	public var attack : Int;
+	public var attacking : Bool;
 	
 	public function new (game : Game, towerNum : Int, x : Float, y : Float, initialStats : Array<Int>)
 	{
@@ -25,6 +26,7 @@ class Tower extends Sprite
 		this.game = game;
 		this.x = x;
 		this.y = y;
+		this.attacking = false;
 		
 		//Initial stats: speed, radius, attack, upgradeCost
 		speed = initialStats[0];
@@ -73,6 +75,23 @@ class Tower extends Sprite
 				attack += 1;
 		}
 		level++;
+	}
+
+	public function launchAttack(enemy : Enemy) {
+		//Creates a projectile and tweens it to the target
+		this.attacking = true;
+		var projectile = new Image(Root.assets.getTexture("projectile"));
+		addChild(projectile);
+		Starling.juggler.tween(projectile, .25, {
+            delay: 0.0,
+            x: enemy.x - this.x, 
+            y: enemy.y - this.y,
+            onComplete: function() {
+            	removeChild(projectile);
+            	this.attacking = false;
+            	enemy.hit(this.attack);
+            }
+		});
 	}
 }
 
