@@ -35,7 +35,7 @@ class Tower extends Sprite
 		upgradeBaseCost = initialStats[3];
 		
 		
-		image = new Image(Root.assets.getTexture("tower" + towerNum));
+		image = new Image(Root.assets.getTexture("caveman_left" + towerNum));
 		addChild(image);
 		
 		//Create a new tower based on the tower clicked and set it to the correct position
