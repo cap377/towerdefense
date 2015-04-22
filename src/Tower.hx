@@ -81,15 +81,16 @@ class Tower extends Sprite
 		//Creates a projectile and tweens it to the target
 		this.attacking = true;
 		var projectile = new Image(Root.assets.getTexture("projectile"));
+		projectile.x = 16;
 		addChild(projectile);
-		Starling.juggler.tween(projectile, .2, {
+		Starling.juggler.tween(projectile, .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5), {
             delay: 0.0,
             x: enemy.x - this.x, 
             y: enemy.y - this.y,
             onComplete: function() {
             	removeChild(projectile);
             	enemy.hit(this.attack);
-            	Starling.juggler.delayCall(function() { this.attacking = false; }, (1 - .2 * this.speed) - .2);
+            	Starling.juggler.delayCall(function() { this.attacking = false; }, (1 - .2 * this.speed) - .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5));
             }
 		});
 	}
