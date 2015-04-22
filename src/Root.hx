@@ -62,6 +62,7 @@ class Root extends Sprite {
 		
 		assets.enqueue("assets/level1.txt");
 		assets.enqueue("assets/level2.txt");
+		assets.enqueue("assets/level3.txt");
 
 		assets.enqueue("assets/menu.png");
 		assets.enqueue("assets/redmenubutton.png");
