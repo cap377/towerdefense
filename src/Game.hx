@@ -172,15 +172,28 @@ class Game extends Sprite
 		{
 			flag = false;
 			
+			
+			
 			var nextWave = new Button(Root.assets.getTexture("button"), "Next Wave");
 			nextWave.x = Starling.current.stage.stageWidth - nextWave.width;
 			nextWave.y = Starling.current.stage.stageHeight - nextWave.height;
+			
+			var nextWaveTimer = new Timer(3000, 3);
+			nextWaveTimer.start();
+			nextWaveTimer.addEventListener(TimerEvent.TIMER_COMPLETE, function(e:TimerEvent)
+			{
+				spawnedEnemies = new Array();
+				waveNum++;
+				startWave();
+				removeChild(nextWave);
+			});
 			nextWave.addEventListener(Event.TRIGGERED, function()
 			{
 				spawnedEnemies = new Array();
 				waveNum++;
 				startWave();
 				removeChild(nextWave);
+				nextWaveTimer.stop();
 			});
 			addChild(nextWave);
 		}
