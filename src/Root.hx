@@ -36,10 +36,10 @@ class Root extends Sprite {
 		assets.enqueue("assets/tdintro.mp3");
 		assets.enqueue("assets/Pickup_Coin.mp3");
 		
-		assets.enqueue("assets/caveman_left1");
-		assets.enqueue("assets/caveman_left2");
-		assets.enqueue("assets/caveman_right1");
-		assets.enqueue("assets/caveman_right2");
+		assets.enqueue("assets/caveman_left1.png");
+		assets.enqueue("assets/caveman_left2.png");
+		assets.enqueue("assets/caveman_right1.png");
+		assets.enqueue("assets/caveman_right2.png");
 		assets.enqueue("assets/tower1.png");
 		assets.enqueue("assets/tower2.png");
 		assets.enqueue("assets/towerMenu.png");
