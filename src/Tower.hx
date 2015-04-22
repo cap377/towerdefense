@@ -13,6 +13,7 @@ class Tower extends Sprite
 	public var image : Image;
 	public var button : Button;
 	public var level : Int;
+	public var maxLevel : Int = 4;
 	public var upgradeBaseCost : Int;
 	public var radius : Int;
 	public var speed : Int;
@@ -62,18 +63,19 @@ class Tower extends Sprite
 		switch (level)
 		{
 			case 1:
-				upgradeBaseCost += 50;
+				upgradeBaseCost += Std.int(upgradeBaseCost * 1.5);
 				attack += 2;
 			case 2:
-				upgradeBaseCost += 50;
+				upgradeBaseCost += Std.int(upgradeBaseCost * 1.5);
 				radius += 1;
 				speed += 1;
 			case 3:
-				upgradeBaseCost += 50;
+				upgradeBaseCost += Std.int(upgradeBaseCost * 1.5);
 				radius += 1;
 				speed += 1;
 				attack += 1;
 		}
+		trace(upgradeBaseCost);
 		level++;
 	}
 
@@ -126,41 +128,55 @@ class TowerMenu extends Sprite
 		/////////////////////////
 		
 		//Create a textfield that lists the stats of the tower
-		var text = new TextField(150, 100, "Attack Radius: " + tower.radius + "\nAttack Speed: " + tower.speed + "\nAttack Power: " + tower.attack);
+		var level = new TextField(150, 100, "LEVEL: " + tower.level, "font", 24, 0xFFFFFF);
+		level.x = bg.x + (bg.width - level.width) / 2;
+		level.y = bg.y + 5;
+		
+		//Create a textfield that lists the stats of the tower
+		var text = new TextField(150, 100, "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack, "font", 24, 0xFFFFFF);
 		text.x = bg.x + 5;
 		text.y = bg.y + (bg.width - text.width) / 2;
 		
 		//Allow the player to upgrade the tower
-		var upgrade = new Button(Root.assets.getTexture("button"), "Upgrade");
-		upgrade.x = text.x + text.width + upgrade.width;
-		upgrade.y = text.y + (text.height - upgrade.height) / 2;
-		upgrade.addEventListener(Event.TRIGGERED, function()
+		var upgrade = new Button(Root.assets.getTexture("button"), "UPGRADE");
+		if (tower.level < tower.maxLevel)
 		{
-			//Check to make sure the player has enough coins
-			if (game.getCoins() >= tower.upgradeBaseCost)
+			upgrade.fontName = "font";
+			upgrade.fontSize = 24;
+			upgrade.fontColor = 0xFFFFFF;
+			upgrade.x = text.x + text.width + upgrade.width;
+			upgrade.y = text.y + (text.height - upgrade.height) / 2;
+			upgrade.addEventListener(Event.TRIGGERED, function()
 			{
-				game.setCoins( -tower.upgradeBaseCost);
-				tower.upgrade();
-				text.text = "Attack Radius: " + tower.radius + "\nAttack Speed: " + tower.speed + "\nAttack Power: " + tower.attack;
-			}
-			//Otherwise inform the player they don't have enough coins
-			else
-			{
-				var poor = new TextField(100, 100, "You don't have enough coins");
-				poor.x = bg.x + (bg.width - poor.width) / 2;
-				poor.y = bg.y + 10;
-				addChild(poor);
-				var timer = new Timer(500, 3);
-				timer.start();
-				timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(e:TimerEvent)
+				//Check to make sure the player has enough coins
+				if (game.getCoins() >= tower.upgradeBaseCost)
 				{
-					removeChild(poor);
-				});
-			}
-		});
+					game.setCoins( -tower.upgradeBaseCost);
+					tower.upgrade();
+					text.text = "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack;
+				}
+				//Otherwise inform the player they don't have enough coins
+				else
+				{
+					var poor = new TextField(100, 100, "YOU DON'T HAVE ENOUGH COINS", "font", 24, 0xFFFFFF);
+					poor.x = bg.x + (bg.width - poor.width) / 2;
+					poor.y = bg.y + 10;
+					addChild(poor);
+					var timer = new Timer(500, 3);
+					timer.start();
+					timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(e:TimerEvent)
+					{
+						removeChild(poor);
+					});
+				}
+			});
+		}
 		
 		//Create sell button to sell the tower for the current tower upgrade amount
-		var sell = new Button(Root.assets.getTexture("button"), "Sell");
+		var sell = new Button(Root.assets.getTexture("button"), "SELL");
+		sell.fontName = "font";
+		sell.fontSize = 24;
+		sell.fontColor = 0xFFFFFF;
 		sell.x = upgrade.x;
 		sell.y = upgrade.y  + sell.height;
 		sell.addEventListener(Event.TRIGGERED, function()
@@ -177,7 +193,10 @@ class TowerMenu extends Sprite
 		
 		
 		//Create an exit button to close the tower menu
-		var exit = new Button(Root.assets.getTexture("button"), "Exit");
+		var exit = new Button(Root.assets.getTexture("button"), "EXIT");
+		exit.fontName = "font";
+		exit.fontSize = 24;
+		exit.fontColor = 0xFFFFFF;
 		exit.x = bg.x + bg.width - exit.width;
 		exit.y = bg.y + bg.height - exit.height;
 		exit.addEventListener(Event.TRIGGERED, function()
@@ -189,6 +208,7 @@ class TowerMenu extends Sprite
 		});
 		
 		addChild(bg);
+		addChild(level);
 		addChild(upgrade);
 		addChild(sell);
 		addChild(exit);

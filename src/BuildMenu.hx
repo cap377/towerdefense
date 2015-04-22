@@ -14,6 +14,7 @@ class BuildMenu extends Sprite
 	private var game : Game;
 	private var bg : Image;
 	private var selected : Array<Float>;
+	private var numOfTowers = 2;
 	
 	function new (game : Game, x : Float, y : Float)
 	{
@@ -39,11 +40,31 @@ class BuildMenu extends Sprite
 		//
 		/////////////////////////////
 		
-		var towerText = new TextField(75, 100, "Cost:\nSpeed\nRadius\nAttack");
+		var towerText = new TextField(75, 100, "COST:\nSPEED\nRANGE\nATTACK", "font", 24, 0xFFFFFF);
 		towerText.x = bg.x + 10;
 		towerText.y = bg.y + bg.height - towerText.height;
 		addChild(towerText);
 		
+		/*
+		var y = 0;
+		var x = 0;
+		for (i in 1...numOfTowers+1)
+		{
+			var towerButton = new Button(Root.assets.getTexture("towerButton" + i));
+			towerButton.fontName = "font";
+			towerButton.fontSize = 24;
+			towerButton.fontColor = 0xFFFFFF;
+			towerButton.x = bg.x + 5 + x * (towerButton.width + 5);
+			towerButton.y = bg.y + 5 + y * (towerButton.height + 5);
+			addChild(towerButton);
+			if (x == 2)
+			{
+				x = 0;
+				y++;
+			}
+			x++;
+		}
+		*/
 		
 		//Create a button for each type of tower
 		var towerButton1 = new Button(Root.assets.getTexture("towerButton1"));
@@ -53,7 +74,7 @@ class BuildMenu extends Sprite
 		{
 			//[towerNum, cost, x, y, speed, radius, attack, upgradeBaseCost]
 			selected = [ 1, 100, x, y, 2, 2, 1, 50 ];
-			towerText.text = "Cost: " + selected[1] + "\nSpeed: " + selected[4] + "\nRadius: " + selected[5] + "\nAttack: " + selected[6];
+			towerText.text = "COST: " + selected[1] + "\nSPEED: " + selected[4] + "\nRANGE: " + selected[5] + "\nATTACK: " + selected[6];
 		});
 		addChild(towerButton1);
 		
@@ -63,12 +84,15 @@ class BuildMenu extends Sprite
 		towerButton2.addEventListener(Event.TRIGGERED, function()
 		{
 			selected = [ 2, 150, x, y, 1, 2, 2, 100 ];
-			towerText.text = "Cost: " + selected[1] + "\nSpeed: " + selected[4] + "\nRadius: " + selected[5] + "\nAttack: " + selected[6];
+			towerText.text = "COST: " + selected[1] + "\nSPEED: " + selected[4] + "\nRANGE: " + selected[5] + "\nATTACK: " + selected[6];
 		});
 		addChild(towerButton2);
 		
 		//Create an exit button to close the create tower menu
 		var buy = new Button(Root.assets.getTexture("button"), "Buy");
+		buy.fontName = "font";
+		buy.fontSize = 24;
+		buy.fontColor = 0xFFFFFF;
 		buy.x = bg.x + bg.width - buy.width;
 		buy.y = bg.y;
 		buy.addEventListener(Event.TRIGGERED, function()
@@ -80,6 +104,9 @@ class BuildMenu extends Sprite
 		
 		//Create an exit button to close the create tower menu
 		var exit = new Button(Root.assets.getTexture("button"), "Exit");
+		exit.fontName = "font";
+		exit.fontSize = 24;
+		exit.fontColor = 0xFFFFFF;
 		exit.x = bg.x + bg.width - exit.width;
 		exit.y = bg.y + bg.height - exit.height;
 		exit.addEventListener(Event.TRIGGERED, function()
@@ -138,7 +165,7 @@ class BuildMenu extends Sprite
 		{
 			//Create a textfield informing the player they don't have enough coins
 			//Remove it from the screen after some short time
-			var text = new TextField(100, 100, "You don't have enough coins");
+			var text = new TextField(100, 100, "YOU DON'T HAVE ENOUGH COINS", "font", 24, 0xFFFFFF);
 			text.x = (Starling.current.stage.stageWidth - text.width) / 2;
 			text.y = bg.y + 10;
 			//Make sure that it is added to the current child and not the overall game child
