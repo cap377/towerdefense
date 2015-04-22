@@ -1,5 +1,6 @@
 import starling.display.Sprite;
 import starling.display.Image;
+import starling.core.Starling;
 
 
 ///////////////////////
@@ -57,6 +58,7 @@ class Enemy extends Sprite
 		animation.loop = true;
 		addChild(animation);
 		animation.play();
+		Starling.juggler.add(animation);
 		*/
 	}
 }
