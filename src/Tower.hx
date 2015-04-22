@@ -82,14 +82,14 @@ class Tower extends Sprite
 		this.attacking = true;
 		var projectile = new Image(Root.assets.getTexture("projectile"));
 		addChild(projectile);
-		Starling.juggler.tween(projectile, .25, {
+		Starling.juggler.tween(projectile, .2, {
             delay: 0.0,
             x: enemy.x - this.x, 
             y: enemy.y - this.y,
             onComplete: function() {
             	removeChild(projectile);
-            	this.attacking = false;
             	enemy.hit(this.attack);
+            	Starling.juggler.delayCall(function() { this.attacking = false; }, (1 - .2 * this.speed) - .2);
             }
 		});
 	}
