@@ -80,6 +80,7 @@ class Tower extends Sprite
 	public function launchAttack(enemy : Enemy) {
 		//Creates a projectile and tweens it to the target
 		this.attacking = true;
+		
 		var projectile = new Image(Root.assets.getTexture("arrow"));
 		projectile.x = projectile.x + this.width / 2;
 		
@@ -90,14 +91,14 @@ class Tower extends Sprite
 		projectile.rotation = radians;
 		
 		addChild(projectile);
-		Starling.juggler.tween(projectile, .25, {
+		Starling.juggler.tween(projectile, .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5), {
             delay: 0.0,
             x: enemy.x - this.x, 
             y: enemy.y - this.y,
             onComplete: function() {
             	removeChild(projectile);
-            	this.attacking = false;
             	enemy.hit(this.attack);
+            	Starling.juggler.delayCall(function() { this.attacking = false; }, (1 - .2 * this.speed) - .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5));
             }
 		});
 	}
