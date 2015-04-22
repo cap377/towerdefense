@@ -125,6 +125,9 @@ class Game extends Sprite
 	}
 	
 	//Generate the next level
+	var cap = 2;
+	var current = 1;
+
 	public function nextLevel()
 	{
 		
@@ -139,18 +142,22 @@ class Game extends Sprite
 		scoreText.y = bg.y + (bg.height - scoreText.height) / 2;
 		addChild(scoreText);
 		addChild(scoreText);
-		
+
 		var nextLevelButton = new Button(Root.assets.getTexture("button"), "Next Level");
-		nextLevelButton.x = bg.x + (bg.width - 2 * nextLevelButton.width) / 2;
-		nextLevelButton.y = bg.y + bg.height - (nextLevelButton.height + 15);
-		nextLevelButton.addEventListener(Event.TRIGGERED, function()
-		{
+			nextLevelButton.x = bg.x + (bg.width - 2 * nextLevelButton.width) / 2;
+			nextLevelButton.y = bg.y + bg.height - (nextLevelButton.height + 15);
+			nextLevelButton.addEventListener(Event.TRIGGERED, function()
+			{
 			currentLevel++;
 			rootObject.level++;
 			initialize();
 			startWave();
-		});
-		addChild(nextLevelButton);
+			current += 1;
+			});
+		
+		if (current < cap){
+			addChild(nextLevelButton);
+		}
 		
 		var mainMenu = new Button(Root.assets.getTexture("button"), "Main Menu");
 		mainMenu.x = nextLevelButton.x + nextLevelButton.width + mainMenu.width;
