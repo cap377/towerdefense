@@ -45,11 +45,13 @@ class Game extends Sprite
 
 	private var rootObject : Root;
 	
-
+	
 	public function new(root:Root, level:Int)
 
 	{
 		super();
+		
+		
 		
 		this.currentLevel = level + 1;
 		this.rootObject = root;
@@ -122,6 +124,7 @@ class Game extends Sprite
 		coinText.x = villagerText.x - coinText.width;
 		coinText.y = 5;
 		addChild(coinText);
+		
 	}
 	
 	//Generate the next level
@@ -204,6 +207,14 @@ class Game extends Sprite
 	//Anything that needs to be updated continuously goes here
 	public function onEnterFrame(event:EnterFrameEvent)
 	{
+		//Rotate whatever object to point at the mouse
+		//var mouseX = flash.Lib.current.stage.mouseX - object.x;
+		//var mouseY = flash.Lib.current.stage.mouseY - object.y;
+		//var radians = Math.atan2(mouseY,mouseX);
+		
+		
+		coinText.text = "Coins:\n" + coins;
+		
 		if (!paused)
 			gameLogic();
 	}
@@ -213,7 +224,6 @@ class Game extends Sprite
 	{
 		//Update the coin and villagers to reflect the new values
 		villagerText.text = "Villagers:\n" + villagers;
-		coinText.text = "Coins:\n" + coins;
 		var numEnemiesLeft = enemiesLeft();
 		numEnemies.text = "Enemies Left:\n" + numEnemiesLeft + "/" + waves[waveNum].getLength();
 		

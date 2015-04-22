@@ -80,7 +80,15 @@ class Tower extends Sprite
 	public function launchAttack(enemy : Enemy) {
 		//Creates a projectile and tweens it to the target
 		this.attacking = true;
-		var projectile = new Image(Root.assets.getTexture("projectile"));
+		var projectile = new Image(Root.assets.getTexture("arrow"));
+		projectile.x = projectile.x + this.width / 2;
+		
+		//Rotate the arrow to face the enemy
+		var rx = enemy.x - this.x;
+		var ry = enemy.y - this.y;
+		var radians = Math.atan2(ry,rx);
+		projectile.rotation = radians;
+		
 		addChild(projectile);
 		Starling.juggler.tween(projectile, .25, {
             delay: 0.0,
