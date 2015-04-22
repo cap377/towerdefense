@@ -1,6 +1,7 @@
 import starling.display.Sprite;
 import starling.display.Image;
 import starling.display.Button;
+import starling.core.Starling;
 import starling.events.*;
 
 
@@ -13,7 +14,15 @@ class Coin extends Sprite
 		this.x = x;
 		this.y = y;
 		
-		var collect = new Button(Root.assets.getTexture("coin"));
+		var collect = new Button(Root.assets.getTexture("button"));
+
+		var atlas = Root.assets.getTextureAtlas("assets");
+		var animation = new MovieClipPlus(atlas.getTextures("spinning_coin"), 8);
+		animation.loop = true;
+		addChild(animation);
+		animation.play();
+		Starling.juggler.add(animation);
+
 		collect.addEventListener(Event.TRIGGERED, function()
 		{
 			Root.assets.playSound("Pickup_Coin", 0, 0);
