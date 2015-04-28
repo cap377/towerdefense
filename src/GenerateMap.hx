@@ -22,6 +22,7 @@ class GenerateMap
 				map[y].push(rawData[y][x]);
 			}
 		}
+		
 		return map;
 	}
 }

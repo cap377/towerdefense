@@ -141,13 +141,14 @@ class TowerMenu extends Sprite
 		
 		//Allow the player to upgrade the tower
 		var upgrade = new Button(Root.assets.getTexture("button"), "UPGRADE");
+		upgrade.fontName = "font";
+		upgrade.fontSize = 24;
+		upgrade.fontColor = 0xFFFFFF;
+		upgrade.x = text.x + text.width + upgrade.width;
+		upgrade.y = text.y + (text.height - upgrade.height) / 2;
+		
 		if (tower.level < tower.maxLevel)
 		{
-			upgrade.fontName = "font";
-			upgrade.fontSize = 24;
-			upgrade.fontColor = 0xFFFFFF;
-			upgrade.x = text.x + text.width + upgrade.width;
-			upgrade.y = text.y + (text.height - upgrade.height) / 2;
 			upgrade.addEventListener(Event.TRIGGERED, function()
 			{
 				//Check to make sure the player has enough coins

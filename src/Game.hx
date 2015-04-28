@@ -27,6 +27,8 @@ class Game extends Sprite
 	
 	//Map of the level
 	private var map : Array<Array<String>>;
+	//Era of the level
+	public var era : Int = 0;
 	//All the waves for this level
 	private var waves : Array<Wave>;
 	//The enemies that have be spawned in
@@ -50,8 +52,6 @@ class Game extends Sprite
 
 	{
 		super();
-		
-		
 		
 		this.currentLevel = level + 1;
 		this.rootObject = root;
@@ -128,8 +128,7 @@ class Game extends Sprite
 	}
 	
 	//Generate the next level
-	var cap = 2;
-	var current = 1;
+	var cap = 3;
 
 	public function nextLevel()
 	{
@@ -155,10 +154,9 @@ class Game extends Sprite
 			rootObject.level++;
 			initialize();
 			startWave();
-			current += 1;
 			});
 		
-		if (current < cap){
+		if (currentLevel < cap){
 			addChild(nextLevelButton);
 		}
 		
