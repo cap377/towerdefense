@@ -7,7 +7,7 @@ class LoadMap
 	{
 		//Load in the level as a bytearray and conver to string
 		var str: String = new String(Root.assets.getByteArray(name).toString());
-		//Add a character to the end of the string that is needed to be removed later
+		//Add a character to the end of the string that is needed, is removed later
 		str = str + ".";
 
 		//Split the string at each new line and store it in an array

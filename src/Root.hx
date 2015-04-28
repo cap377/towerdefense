@@ -49,6 +49,9 @@ class Root extends Sprite {
 		assets.enqueue("assets/towerMenu.png");
 		assets.enqueue("assets/towerButton.png");
 		
+		assets.enqueue("assets/towers/towerValues1.txt");
+		assets.enqueue("assets/towers/towerValues2.txt");
+		
 		assets.enqueue("assets/towerButton1.png");
 		assets.enqueue("assets/towerButton2.png");
 		assets.enqueue("assets/createTowerMenu.png");
@@ -60,9 +63,9 @@ class Root extends Sprite {
 		assets.enqueue("assets/S.png");
 		
 		
-		assets.enqueue("assets/level1.txt");
-		assets.enqueue("assets/level2.txt");
-		assets.enqueue("assets/level3.txt");
+		assets.enqueue("assets/levels/level1.txt");
+		assets.enqueue("assets/levels/level2.txt");
+		assets.enqueue("assets/levels/level3.txt");
 
 		assets.enqueue("assets/menu.png");
 		assets.enqueue("assets/redmenubutton.png");

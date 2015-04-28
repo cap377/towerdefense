@@ -20,6 +20,7 @@ class BuildMenu extends Sprite
 	{
 		super();
 		this.game = game;
+		selected = new Array();
 		
 		//Create a simple background the represent the menu
 		bg = new Image(Root.assets.getTexture("createTowerMenu"));
@@ -29,10 +30,6 @@ class BuildMenu extends Sprite
 		
 		//////////////////////////////
 		//
-		//Currently clicking the tower button creates the tower
-		//We could change this so the clicking the tower brings up stats about the tower
-		//with a seperate button to purchase the currently selected tower
-		//
 		//When adding elements to the build menu make sure tha the x and y values are
 		//based on the x and y of the menu background and not the game window
 		//and that all elements are added as children to this object and not the game object
@@ -40,53 +37,39 @@ class BuildMenu extends Sprite
 		//
 		/////////////////////////////
 		
-		var towerText = new TextField(75, 100, "COST:\nSPEED\nRANGE\nATTACK", "font", 24, 0xFFFFFF);
+		var towerText = new TextField(125, 100, "COST:\nSPEED\nRANGE\nATTACK", "font", 24, 0xFFFFFF);
 		towerText.x = bg.x + 10;
 		towerText.y = bg.y + bg.height - towerText.height;
 		addChild(towerText);
 		
-		/*
-		var y = 0;
-		var x = 0;
+		
+		var h = 0;
+		var w = 0;
 		for (i in 1...numOfTowers+1)
 		{
 			var towerButton = new Button(Root.assets.getTexture("towerButton" + i));
 			towerButton.fontName = "font";
 			towerButton.fontSize = 24;
 			towerButton.fontColor = 0xFFFFFF;
-			towerButton.x = bg.x + 5 + x * (towerButton.width + 5);
-			towerButton.y = bg.y + 5 + y * (towerButton.height + 5);
-			addChild(towerButton);
-			if (x == 2)
+			towerButton.x = bg.x + 5 + w * (towerButton.width + 5);
+			towerButton.y = bg.y + 5 + h * (towerButton.height + 5);
+			towerButton.addEventListener(Event.TRIGGERED, function()
 			{
-				x = 0;
-				y++;
+				selected = new Array();
+				selected.push(x);
+				selected.push(y);
+				selected.push(i);
+				getTower();
+				towerText.text = "COST: " + selected[3] + "\nSPEED: " + selected[4] + "\nRANGE: " + selected[5] + "\nATTACK: " + selected[6];
+			});
+			addChild(towerButton);
+			if (w == 2)
+			{
+				w = 0;
+				h++;
 			}
-			x++;
+			w++;
 		}
-		*/
-		
-		//Create a button for each type of tower
-		var towerButton1 = new Button(Root.assets.getTexture("towerButton1"));
-		towerButton1.x = bg.x + 5;
-		towerButton1.y = bg.y + 5;
-		towerButton1.addEventListener(Event.TRIGGERED, function()
-		{
-			//[towerNum, cost, x, y, speed, radius, attack, upgradeBaseCost]
-			selected = [ 1, 100, x, y, 2, 2, 1, 50 ];
-			towerText.text = "COST: " + selected[1] + "\nSPEED: " + selected[4] + "\nRANGE: " + selected[5] + "\nATTACK: " + selected[6];
-		});
-		addChild(towerButton1);
-		
-		var towerButton2 = new Button(Root.assets.getTexture("towerButton2"));
-		towerButton2.x = towerButton1.x + towerButton1.width;
-		towerButton2.y = towerButton1.y;
-		towerButton2.addEventListener(Event.TRIGGERED, function()
-		{
-			selected = [ 2, 150, x, y, 1, 2, 2, 100 ];
-			towerText.text = "COST: " + selected[1] + "\nSPEED: " + selected[4] + "\nRANGE: " + selected[5] + "\nATTACK: " + selected[6];
-		});
-		addChild(towerButton2);
 		
 		//Create an exit button to close the create tower menu
 		var buy = new Button(Root.assets.getTexture("button"), "Buy");
@@ -97,7 +80,7 @@ class BuildMenu extends Sprite
 		buy.y = bg.y;
 		buy.addEventListener(Event.TRIGGERED, function()
 		{
-			if (selected != null)
+			if (!Math.isNaN(selected[0]))
 				buyTower();
 		});
 		addChild(buy);
@@ -122,16 +105,16 @@ class BuildMenu extends Sprite
 	//Check that everything is in order (ie enough coins) before actually buying the tower
 	private function buyTower()
 	{
-		var towerNum = Std.int(selected[0]);
-		var cost = Std.int(selected[1]);
-		var x = selected[2];
-		var y = selected[3];
+		var x = selected[0];
+		var y = selected[1];
+		var towerNum = Std.int(selected[2]);
+		var cost = Std.int(selected[3]);
 		var initialStats  = [Std.int(selected[4]), Std.int(selected[5]), Std.int(selected[6]), Std.int(selected[7])];
 		
 		if (game.getCoins() >= cost)
 		{
 			//Create the tower at the specified coordinates of the build spot
-			var tower = new Tower(game, towerNum, x, y, initialStats);
+			var tower = new Tower(game, towerNum, x, y, cost, initialStats);
 			
 			//If the tower's height or width are greater than the standard 32x32
 			//adjust their postision accordingly
@@ -181,4 +164,26 @@ class BuildMenu extends Sprite
 	
 	
 	
+	private function getTower()
+	{
+		var str: String = new String(Root.assets.getByteArray("towerValues" + selected[2]).toString());
+		var info = str.split("\n");
+		for (i in 0...info.length)
+		{
+			var count = 0;
+			var numString = "";
+			while (info[i].charAt(count) != ';')
+			{
+				numString = numString + info[i].charAt(count);
+				count++;
+			}
+			selected.push(getTowerHelper(numString));
+		}
+	}
+	private function getTowerHelper(str : String)
+	{
+		var total = 0.0;
+		total = total + Std.parseInt(str);
+		return total;
+	}
 }

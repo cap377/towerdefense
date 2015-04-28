@@ -14,19 +14,22 @@ class Tower extends Sprite
 	public var button : Button;
 	public var level : Int;
 	public var maxLevel : Int = 4;
+	public var cost : Int;
 	public var upgradeBaseCost : Int;
+	public var upgradeCost : Int;
 	public var radius : Int;
 	public var speed : Int;
 	public var attack : Int;
 	public var attacking : Bool;
 	
-	public function new (game : Game, towerNum : Int, x : Float, y : Float, initialStats : Array<Int>)
+	public function new (game : Game, towerNum : Int, x : Float, y : Float, cost : Int, initialStats : Array<Int>)
 	{
 		super();
 		level = 1;
 		this.game = game;
 		this.x = x;
 		this.y = y;
+		this.cost = cost;
 		this.attacking = false;
 		
 		//Initial stats: speed, radius, attack, upgradeCost
@@ -75,7 +78,6 @@ class Tower extends Sprite
 				speed += 1;
 				attack += 1;
 		}
-		trace(upgradeBaseCost);
 		level++;
 	}
 
