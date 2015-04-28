@@ -24,7 +24,7 @@ class Enemy extends Sprite
 	{
 		super();
 		this.game = game;
-		image = new Image(Root.assets.getTexture(name));
+		image = new Image(Root.assets[game.era].getTexture(name));
 		this.speed = speed;
 		this.health = health;
 		this.value = value;

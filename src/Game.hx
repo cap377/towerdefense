@@ -28,7 +28,7 @@ class Game extends Sprite
 	//Map of the level
 	private var map : Array<Array<String>>;
 	//Era of the level
-	public var era : Int = 0;
+	public var era : Int = 1;
 	//All the waves for this level
 	private var waves : Array<Wave>;
 	//The enemies that have be spawned in
@@ -97,7 +97,7 @@ class Game extends Sprite
 		
 		
 		//Load in the text (map and waves) based on the current level
-		var rawData = LoadMap.load("level" + currentLevel);
+		var rawData = LoadMap.load("level" + currentLevel, this);
 		//Get the map portion of the raw data
 		map = GenerateMap.getMap(rawData);
 		//Get the wave portion of the raw data
@@ -133,7 +133,7 @@ class Game extends Sprite
 	public function nextLevel()
 	{
 		
-		var bg = new Image(Root.assets.getTexture("towerMenu"));
+		var bg = new Image(Root.assets[0].getTexture("towerMenu"));
 		bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
 		bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
 		addChild(bg);
@@ -145,7 +145,7 @@ class Game extends Sprite
 		addChild(scoreText);
 		addChild(scoreText);
 
-		var nextLevelButton = new Button(Root.assets.getTexture("button"), "Next Level");
+		var nextLevelButton = new Button(Root.assets[0].getTexture("button"), "Next Level");
 			nextLevelButton.x = bg.x + (bg.width - 2 * nextLevelButton.width) / 2;
 			nextLevelButton.y = bg.y + bg.height - (nextLevelButton.height + 15);
 			nextLevelButton.addEventListener(Event.TRIGGERED, function()
@@ -160,7 +160,7 @@ class Game extends Sprite
 			addChild(nextLevelButton);
 		}
 		
-		var mainMenu = new Button(Root.assets.getTexture("button"), "Main Menu");
+		var mainMenu = new Button(Root.assets[0].getTexture("button"), "Main Menu");
 		mainMenu.x = nextLevelButton.x + nextLevelButton.width + mainMenu.width;
 		mainMenu.y = nextLevelButton.y;
 		mainMenu.addEventListener(Event.TRIGGERED, function()
@@ -182,7 +182,7 @@ class Game extends Sprite
 			
 			
 			
-			var nextWave = new Button(Root.assets.getTexture("button"), "Next Wave");
+			var nextWave = new Button(Root.assets[0].getTexture("button"), "Next Wave");
 			nextWave.x = Starling.current.stage.stageWidth - nextWave.width;
 			nextWave.y = Starling.current.stage.stageHeight - nextWave.height;
 			
@@ -290,35 +290,35 @@ class Game extends Sprite
 				switch (map[y][x])
 				{
 					case "g":
-						var grass = new Image(Root.assets.getTexture("grass"));
+						var grass = new Image(Root.assets[era].getTexture("grass"));
 						grass.x = x * size;
 						grass.y = y * size;
 						addChild(grass);
 					case "p":
-						var dirt = new Image(Root.assets.getTexture("dirt"));
+						var dirt = new Image(Root.assets[era].getTexture("dirt"));
 						dirt.x = x * size;
 						dirt.y = y * size;
 						addChild(dirt);
 					case "e":
-						var entry = new Image(Root.assets.getTexture("dirt"));
+						var entry = new Image(Root.assets[era].getTexture("dirt"));
 						entry.x = x * size;
 						entry.y = y * size;
 						entryX.push(entry.x);
 						entryY.push(entry.y);
 						addChild(entry);
 					case "f":
-						var finish = new Image(Root.assets.getTexture("finish"));
+						var finish = new Image(Root.assets[era].getTexture("finish"));
 						finish.x = x * size;
 						finish.y = y * size;
 						addChild(finish);
 					case "t":
 						//Randomly choose a tree from all possible trees
-						var rock = new Image(Root.assets.getTexture("rock"));
+						var rock = new Image(Root.assets[era].getTexture("rock"));
 						rock.x = x * size;
 						rock.y = y * size;
 						addChild(rock);
 					case "b":
-						var build = new Button(Root.assets.getTexture("build"));
+						var build = new Button(Root.assets[era].getTexture("build"));
 						build.x = x * size;
 						build.y = y * size;
 						build.addEventListener(Event.TRIGGERED, function()
@@ -330,7 +330,7 @@ class Game extends Sprite
 						});
 						addChild(build);
 					case "h":
-						var stone = new Image(Root.assets.getTexture("stone"));
+						var stone = new Image(Root.assets[era].getTexture("stone"));
 						stone.x = x * size;
 						stone.y = y * size;
 						addChild(stone);

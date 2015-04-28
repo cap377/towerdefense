@@ -22,4 +22,4 @@ ggtgggggtgggggggggtg
 <W7,S2,W3,E1>
 <W3,E1,S1,E1,W5,S2>
 <S1,W3,E1,W9>
-0
+1

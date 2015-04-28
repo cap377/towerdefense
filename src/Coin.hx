@@ -14,9 +14,9 @@ class Coin extends Sprite
 		this.x = x;
 		this.y = y;
 		
-		var collect = new Button(Root.assets.getTexture("button"));
+		var collect = new Button(Root.assets[0].getTexture("button"));
 
-		var atlas = Root.assets.getTextureAtlas("assets");
+		var atlas = Root.assets[0].getTextureAtlas("assets");
 		var animation = new MovieClipPlus(atlas.getTextures("spinning_coin"), 8);
 		animation.loop = true;
 		addChild(animation);
@@ -25,7 +25,7 @@ class Coin extends Sprite
 
 		collect.addEventListener(Event.TRIGGERED, function()
 		{
-			Root.assets.playSound("Pickup_Coin", 0, 0);
+			Root.assets[0].playSound("Pickup_Coin", 0, 0);
 			game.setCoins(value);
 			game.removeChild(this);
 		});

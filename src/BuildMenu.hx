@@ -23,7 +23,7 @@ class BuildMenu extends Sprite
 		selected = new Array();
 		
 		//Create a simple background the represent the menu
-		bg = new Image(Root.assets.getTexture("createTowerMenu"));
+		bg = new Image(Root.assets[0].getTexture("createTowerMenu"));
 		bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
 		bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
 		addChild(bg);
@@ -47,7 +47,7 @@ class BuildMenu extends Sprite
 		var w = 0;
 		for (i in 1...numOfTowers+1)
 		{
-			var towerButton = new Button(Root.assets.getTexture("towerButton" + i));
+			var towerButton = new Button(Root.assets[game.era].getTexture("towerButton" + i));
 			towerButton.fontName = "font";
 			towerButton.fontSize = 24;
 			towerButton.fontColor = 0xFFFFFF;
@@ -72,7 +72,7 @@ class BuildMenu extends Sprite
 		}
 		
 		//Create an exit button to close the create tower menu
-		var buy = new Button(Root.assets.getTexture("button"), "Buy");
+		var buy = new Button(Root.assets[0].getTexture("button"), "BUY");
 		buy.fontName = "font";
 		buy.fontSize = 24;
 		buy.fontColor = 0xFFFFFF;
@@ -86,7 +86,7 @@ class BuildMenu extends Sprite
 		addChild(buy);
 		
 		//Create an exit button to close the create tower menu
-		var exit = new Button(Root.assets.getTexture("button"), "Exit");
+		var exit = new Button(Root.assets[0].getTexture("button"), "EXIT");
 		exit.fontName = "font";
 		exit.fontSize = 24;
 		exit.fontColor = 0xFFFFFF;
@@ -163,10 +163,9 @@ class BuildMenu extends Sprite
 	}
 	
 	
-	
 	private function getTower()
 	{
-		var str: String = new String(Root.assets.getByteArray("towerValues" + selected[2]).toString());
+		var str: String = new String(Root.assets[game.era].getByteArray("towerValues" + selected[2]).toString());
 		var info = str.split("\n");
 		for (i in 0...info.length)
 		{

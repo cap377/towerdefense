@@ -12,79 +12,106 @@ import starling.animation.IAnimatable;
 class Root extends Sprite {
 
 	public var level:Int;
-	public static var assets: AssetManager;
+	public static var assets : Array<AssetManager>;
 	public var tdintro: SoundChannel;
 	public var repeatsong: IAnimatable;
 
 	public function new() {
+		
+		
 		super();
 	}
 
 	public function start(startup:Startup) {
-		assets = new AssetManager();
+		
+		assets = new Array();
+		//////////////////////////
+		//
+		//assets that are from different eras should have the same name just be in a different folder
+		//ie. era1/tower1, era2/tower1, etc.
+		//
+		//////////////////////////
+		
+		//Assets that are the same throughout each era should be loaded into assets 0
+		assets[0] = new AssetManager();
+		assets[0].enqueue("assets/menu.png");
+		assets[0].enqueue("assets/redmenubutton.png");
+		assets[0].enqueue("assets/bluemenubutton.png");
+		assets[0].enqueue("assets/font.png");
+		assets[0].enqueue("assets/font.fnt");
+		assets[0].enqueue("assets/tdintro.mp3");
+		assets[0].enqueue("assets/Pickup_Coin.mp3");
+		assets[0].enqueue("assets/createTowerMenu.png");
+		assets[0].enqueue("assets/towerMenu.png");
+		assets[0].enqueue("assets/button.png");
+		assets[0].enqueue("assets/assets.png");
+		assets[0].enqueue("assets/assets.xml");
+		
+		
+		//Everything that has to do with era 1
+		assets[1] = new AssetManager();
+		assets[1].enqueue("assets/era1/grass.png");
+		assets[1].enqueue("assets/era1/grass1.png");
+		assets[1].enqueue("assets/era1/finish.png");
+		assets[1].enqueue("assets/era1/build.png");
+		assets[1].enqueue("assets/era1/stone.png");
+		assets[1].enqueue("assets/era1/rock.png");
+		assets[1].enqueue("assets/era1/dirt.png");
+		assets[1].enqueue("assets/era1/caveman_left1.png");
+		assets[1].enqueue("assets/era1/caveman_left2.png");
+		assets[1].enqueue("assets/era1/caveman_right1.png");
+		assets[1].enqueue("assets/era1/caveman_right2.png");
+		assets[1].enqueue("assets/era1/tower1.png");
+		assets[1].enqueue("assets/era1/tower2.png");
+		assets[1].enqueue("assets/era1/towers/towerValues1.txt");
+		assets[1].enqueue("assets/era1/towers/towerValues2.txt");
+		assets[1].enqueue("assets/era1/towerButton1.png");
+		assets[1].enqueue("assets/era1/towerButton2.png");
+		assets[1].enqueue("assets/era1/W.png");
+		assets[1].enqueue("assets/era1/E.png");
+		assets[1].enqueue("assets/era1/S.png");
+		assets[1].enqueue("assets/era1/projectile.png");
+		assets[1].enqueue("assets/era1/levels/level1.txt");
+		assets[1].enqueue("assets/era1/levels/level2.txt");
+		assets[1].enqueue("assets/era1/levels/level3.txt");
+		
+		
+		//Everything that has to do with era 2, etc.
+		
+		
+		for (i in 0...assets.length)
+		{
+			assets[i].loadQueue(function onProgress(ratio:Float) {
+				if (ratio == 1 && i == assets.length-1) {
 
-		assets.enqueue("assets/assets.png");
-		assets.enqueue("assets/assets.xml");
-
-		assets.enqueue("assets/grass.png");
-		assets.enqueue("assets/grass1.png");
-		assets.enqueue("assets/entry.png");
-		assets.enqueue("assets/path.png");
-		assets.enqueue("assets/finish.png");
-		assets.enqueue("assets/build.png");
-		assets.enqueue("assets/stone.png");
-		assets.enqueue("assets/rock.png");
-		assets.enqueue("assets/dirt.png");
-		assets.enqueue("assets/coin.png");
+					// fade the loading screen, start game
+					Starling.juggler.tween(startup.loadingBitmap, 1.0, {
+						transition:Transitions.EASE_OUT, delay:0.5, alpha: 0, onComplete: function() {
+							startup.removeChild(startup.loadingBitmap);
+							Root.assets[0].playSound("tdintro", 120, 0);
+							repeatsong = Starling.juggler.repeatCall(musicLoop, 20.1, 0);
+						}
+					});
+					
+					//Starting point for the game
+					addChild(new Menu(this));
+				}
+			});
+		}
 		
-		assets.enqueue("assets/tdintro.mp3");
-		assets.enqueue("assets/Pickup_Coin.mp3");
-		
-		assets.enqueue("assets/caveman_left1.png");
-		assets.enqueue("assets/caveman_left2.png");
-		assets.enqueue("assets/caveman_right1.png");
-		assets.enqueue("assets/caveman_right2.png");
-		assets.enqueue("assets/tower1.png");
-		assets.enqueue("assets/tower2.png");
-		assets.enqueue("assets/towerMenu.png");
-		assets.enqueue("assets/towerButton.png");
-		
-		assets.enqueue("assets/towers/towerValues1.txt");
-		assets.enqueue("assets/towers/towerValues2.txt");
-		
-		assets.enqueue("assets/towerButton1.png");
-		assets.enqueue("assets/towerButton2.png");
-		assets.enqueue("assets/createTowerMenu.png");
-		assets.enqueue("assets/button.png");
+		/*
+		assets[0].loadQueue(function onProgress(ratio:Float) {
+		});
 		
 		
-		assets.enqueue("assets/W.png");
-		assets.enqueue("assets/E.png");
-		assets.enqueue("assets/S.png");
-		
-		
-		assets.enqueue("assets/levels/level1.txt");
-		assets.enqueue("assets/levels/level2.txt");
-		assets.enqueue("assets/levels/level3.txt");
-
-		assets.enqueue("assets/menu.png");
-		assets.enqueue("assets/redmenubutton.png");
-		assets.enqueue("assets/bluemenubutton.png");
-
-		assets.enqueue("assets/font.png");
-		assets.enqueue("assets/font.fnt");
-
-		assets.enqueue("assets/projectile.png");
-		assets.enqueue("assets/arrow.png");
-		
-		assets.loadQueue(function onProgress(ratio:Float) {
+		assets[1].loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
 
 				// fade the loading screen, start game
 				Starling.juggler.tween(startup.loadingBitmap, 1.0, {
 					transition:Transitions.EASE_OUT, delay:0.5, alpha: 0, onComplete: function() {
 						startup.removeChild(startup.loadingBitmap);
-						Root.assets.playSound("tdintro", 120, 0);
+						Root.assets[0].playSound("tdintro", 120, 0);
 						repeatsong = Starling.juggler.repeatCall(musicLoop, 20.1, 0);
 					}
 				});
@@ -93,9 +120,11 @@ class Root extends Sprite {
 				addChild(new Menu(this));
 			}
 		});
+		*/
+		
 	}
 	public function musicLoop(){
-		Root.assets.playSound("tdintro", 120, 0);
+		Root.assets[0].playSound("tdintro", 120, 0);
 	}
 }
 
@@ -103,10 +132,11 @@ class Menu extends Sprite {
 
 	public function new(root:Root) {
 		super();
-		var background = new Image(Root.assets.getTexture("menu"));
+
+		var background = new Image(Root.assets[0].getTexture("menu"));
 		addChild(background);
 		
-		var startImage = new Image(Root.assets.getTexture("redmenubutton"));
+		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 		startImage.x = 200;
 		startImage.y = 200;
 		addChild(startImage);
@@ -114,7 +144,7 @@ class Menu extends Sprite {
 		startText.x = 200;
 		startText.y = 200;
 		addChild(startText);
-		var startButton = new Button(Root.assets.getTexture("button"));
+		var startButton = new Button(Root.assets[0].getTexture("button"));
 		startButton.width = 150;
 		startButton.height = 75;
 		startButton.x = 200;
@@ -125,7 +155,7 @@ class Menu extends Sprite {
 		});
 		addChild(startButton);
 
-		var creditsImage = new Image(Root.assets.getTexture("bluemenubutton"));
+		var creditsImage = new Image(Root.assets[0].getTexture("bluemenubutton"));
 		creditsImage.x = 200;
 		creditsImage.y = 350;
 		addChild(creditsImage);
@@ -133,7 +163,7 @@ class Menu extends Sprite {
 		creditsText.x = 200;
 		creditsText.y = 350;
 		addChild(creditsText);
-		var creditsButton = new Button(Root.assets.getTexture("button"));
+		var creditsButton = new Button(Root.assets[0].getTexture("button"));
 		creditsButton.width = 150;
 		creditsButton.height = 75;
 		creditsButton.x = 200;
@@ -143,7 +173,8 @@ class Menu extends Sprite {
 			root.addChild(new Credits(root));
 		});
 		addChild(creditsButton);
-
+		
+		
 		root.addChild(this);
 	}
 }
@@ -152,14 +183,14 @@ class Credits extends Sprite {
 
 	public function new(root:Root) {
 		super();
-		var background = new Image(Root.assets.getTexture("menu"));
+		var background = new Image(Root.assets[0].getTexture("menu"));
 		addChild(background);
 		
-		var backImage = new Image(Root.assets.getTexture("redmenubutton"));
+		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 		addChild(backImage);
 		var backText = new TextField(150, 75, "BACK", "font", 24, 0xFFFFFF);
 		addChild(backText);
-		var backButton = new Button(Root.assets.getTexture("button"));
+		var backButton = new Button(Root.assets[0].getTexture("button"));
 		backButton.width = 150;
 		backButton.height = 75;
 		backButton.addEventListener(Event.TRIGGERED, function() {
@@ -176,14 +207,14 @@ class Levels extends Sprite {
 
 	public function new(root:Root) {
 		super();
-		var background = new Image(Root.assets.getTexture("menu"));
+		var background = new Image(Root.assets[0].getTexture("menu"));
 		addChild(background);
 
-		var backImage = new Image(Root.assets.getTexture("redmenubutton"));
+		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 		addChild(backImage);
 		var backText = new TextField(150, 75, "BACK", "font", 24, 0xFFFFFF);
 		addChild(backText);
-		var backButton = new Button(Root.assets.getTexture("button"));
+		var backButton = new Button(Root.assets[0].getTexture("button"));
 		backButton.width = 150;
 		backButton.height = 75;
 		backButton.addEventListener(Event.TRIGGERED, function() {
@@ -200,10 +231,10 @@ class Levels extends Sprite {
 			var levelImage : Image;
 			var levelText : TextField;
 			if(i <= root.level) {
-				levelImage = new Image(Root.assets.getTexture("redmenubutton"));
+				levelImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 				levelText = new TextField(150, 75, "LEVEL " + i, "font", 24, 0xFFFFFF);
 				var levelButton : Button;
-				levelButton = new Button(Root.assets.getTexture("button"));
+				levelButton = new Button(Root.assets[0].getTexture("button"));
 				levelButton.addEventListener(Event.TRIGGERED, function() {
 					root.removeChild(this);
 					root.addChild(new LevelPreview(root, i));
@@ -220,7 +251,7 @@ class Levels extends Sprite {
 				addChild(levelText);
 				addChild(levelButton);
 			} else {
-				levelImage = new Image(Root.assets.getTexture("bluemenubutton"));
+				levelImage = new Image(Root.assets[0].getTexture("bluemenubutton"));
 				levelText = new TextField(150, 75, "LEVEL " + i, "font", 24, 0xFFFFFF);
 				levelImage.x = 10 + x * (levelImage.width + 5);
 				levelImage.y = 200 + (levelImage.height + 5) * y;
@@ -246,14 +277,14 @@ class LevelPreview extends Sprite {
 
 	public function new(root:Root, level:Int) {
 		super();
-		var background = new Image(Root.assets.getTexture("menu"));
+		var background = new Image(Root.assets[0].getTexture("menu"));
 		addChild(background);
 
-		var backImage = new Image(Root.assets.getTexture("redmenubutton"));
+		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 		addChild(backImage);
 		var backText = new TextField(150, 75, "BACK", "font", 24, 0xFFFFFF);
 		addChild(backText);
-		var backButton = new Button(Root.assets.getTexture("button"));
+		var backButton = new Button(Root.assets[0].getTexture("button"));
 		backButton.width = 150;
 		backButton.height = 75;
 		backButton.addEventListener(Event.TRIGGERED, function() {
@@ -262,7 +293,7 @@ class LevelPreview extends Sprite {
 		});
 		addChild(backButton);
 
-		var startImage = new Image(Root.assets.getTexture("redmenubutton"));
+		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 		startImage.x = 200;
 		startImage.y = 200;
 		addChild(startImage);
@@ -270,7 +301,7 @@ class LevelPreview extends Sprite {
 		startText.x = 200;
 		startText.y = 200;
 		addChild(startText);
-		var startButton = new Button(Root.assets.getTexture("button"));
+		var startButton = new Button(Root.assets[0].getTexture("button"));
 		startButton.width = 150;
 		startButton.height = 75;
 		startButton.x = 200;
