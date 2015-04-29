@@ -20,8 +20,9 @@ class Tower extends Sprite
 	public var speed : Int;
 	public var attack : Int;
 	public var attacking : Bool;
+	private var projectile : String;
 	
-	public function new (game : Game, towerNum : Int, x : Float, y : Float, cost : Int, initialStats : Array<Int>)
+	public function new (game : Game, towerNum : Int, x : Float, y : Float, cost : Int, initialStats : Array<Int>, projectile : String)
 	{
 		super();
 		level = 1;
@@ -30,6 +31,7 @@ class Tower extends Sprite
 		this.y = y;
 		this.cost = cost;
 		this.attacking = false;
+		this.projectile = projectile;
 		
 		//Initial stats: speed, radius, attack, upgradeCost
 		speed = initialStats[0];
@@ -84,7 +86,7 @@ class Tower extends Sprite
 		//Creates a projectile and tweens it to the target
 		this.attacking = true;
 		
-		var projectile = new Image(Root.assets[game.era].getTexture("projectile"));
+		var projectile = new Image(Root.assets[game.era].getTexture(projectile));
 		projectile.x = projectile.x + this.width / 2;
 		
 		//Rotate the arrow to face the enemy

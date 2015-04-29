@@ -114,7 +114,7 @@ class BuildMenu extends Sprite
 		if (game.getCoins() >= cost)
 		{
 			//Create the tower at the specified coordinates of the build spot
-			var tower = new Tower(game, towerNum, x, y, cost, initialStats);
+			var tower = new Tower(game, towerNum, x, y, cost, initialStats, getTowerProjectile());
 			
 			//If the tower's height or width are greater than the standard 32x32
 			//adjust their postision accordingly
@@ -167,7 +167,7 @@ class BuildMenu extends Sprite
 	{
 		var str: String = new String(Root.assets[game.era].getByteArray("towerValues" + selected[2]).toString());
 		var info = str.split("\n");
-		for (i in 0...info.length)
+		for (i in 0...info.length-1)
 		{
 			var count = 0;
 			var numString = "";
@@ -184,5 +184,18 @@ class BuildMenu extends Sprite
 		var total = 0.0;
 		total = total + Std.parseInt(str);
 		return total;
+	}
+	private function getTowerProjectile()
+	{
+		var str: String = new String(Root.assets[game.era].getByteArray("towerValues" + selected[2]).toString());
+		var info = str.split("\n");
+		var pos = 0;
+		var projectile = "";
+		while (info[info.length - 1].charAt(pos) != ';')
+		{
+			projectile = projectile + info[info.length - 1].charAt(pos);
+			pos++;
+		}
+		return projectile;
 	}
 }

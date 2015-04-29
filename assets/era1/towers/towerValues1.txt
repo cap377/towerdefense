@@ -3,3 +3,4 @@
 2;	-Radius
 1;	-Attack
 50;	-UpgradeBaseCost
+projectile;	-What Projectile the tower will use
