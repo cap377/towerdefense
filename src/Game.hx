@@ -20,7 +20,7 @@ class Game extends Sprite
 	private var villagers : Int;
 	private var villagerText : TextField;
 	
-	private var coins : Int;
+	private var coins : Int = 0;
 	private var coinText : TextField;
 	
 	private var numEnemies : TextField;
@@ -119,7 +119,6 @@ class Game extends Sprite
 		villagerText.y = 5;
 		addChild(villagerText);
 		
-		coins = 2500;
 		coinText = new TextField(50, 50, "Coins:\n" + coins);
 		coinText.x = villagerText.x - coinText.width;
 		coinText.y = 5;

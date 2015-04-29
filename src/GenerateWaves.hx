@@ -25,8 +25,19 @@ class GenerateWaves
 			}
 		}
 		
-		game.era = Std.parseInt(rawData[rawData.length-1][0]);
+		game.era = Std.parseInt(rawData[rawData.length - 2][0]);
+		game.setCoins(getStartCoins(rawData, game));
 		
 		return waves;
+	}
+	
+	private static function getStartCoins(rawData : Array<Array<String>>, game : Game)
+	{
+		var startCoins = 0.0;
+		for (i in 0...rawData[rawData.length - 1].length)
+		{
+			startCoins = startCoins + Std.parseInt(rawData[rawData.length - 1][i]) * Math.pow(10, rawData[rawData.length - 1].length - i - 1);
+		}
+		return Std.int(startCoins);
 	}
 }
