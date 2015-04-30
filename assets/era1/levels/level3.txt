@@ -23,4 +23,4 @@ gggggggggggggggggggg
 <W3,E1,S1,E1,W5,S2>
 <S1,W3,E1,W9>
 1
-250
+500

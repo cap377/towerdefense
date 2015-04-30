@@ -46,6 +46,7 @@ class Root extends Sprite {
 		assets[0].enqueue("assets/button.png");
 		assets[0].enqueue("assets/assets.png");
 		assets[0].enqueue("assets/assets.xml");
+		assets[0].enqueue("assets/enemyHealth.png");
 		
 		
 		//Everything that has to do with era 1
@@ -136,6 +137,7 @@ class Menu extends Sprite {
 		super();
 
 		var background = new Image(Root.assets[0].getTexture("menu"));
+		background.width = background.width / 2;
 		addChild(background);
 		
 		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
@@ -186,6 +188,7 @@ class Credits extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets[0].getTexture("menu"));
+		background.width = background.width / 2;
 		addChild(background);
 		
 		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
@@ -210,6 +213,7 @@ class Levels extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets[0].getTexture("menu"));
+		background.width = background.width / 2;
 		addChild(background);
 
 		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
