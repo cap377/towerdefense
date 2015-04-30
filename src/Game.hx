@@ -7,6 +7,7 @@ import flash.utils.Timer;
 import flash.events.TimerEvent;
 import starling.text.TextField;
 import starling.core.Starling;
+import EnemyArray;
 import Root;
 
 
@@ -46,6 +47,8 @@ class Game extends Sprite
 	private var flag : Bool = false;
 
 	private var rootObject : Root;
+
+	public var enemyArray : EnemyArray;
 	
 	
 	public function new(root:Root, level:Int)
@@ -55,6 +58,7 @@ class Game extends Sprite
 		
 		this.currentLevel = level + 1;
 		this.rootObject = root;
+		this.enemyArray = new EnemyArray();
 
 		run();
 	}

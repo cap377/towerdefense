@@ -25,6 +25,7 @@ class Enemy extends Sprite
 		super();
 		this.game = game;
 		image = new Image(Root.assets[game.era].getTexture(name));
+		this.name = name;
 		this.speed = speed;
 		this.health = health;
 		this.value = value;
@@ -62,10 +63,16 @@ class Enemy extends Sprite
 			directionString = "left";
 		}
 
+		//Look up the sprite name for the enemy
+		var spriteName = "";
+		if(this.name == "S") {
+			spriteName = game.enemyArray.data[game.era - 1][0];
+		}
+
 		removeChild(image);
 		removeChild(animation);
 		var atlas = Root.assets[1].getTextureAtlas("assets");
-		animation = new MovieClipPlus(atlas.getTextures("enemy-tank" + directionString + "_page_0"), 4);
+		animation = new MovieClipPlus(atlas.getTextures(spriteName + directionString + "_page_0"), 4);
 		animation.width = 32;
 		animation.height = 32;
 		animation.x = -8;
