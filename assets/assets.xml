@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:1b2b8a54e22fecd237e030e4b87e39db:33a03cffe663810f95b727305a07c9e0:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:eb1831bc15cba442d9cd64726e97ac15:a906b09dd53b301a470f37c31cff8a3a:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
-    <SubTexture name="spinning_coin1" x="2" y="2" width="32" height="32"/>
-    <SubTexture name="spinning_coin2" x="36" y="2" width="32" height="32"/>
-    <SubTexture name="spinning_coin3" x="70" y="2" width="32" height="32"/>
-    <SubTexture name="spinning_coin4" x="104" y="2" width="32" height="32"/>
-    <SubTexture name="spinning_coin5" x="138" y="2" width="32" height="32"/>
-    <SubTexture name="spinning_coin6" x="172" y="2" width="32" height="32"/>
+    <SubTexture name="bluemenubutton" x="331" y="2" width="150" height="75"/>
+    <SubTexture name="button" x="265" y="2" width="64" height="32"/>
+    <SubTexture name="coin" x="2" y="2" width="23" height="24"/>
+    <SubTexture name="createTowerMenu" x="2" y="324" width="320" height="320"/>
+    <SubTexture name="loading" x="324" y="324" width="640" height="640"/>
+    <SubTexture name="menu" x="324" y="324" width="640" height="640"/>
+    <SubTexture name="path" x="27" y="2" width="32" height="32"/>
+    <SubTexture name="redmenubutton" x="483" y="2" width="150" height="75"/>
+    <SubTexture name="spinning_coin1" x="197" y="2" width="32" height="32"/>
+    <SubTexture name="spinning_coin2" x="163" y="2" width="32" height="32"/>
+    <SubTexture name="spinning_coin3" x="61" y="2" width="32" height="32"/>
+    <SubTexture name="spinning_coin4" x="95" y="2" width="32" height="32"/>
+    <SubTexture name="spinning_coin5" x="129" y="2" width="32" height="32"/>
+    <SubTexture name="spinning_coin6" x="231" y="2" width="32" height="32"/>
+    <SubTexture name="towerMenu" x="635" y="2" width="320" height="320"/>
 </TextureAtlas>

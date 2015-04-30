@@ -50,15 +50,30 @@ class Enemy extends Sprite
 		//This code will handle animations for enemies
 		//Until the assets are completed, it will not work
 		//Assets for animation must also be texture packed
-		/*
+		
+		var directionString = "";
+		if(direction == 0) {
+			directionString = "back";
+		} else if(direction == 1) {
+			directionString = "right";
+		} else if(direction == 2) {
+			directionString = "";
+		} else if(direction == 3) {
+			directionString = "left";
+		}
+
 		removeChild(image);
 		removeChild(animation);
-		var atlas = Root.assets.getTextureAtlas("assets");
-		animation = new MovieClipPlus(atlas.getTextures(name + "_" + direction), 8);
+		var atlas = Root.assets[1].getTextureAtlas("assets");
+		animation = new MovieClipPlus(atlas.getTextures("enemy-tank" + directionString + "_page_0"), 4);
+		animation.width = 32;
+		animation.height = 32;
+		animation.x = -8;
+		animation.y = -8;
 		animation.loop = true;
 		addChild(animation);
 		animation.play();
 		Starling.juggler.add(animation);
-		*/
+		
 	}
 }

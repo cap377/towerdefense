@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:963ec78176064af0ba5bdc05375fedcf:42735248e64b9e47f2f6b9b09065d8de:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<TextureAtlas imagePath="assets.png">
+    <SubTexture name="E" x="2" y="2" width="16" height="16"/>
+    <SubTexture name="S" x="20" y="2" width="16" height="16"/>
+    <SubTexture name="W" x="38" y="2" width="16" height="16"/>
+    <SubTexture name="build" x="56" y="2" width="32" height="32"/>
+    <SubTexture name="caveman_left1" x="90" y="2" width="32" height="32"/>
+    <SubTexture name="caveman_left2" x="124" y="2" width="64" height="64"/>
+    <SubTexture name="caveman_right1" x="190" y="2" width="64" height="64"/>
+    <SubTexture name="caveman_right2" x="256" y="2" width="64" height="64"/>
+    <SubTexture name="dirt" x="322" y="2" width="32" height="32"/>
+    <SubTexture name="enemy-tank_page_01" x="356" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tank_page_02" x="550" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankleft_page_01" x="744" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankleft_page_02" x="938" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankright_page_01" x="1132" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankright_page_02" x="1326" y="2" width="192" height="192"/>
+    <SubTexture name="finish" x="1520" y="2" width="32" height="32"/>
+    <SubTexture name="firethrowercaveman_page_01" x="2" y="196" width="192" height="192"/>
+    <SubTexture name="firethrowercaveman_page_02" x="196" y="196" width="192" height="192"/>
+    <SubTexture name="grass" x="390" y="196" width="32" height="32"/>
+    <SubTexture name="grass1" x="424" y="196" width="64" height="64"/>
+    <SubTexture name="hill" x="490" y="196" width="64" height="64"/>
+    <SubTexture name="projectile" x="556" y="196" width="10" height="5"/>
+    <SubTexture name="rock" x="568" y="196" width="32" height="32"/>
+    <SubTexture name="rockthrowercaveman_page_01" x="602" y="196" width="192" height="192"/>
+    <SubTexture name="rockthrowercaveman_page_02" x="796" y="196" width="192" height="192"/>
+    <SubTexture name="spearthrowercaveman_page_01" x="990" y="196" width="192" height="192"/>
+    <SubTexture name="spearthrowercaveman_page_02" x="1184" y="196" width="192" height="192"/>
+    <SubTexture name="stone" x="1378" y="196" width="64" height="64"/>
+    <SubTexture name="tower1" x="1444" y="196" width="32" height="32"/>
+    <SubTexture name="tower2" x="1478" y="196" width="32" height="64"/>
+    <SubTexture name="towerButton1" x="1512" y="196" width="64" height="64"/>
+    <SubTexture name="towerButton2" x="1578" y="196" width="64" height="64"/>
+    <SubTexture name="tree1" x="1644" y="196" width="32" height="32"/>
+    <SubTexture name="tree2" x="1678" y="196" width="32" height="32"/>
+</TextureAtlas>

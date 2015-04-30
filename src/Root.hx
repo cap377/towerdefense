@@ -50,6 +50,8 @@ class Root extends Sprite {
 		
 		//Everything that has to do with era 1
 		assets[1] = new AssetManager();
+		assets[1].enqueue("assets/era1/assets.png");
+		assets[1].enqueue("assets/era1/assets.xml");
 		assets[1].enqueue("assets/era1/grass.png");
 		assets[1].enqueue("assets/era1/grass1.png");
 		assets[1].enqueue("assets/era1/finish.png");

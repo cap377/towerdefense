@@ -347,6 +347,7 @@ class Game extends Sprite
 				//Add the enemies to some point outside of the map
 				waves[i].getEnemy(j).x = -100;
 				waves[i].getEnemy(j).y = -100;
+				waves[i].getEnemy(j).playAnimation(waves[i].getEnemy(j).currentDirection);
 				addChild(waves[i].getEnemy(j));
 			}
 	}
