@@ -94,11 +94,7 @@ class Tower extends Sprite
 	public function launchAttack(enemy : Enemy) {
 		//Creates a projectile and tweens it to the target
 		this.attacking = true;
-		removeChild(image);
-		image = new Image(Root.assets[game.era].getTexture("tower" + towerNum + "_2"));
-		image.width = 32;
-		image.height = 32;
-		addChild(image);
+		image.texture = Root.assets[game.era].getTexture("tower" + towerNum + "_2");
 		
 		var projectile = new Image(Root.assets[game.era].getTexture(projectile));
 		projectile.x = projectile.x + this.width / 2;
@@ -118,11 +114,7 @@ class Tower extends Sprite
             y: (enemy.y + enemy.height/2) - this.y,
             onComplete: function() {
             	removeChild(projectile);
-            	removeChild(image);
-            	image = new Image(Root.assets[game.era].getTexture("tower" + towerNum + "_1"));
-            	image.width = 32;
-            	image.height = 32;
-            	addChild(image);
+            	image.texture = Root.assets[game.era].getTexture("tower" + towerNum + "_1");
             	enemy.hit(this.attack);
             	Starling.juggler.delayCall(function() { this.attacking = false; }, (1 - .2 * this.speed) - .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5));
             }
