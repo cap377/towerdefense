@@ -103,11 +103,12 @@ class Tower extends Sprite
 		var projectile = new Image(Root.assets[game.era].getTexture(projectile));
 		projectile.x = projectile.x + this.width / 2;
 		
-		//Rotate the arrow to face the enemy
+		//Rotate the projectile to face the enemy
 		var rx = (enemy.x + enemy.width/2) - this.x;
 		var ry = (enemy.y + enemy.height/2) - this.y;
 		var radians = Math.atan2(ry,rx);
 		projectile.rotation = radians;
+		
 		
 		addChild(projectile);
 		Root.assets[0].playSound("tower_hit", 0, 0);
@@ -156,14 +157,14 @@ class TowerMenu extends Sprite
 		level.y = bg.y + 5;
 		
 		//Create a textfield that lists the stats of the tower
-		var text = new TextField(150, 150, "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUpgrade Cost: " + tower.upgradeBaseCost, "font", 24, 0xFFFFFF);
+		var text = new TextField(150, 150, "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUPGRADE COST: " + tower.upgradeBaseCost, "font", 24, 0xFFFFFF);
 		text.x = bg.x + 5;
 		text.y = bg.y + (bg.width - text.width) / 2;
 		
 		//Allow the player to upgrade the tower
 		var upgrade = new Button(Root.assets[0].getTexture("button"), "UPGRADE");
 		upgrade.fontName = "font";
-		upgrade.fontSize = 24;
+		upgrade.fontSize = 26;
 		upgrade.fontColor = 0xFFFFFF;
 		upgrade.x = text.x + text.width + upgrade.width;
 		upgrade.y = text.y + (text.height - upgrade.height) / 2;
@@ -179,13 +180,14 @@ class TowerMenu extends Sprite
 					game.setCoins( -tower.upgradeBaseCost);
 					tower.upgrade();
 					level.text = "LEVEL: " + tower.level;
-					text.text = "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUpgrade Cost: " + tower.upgradeBaseCost;
+					text.text = "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUPGRADE COST: " + tower.upgradeBaseCost;
 				}
 				//Otherwise inform the player they don't have enough coins
 				else
 				{
-					var poor = new TextField(100, 100, "YOU DON'T HAVE ENOUGH COINS", "font", 24, 0xFFFFFF);
-					poor.x = bg.x + (bg.width - poor.width) / 2;
+					Root.assets[0].playSound("nope");
+					var poor = new TextField(100, 100, "NOT ENOUGH\n COINS!", "font", 24, 0xFFFFFF);
+					poor.x = bg.x + (bg.width - poor.width) / 2 + 100;
 					poor.y = bg.y + 10;
 					addChild(poor);
 					var timer = new Timer(500, 3);
@@ -211,6 +213,7 @@ class TowerMenu extends Sprite
 			game.removeChild(tower);
 			game.towerList.remove(tower);
 			game.removeChild(this);
+			Root.assets[0].playSound("sell");
 			
 			//Unpause the game
 			game.unpause();

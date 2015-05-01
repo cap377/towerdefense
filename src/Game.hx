@@ -108,7 +108,7 @@ class Game extends Sprite
 		waveNum = 0;
 		
 		
-		numEnemies = new TextField(100, 50, "ENEMIES:\n" + waves[waveNum].getLength() + "/" + waves[waveNum].getLength(),"font", 20, 0xFFFFFF);
+		numEnemies = new TextField(100, 50, "ENEMIES:\n" + waves[waveNum].getLength(),"font", 20, 0xFFFFFF);
 		numEnemies.x = Starling.current.stage.stageWidth - numEnemies.width - 15;
 		numEnemies.y = 5;
 		addChild(numEnemies);
@@ -220,6 +220,7 @@ class Game extends Sprite
 	//Anything that needs to be updated continuously goes here
 	public function onEnterFrame(event:EnterFrameEvent)
 	{
+		
 		//Rotate whatever object to point at the mouse
 		//var mouseX = flash.Lib.current.stage.mouseX - object.x;
 		//var mouseY = flash.Lib.current.stage.mouseY - object.y;
@@ -238,9 +239,9 @@ class Game extends Sprite
 		//Update the coin and villagers to reflect the new values
 		villagerText.text = "VILLAGERS:\n" + villagers;
 		var numEnemiesLeft = enemiesLeft();
-		numEnemies.text = "ENEMIES:\n" + numEnemiesLeft + "/" + waves[waveNum].getLength();
+		numEnemies.text = "ENEMIES:\n" + numEnemiesLeft;
 		
-		//Move all spawned enemies that are still alive and check their position
+		//Move all spawned enemies that are still alive and check their position also check if enemy is in range of a tower
 		for (i in 0...spawnedEnemies.length)
 		{
 			if (spawnedEnemies[i].alive)

@@ -36,7 +36,10 @@ class Root extends Sprite {
 		assets[0] = new AssetManager();
 		assets[0].enqueue("assets/tower_hit.mp3");
 		assets[0].enqueue("assets/base_hit.mp3");
+		assets[0].enqueue("assets/nope.mp3");
+		assets[0].enqueue("assets/build.mp3");
 		assets[0].enqueue("assets/upgrade.mp3");
+		assets[0].enqueue("assets/sell.mp3");
 		assets[0].enqueue("assets/menu.png");
 		assets[0].enqueue("assets/redmenubutton.png");
 		assets[0].enqueue("assets/bluemenubutton.png");
