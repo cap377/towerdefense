@@ -22,6 +22,6 @@ class EnemyArray
 		data.push(["jeep", "zombies", "enemy-tank", "deathtank"]);
 
 		//Era 5 enemies
-		data.push(["enemy-tank"]);
+		data.push(["robot1", "robot2", "robot3", "deathbot"]);
 	}
 }
