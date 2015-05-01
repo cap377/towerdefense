@@ -140,7 +140,6 @@ class Menu extends Sprite {
 		super();
 
 		var background = new Image(Root.assets[0].getTexture("menu"));
-		background.width = background.width / 2;
 		addChild(background);
 		
 		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
@@ -191,7 +190,6 @@ class Credits extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets[0].getTexture("menu"));
-		background.width = background.width / 2;
 		addChild(background);
 		
 		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
@@ -216,7 +214,6 @@ class Levels extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets[0].getTexture("menu"));
-		background.width = background.width / 2;
 		addChild(background);
 
 		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
