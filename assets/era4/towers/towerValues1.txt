@@ -3,4 +3,4 @@
 2;	-Radius
 1;	-Attack
 50;	-UpgradeBaseCost
-projMissle;	-What Projectile the tower will use
+projMissile;	-What Projectile the tower will use
