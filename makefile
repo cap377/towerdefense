@@ -12,7 +12,7 @@ $(APP).swf: $(SOURCES)
 	-cp src \
 	-cp vendor \
 	-swf-version 11.8 \
-	-swf-header 640:640:60:0 \
+	-swf-header 1280:720:60:0 \
 	-main Startup \
 	-swf $(APP).swf \
 	-swf-lib vendor/starling.swc --macro "patchTypes('vendor/starling.patch')"
@@ -21,4 +21,4 @@ clean:
 	del $(APP).swf
 	
 test: $(APP).swf
-	$(ADL) -profile tv -screensize 640x640:640x640 $(APP_XML)
+	$(ADL) -profile tv -screensize 1280x720:1280x720 $(APP_XML)

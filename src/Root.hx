@@ -78,8 +78,6 @@ class Root extends Sprite {
 		assets[1].enqueue("assets/era1/tower2.png");
 		assets[1].enqueue("assets/era1/towers/towerValues1.txt");
 		assets[1].enqueue("assets/era1/towers/towerValues2.txt");
-		assets[1].enqueue("assets/era1/towerButton1.png");
-		assets[1].enqueue("assets/era1/towerButton2.png");
 		assets[1].enqueue("assets/era1/W.png");
 		assets[1].enqueue("assets/era1/E.png");
 		assets[1].enqueue("assets/era1/S.png");
