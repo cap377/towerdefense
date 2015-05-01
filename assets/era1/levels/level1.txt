@@ -21,4 +21,4 @@ ggtggggggggggggtttgg
 <S2>
 <S1>
 1
-250
+500

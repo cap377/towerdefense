@@ -3,10 +3,10 @@
 ##
 
 ifeq ($(OS),Windows_NT)
-   FLEX_SDK=c:/Flex
+   FLEX_SDK ?= C:/flexsdk
    ANDROID_SDK=c:/android-sdk
 else
-   FLEX_SDK=C:/Flex
+   FLEX_SDK ?= C:/flexsdk
    ANDROID_SDK=/opt/android-sdk
 endif
 
@@ -31,7 +31,7 @@ SWF_VERSION=11.8
 ADL=$(FLEX_SDK)/bin/adl
 
 # ADT=$(FLEX_SDK)/bin/adt.bat
-ADT=java -jar c:\Flex\lib\adt.jar
+ADT=java -jar c:\flexsdk\lib\adt.jar
 
 AMXMLC=$(FLEX_SDK)/bin/amxmlc
 
@@ -47,7 +47,7 @@ clean:
 	rm -rf $(APP).swf $(APP).apk
 
 test: $(APP).swf
-	$(ADL) -profile tv -screensize 640x360:640x360 $(APP_XML)
+	$(ADL) -profile tv -screensize 1280x720:1280x720 $(APP_XML)
 
 testHi: $(APP).swf
 	$(ADL) -profile tv -screensize 1280x720:1280x720 $(APP_XML)
