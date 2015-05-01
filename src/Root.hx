@@ -64,48 +64,42 @@ class Root extends Sprite {
 		assets[1] = new AssetManager();
 		assets[1].enqueue("assets/era1/assets.png");
 		assets[1].enqueue("assets/era1/assets.xml");
-		assets[1].enqueue("assets/era1/grass.png");
-		assets[1].enqueue("assets/era1/grass1.png");
-		assets[1].enqueue("assets/era1/finish.png");
-		assets[1].enqueue("assets/era1/stone.png");
-		assets[1].enqueue("assets/era1/rock.png");
-		assets[1].enqueue("assets/era1/dirt.png");
-		assets[1].enqueue("assets/era1/caveman_left1.png");
-		assets[1].enqueue("assets/era1/caveman_left2.png");
-		assets[1].enqueue("assets/era1/caveman_right1.png");
-		assets[1].enqueue("assets/era1/caveman_right2.png");
-		assets[1].enqueue("assets/era1/tower1.png");
-		assets[1].enqueue("assets/era1/tower2.png");
 		assets[1].enqueue("assets/era1/towers/towerValues1.txt");
 		assets[1].enqueue("assets/era1/towers/towerValues2.txt");
-		assets[1].enqueue("assets/era1/W.png");
-		assets[1].enqueue("assets/era1/E.png");
-		assets[1].enqueue("assets/era1/S.png");
-		assets[1].enqueue("assets/era1/projRock.png");
-		assets[1].enqueue("assets/era1/projSpear.png");
-		assets[1].enqueue("assets/era1/levels/level1.txt");
-
+		assets[1].enqueue("assets/era1/towers/towerValues3.txt");
 		//Era 2
 		assets[2] = new AssetManager();
 		assets[2].enqueue("assets/era2/assets.png");
 		assets[2].enqueue("assets/era2/assets.xml");
+		assets[2].enqueue("assets/era2/towers/towerValues1.txt");
+		assets[2].enqueue("assets/era2/towers/towerValues2.txt");
+		assets[2].enqueue("assets/era2/towers/towerValues3.txt");
 
 		//Era 3
 		assets[3] = new AssetManager();
 		assets[3].enqueue("assets/era3/assets.png");
 		assets[3].enqueue("assets/era3/assets.xml");
+		assets[3].enqueue("assets/era3/towers/towerValues1.txt");
+		assets[3].enqueue("assets/era3/towers/towerValues2.txt");
+		assets[3].enqueue("assets/era3/towers/towerValues3.txt");
 
 
 		//Era 4
 		assets[4] = new AssetManager();
 		assets[4].enqueue("assets/era4/assets.png");
 		assets[4].enqueue("assets/era4/assets.xml");
+		assets[4].enqueue("assets/era4/towers/towerValues1.txt");
+		assets[4].enqueue("assets/era4/towers/towerValues2.txt");
+		assets[4].enqueue("assets/era4/towers/towerValues3.txt");
 
 
 		//Era 5
 		assets[5] = new AssetManager();
 		assets[5].enqueue("assets/era5/assets.png");
 		assets[5].enqueue("assets/era5/assets.xml");
+		assets[5].enqueue("assets/era5/towers/towerValues1.txt");
+		assets[5].enqueue("assets/era5/towers/towerValues2.txt");
+		assets[5].enqueue("assets/era5/towers/towerValues3.txt");
 
 		
 		

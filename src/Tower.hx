@@ -6,6 +6,7 @@ import starling.text.TextField;
 import flash.utils.Timer;
 import flash.events.TimerEvent;
 import starling.core.Starling;
+import MovieClipPlus;
 
 class Tower extends Sprite
 {
@@ -21,6 +22,7 @@ class Tower extends Sprite
 	public var attack : Int;
 	public var attacking : Bool;
 	private var projectile : String;
+	private var towerNum : Int;
 	
 	public function new (game : Game, towerNum : Int, x : Float, y : Float, cost : Int, initialStats : Array<Int>, projectile : String)
 	{
@@ -30,6 +32,7 @@ class Tower extends Sprite
 		this.x = x;
 		this.y = y;
 		this.cost = cost;
+		this.towerNum = towerNum;
 		this.attacking = false;
 		this.projectile = projectile;
 		
@@ -39,8 +42,13 @@ class Tower extends Sprite
 		attack = initialStats[2];
 		upgradeBaseCost = initialStats[3];
 		
-		
-		image = new Image(Root.assets[game.era].getTexture("tower" + towerNum));
+		var img = new Image(Root.assets[game.era].getTexture("lvl" + game.era + "tile1"));
+		img.width = 32;
+		img.height = 32;
+		addChild(img);
+		image = new Image(Root.assets[game.era].getTexture("tower" + towerNum + "_1"));
+		image.width = 32;
+		image.height = 32;
 		addChild(image);
 		
 		//Create a new tower based on the tower clicked and set it to the correct position
@@ -86,6 +94,11 @@ class Tower extends Sprite
 	public function launchAttack(enemy : Enemy) {
 		//Creates a projectile and tweens it to the target
 		this.attacking = true;
+		removeChild(image);
+		image = new Image(Root.assets[game.era].getTexture("tower" + towerNum + "_2"));
+		image.width = 32;
+		image.height = 32;
+		addChild(image);
 		
 		var projectile = new Image(Root.assets[game.era].getTexture(projectile));
 		projectile.x = projectile.x + this.width / 2;
@@ -104,6 +117,11 @@ class Tower extends Sprite
             y: (enemy.y + enemy.height/2) - this.y,
             onComplete: function() {
             	removeChild(projectile);
+            	removeChild(image);
+            	image = new Image(Root.assets[game.era].getTexture("tower" + towerNum + "_1"));
+            	image.width = 32;
+            	image.height = 32;
+            	addChild(image);
             	enemy.hit(this.attack);
             	Starling.juggler.delayCall(function() { this.attacking = false; }, (1 - .2 * this.speed) - .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5));
             }

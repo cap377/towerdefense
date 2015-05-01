@@ -3,4 +3,4 @@
 2;	-Radius
 1;	-Attack
 50;	-UpgradeBaseCost
-projRock;	-What Projectile the tower will use
+projSpear;	-What Projectile the tower will use

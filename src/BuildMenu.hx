@@ -14,7 +14,7 @@ class BuildMenu extends Sprite
 	private var game : Game;
 	private var bg : Image;
 	private var selected : Array<Float>;
-	private var numOfTowers = 2;
+	private var numOfTowers = 3;
 	
 	function new (game : Game, x : Float, y : Float)
 	{
@@ -47,7 +47,9 @@ class BuildMenu extends Sprite
 		var w = 0;
 		for (i in 1...numOfTowers+1)
 		{
-			var towerButton = new Button(Root.assets[game.era].getTexture("tower" + i));
+			var towerButton = new Button(Root.assets[game.era].getTexture("tower" + i + "_1"));
+			towerButton.width = 64;
+			towerButton.height = 64;
 			towerButton.fontName = "font";
 			towerButton.fontSize = 24;
 			towerButton.fontColor = 0xFFFFFF;

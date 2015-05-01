@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:090f67a9afad4710a2b324d9801deae2:22526e954ade3bcfb8ed6324d9fb96d5:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:b2c1c0a9f5cfe26c815fa7eadaf2bdc1:6ee58c14607f61d552c74ff8e713fab4:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
     <SubTexture name="enemy-tank_page_01" x="2" y="2" width="192" height="192"/>
     <SubTexture name="enemy-tank_page_02" x="196" y="2" width="192" height="192"/>
@@ -8,14 +8,20 @@
     <SubTexture name="enemy-tankleft_page_02" x="584" y="2" width="192" height="192"/>
     <SubTexture name="enemy-tankright_page_01" x="778" y="2" width="192" height="192"/>
     <SubTexture name="enemy-tankright_page_02" x="972" y="2" width="192" height="192"/>
-    <SubTexture name="lvl1tile1" x="1166" y="2" width="64" height="64"/>
-    <SubTexture name="lvl1tile2" x="1232" y="2" width="64" height="64"/>
-    <SubTexture name="lvl1tile3" x="1298" y="2" width="64" height="64"/>
-    <SubTexture name="lvl1tile4" x="1364" y="2" width="64" height="64"/>
-    <SubTexture name="lvl1tile5" x="1430" y="2" width="64" height="64"/>
-    <SubTexture name="projectile" x="1496" y="2" width="10" height="5"/>
-    <SubTexture name="tower1" x="1508" y="2" width="32" height="32"/>
-    <SubTexture name="tower2" x="1542" y="2" width="32" height="64"/>
-    <SubTexture name="towerButton1" x="1576" y="2" width="64" height="64"/>
-    <SubTexture name="towerButton2" x="1642" y="2" width="64" height="64"/>
+    <SubTexture name="finish" x="1166" y="2" width="32" height="32"/>
+    <SubTexture name="lvl1tile1" x="1200" y="2" width="64" height="64"/>
+    <SubTexture name="lvl1tile2" x="1266" y="2" width="64" height="64"/>
+    <SubTexture name="lvl1tile3" x="1332" y="2" width="64" height="64"/>
+    <SubTexture name="lvl1tile4" x="2" y="196" width="64" height="64"/>
+    <SubTexture name="lvl1tile5" x="68" y="196" width="64" height="64"/>
+    <SubTexture name="projArrow" x="134" y="196" width="10" height="5"/>
+    <SubTexture name="projGiantArrow" x="146" y="196" width="20" height="10"/>
+    <SubTexture name="projRock" x="168" y="196" width="12" height="12"/>
+    <SubTexture name="projSpear" x="182" y="196" width="16" height="5"/>
+    <SubTexture name="tower1_1" x="200" y="196" width="192" height="192"/>
+    <SubTexture name="tower1_2" x="394" y="196" width="192" height="192"/>
+    <SubTexture name="tower2_1" x="588" y="196" width="192" height="192"/>
+    <SubTexture name="tower2_2" x="782" y="196" width="192" height="192"/>
+    <SubTexture name="tower3_1" x="976" y="196" width="192" height="192"/>
+    <SubTexture name="tower3_2" x="1170" y="196" width="192" height="192"/>
 </TextureAtlas>
