@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:d4168923ebd589b0242ba13176f4261e:c48bb2d229c0987e69397bf314dce2cc:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:9360167dceb453141118c9a31794fc30:c48bb2d229c0987e69397bf314dce2cc:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
     <SubTexture name="deathtank_page_01" x="1166" y="543" width="280" height="224"/>
     <SubTexture name="deathtank_page_02" x="2" y="769" width="280" height="224"/>
@@ -23,11 +23,11 @@
     <SubTexture name="jeepleft_page_02" x="415" y="2" width="183" height="159"/>
     <SubTexture name="jeepright_page_01" x="970" y="2" width="183" height="159"/>
     <SubTexture name="jeepright_page_02" x="785" y="2" width="183" height="159"/>
-    <SubTexture name="lv4tile1" x="85" y="2" width="64" height="64"/>
-    <SubTexture name="lv4tile2" x="151" y="2" width="64" height="64"/>
-    <SubTexture name="lv4tile3" x="19" y="2" width="64" height="64"/>
-    <SubTexture name="lv4tile4" x="217" y="2" width="64" height="64"/>
-    <SubTexture name="lv4tile5" x="349" y="2" width="64" height="64"/>
+    <SubTexture name="lvl4tile1" x="85" y="2" width="64" height="64"/>
+    <SubTexture name="lvl4tile2" x="151" y="2" width="64" height="64"/>
+    <SubTexture name="lvl4tile3" x="19" y="2" width="64" height="64"/>
+    <SubTexture name="lvl4tile4" x="217" y="2" width="64" height="64"/>
+    <SubTexture name="lvl4tile5" x="349" y="2" width="64" height="64"/>
     <SubTexture name="projMissile" x="2" y="2" width="15" height="8"/>
     <SubTexture name="tower1_1" x="774" y="349" width="192" height="192"/>
     <SubTexture name="tower1_2" x="2" y="543" width="192" height="192"/>
