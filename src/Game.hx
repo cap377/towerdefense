@@ -108,18 +108,18 @@ class Game extends Sprite
 		waveNum = 0;
 		
 		
-		numEnemies = new TextField(100, 50, "Enemies Left:\n" + waves[waveNum].getLength() + "/" + waves[waveNum].getLength());
+		numEnemies = new TextField(100, 50, "ENEMIES:\n" + waves[waveNum].getLength() + "/" + waves[waveNum].getLength(),"font", 20, 0xFFFFFF);
 		numEnemies.x = Starling.current.stage.stageWidth - numEnemies.width - 15;
 		numEnemies.y = 5;
 		addChild(numEnemies);
 		
 		villagers = 10;
-		villagerText = new TextField(75, 50, "Villagers:\n" + villagers);
+		villagerText = new TextField(100, 50, "VILLAGERS:\n" + villagers, "font", 20, 0xFFFFFF);
 		villagerText.x = numEnemies.x - villagerText.width ;
 		villagerText.y = 5;
 		addChild(villagerText);
 		
-		coinText = new TextField(50, 50, "Coins:\n" + coins);
+		coinText = new TextField(100, 50, "COINS:\n" + coins, "font", 20, 0xFFFFFF);
 		coinText.x = villagerText.x - coinText.width;
 		coinText.y = 5;
 		addChild(coinText);
@@ -217,7 +217,7 @@ class Game extends Sprite
 		//var radians = Math.atan2(mouseY,mouseX);
 		
 		
-		coinText.text = "Coins:\n" + coins;
+		coinText.text = "COINS:\n" + coins;
 		
 		if (!paused)
 			gameLogic();
@@ -227,9 +227,9 @@ class Game extends Sprite
 	public function gameLogic()
 	{
 		//Update the coin and villagers to reflect the new values
-		villagerText.text = "Villagers:\n" + villagers;
+		villagerText.text = "VILLAGERS:\n" + villagers;
 		var numEnemiesLeft = enemiesLeft();
-		numEnemies.text = "Enemies Left:\n" + numEnemiesLeft + "/" + waves[waveNum].getLength();
+		numEnemies.text = "ENEMIES:\n" + numEnemiesLeft + "/" + waves[waveNum].getLength();
 		
 		//Move all spawned enemies that are still alive and check their position
 		for (i in 0...spawnedEnemies.length)
