@@ -29,7 +29,7 @@ class Game extends Sprite
 	//Map of the level
 	private var map : Array<Array<String>>;
 	//Era of the level
-	public var era : Int;
+	public var era : Int = 1;
 	//All the waves for this level
 	private var waves : Array<Wave>;
 	//The enemies that have be spawned in
@@ -57,7 +57,6 @@ class Game extends Sprite
 		super();
 		
 		this.currentLevel = level + 1;
-		this.era = this.currentLevel;
 		this.rootObject = root;
 		this.enemyArray = new EnemyArray();
 
@@ -86,20 +85,16 @@ class Game extends Sprite
 	public function initialize()
 	{
 		removeChildren();
-		
+
 		//Hold the entry points
 		entryX = new Array();
 		entryY = new Array();
-		
 		//Hold the enemies
 		spawnedEnemies = new Array();
-		
 		//Hold the towers
 		towerList = new Array();
-		
 		//Make sure the game isn't pause or vice versa
 		paused = false;
-		
 		
 		//Load in the text (map and waves) based on the current level
 		var rawData = LoadMap.load("level" + currentLevel, this);
@@ -155,7 +150,6 @@ class Game extends Sprite
 			nextLevelButton.addEventListener(Event.TRIGGERED, function()
 			{
 				currentLevel++;
-				era++;
 				rootObject.level++;
 				initialize();
 				startWave();

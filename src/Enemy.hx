@@ -28,7 +28,7 @@ class Enemy extends Sprite
 	{
 		super();
 		this.game = game;
-		image = new Image(Root.assets[game.era].getTexture(name));
+		//image = new Image(Root.assets[game.era].getTexture(name));
 		this.name = name;
 		this.speed = speed;
 		this.health = health;
@@ -36,7 +36,7 @@ class Enemy extends Sprite
 		this.value = value;
 		currentDirection = 2;
 		alive = true;
-		addChild(image);
+		//addChild(image);
 		
 		healthBar = new Image(Root.assets[0].getTexture("enemyHealth"));
 		healthBar.y = -12;
@@ -84,7 +84,7 @@ class Enemy extends Sprite
 			spriteName = game.enemyArray.data[game.era - 1][0];
 		}
 
-		removeChild(image);
+		//removeChild(image);
 		removeChild(animation);
 		var atlas = Root.assets[1].getTextureAtlas("assets");
 		animation = new MovieClipPlus(atlas.getTextures(spriteName + directionString + "_page_0"), 4);
