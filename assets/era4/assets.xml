@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:d4168923ebd589b0242ba13176f4261e:c48bb2d229c0987e69397bf314dce2cc:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<TextureAtlas imagePath="assets.png">
+    <SubTexture name="deathtank_page_01" x="1166" y="543" width="280" height="224"/>
+    <SubTexture name="deathtank_page_02" x="2" y="769" width="280" height="224"/>
+    <SubTexture name="deathtankleft_page_01" x="1127" y="769" width="279" height="227"/>
+    <SubTexture name="deathtankleft_page_02" x="284" y="769" width="279" height="227"/>
+    <SubTexture name="deathtankright_page_01" x="846" y="769" width="279" height="227"/>
+    <SubTexture name="deathtankright_page_02" x="565" y="769" width="279" height="227"/>
+    <SubTexture name="enemy-tank_page_01" x="584" y="543" width="192" height="192"/>
+    <SubTexture name="enemy-tank_page_02" x="196" y="543" width="192" height="192"/>
+    <SubTexture name="enemy-tankleft_page_01" x="972" y="543" width="192" height="192"/>
+    <SubTexture name="enemy-tankleft_page_02" x="390" y="543" width="192" height="192"/>
+    <SubTexture name="enemy-tankright_page_01" x="778" y="543" width="192" height="192"/>
+    <SubTexture name="enemy-tankright_page_02" x="192" y="349" width="192" height="192"/>
+    <SubTexture name="finish" x="283" y="2" width="64" height="64"/>
+    <SubTexture name="jeep_page_01" x="2" y="165" width="184" height="161"/>
+    <SubTexture name="jeep_page_02" x="1155" y="2" width="183" height="161"/>
+    <SubTexture name="jeepback_page_01" x="367" y="165" width="176" height="161"/>
+    <SubTexture name="jeepback_page_02" x="188" y="165" width="177" height="161"/>
+    <SubTexture name="jeepleft_page_01" x="600" y="2" width="183" height="159"/>
+    <SubTexture name="jeepleft_page_02" x="415" y="2" width="183" height="159"/>
+    <SubTexture name="jeepright_page_01" x="970" y="2" width="183" height="159"/>
+    <SubTexture name="jeepright_page_02" x="785" y="2" width="183" height="159"/>
+    <SubTexture name="lv4tile1" x="85" y="2" width="64" height="64"/>
+    <SubTexture name="lv4tile2" x="151" y="2" width="64" height="64"/>
+    <SubTexture name="lv4tile3" x="19" y="2" width="64" height="64"/>
+    <SubTexture name="lv4tile4" x="217" y="2" width="64" height="64"/>
+    <SubTexture name="lv4tile5" x="349" y="2" width="64" height="64"/>
+    <SubTexture name="projMissile" x="2" y="2" width="15" height="8"/>
+    <SubTexture name="tower1_1" x="774" y="349" width="192" height="192"/>
+    <SubTexture name="tower1_2" x="2" y="543" width="192" height="192"/>
+    <SubTexture name="tower2_1" x="386" y="349" width="192" height="192"/>
+    <SubTexture name="tower2_2" x="1162" y="349" width="192" height="192"/>
+    <SubTexture name="tower3_1" x="580" y="349" width="192" height="192"/>
+    <SubTexture name="tower3_2" x="968" y="349" width="192" height="192"/>
+    <SubTexture name="zombies_page_01" x="545" y="165" width="173" height="178"/>
+    <SubTexture name="zombies_page_02" x="1275" y="165" width="187" height="182"/>
+    <SubTexture name="zombiesback_page_01" x="1085" y="165" width="188" height="182"/>
+    <SubTexture name="zombiesback_page_02" x="896" y="165" width="187" height="179"/>
+    <SubTexture name="zombiesleft_page_01" x="1275" y="165" width="187" height="182"/>
+    <SubTexture name="zombiesleft_page_02" x="545" y="165" width="173" height="178"/>
+    <SubTexture name="zombiesright_page_01" x="2" y="349" width="188" height="182"/>
+    <SubTexture name="zombiesright_page_02" x="720" y="165" width="174" height="178"/>
+</TextureAtlas>
