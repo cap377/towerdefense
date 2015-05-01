@@ -16,7 +16,7 @@ class EnemyArray
 		data.push(["chariot", "centurion", "trojan"]);
 
 		//Era 3 enemies
-		data.push(["enemy-tank"]);
+		data.push(["rats", "knight", "demon"]);
 
 		//Era 4 enemies
 		data.push(["enemy-tank"]);
