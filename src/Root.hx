@@ -44,6 +44,8 @@ class Root extends Sprite {
 		assets[0].enqueue("assets/createTowerMenu.png");
 		assets[0].enqueue("assets/towerMenu.png");
 		assets[0].enqueue("assets/button.png");
+		assets[0].enqueue("assets/path.png");
+		assets[0].enqueue("assets/build.png");
 		assets[0].enqueue("assets/assets.png");
 		assets[0].enqueue("assets/assets.xml");
 		
@@ -55,7 +57,6 @@ class Root extends Sprite {
 		assets[1].enqueue("assets/era1/grass.png");
 		assets[1].enqueue("assets/era1/grass1.png");
 		assets[1].enqueue("assets/era1/finish.png");
-		assets[1].enqueue("assets/era1/build.png");
 		assets[1].enqueue("assets/era1/stone.png");
 		assets[1].enqueue("assets/era1/rock.png");
 		assets[1].enqueue("assets/era1/dirt.png");
@@ -74,9 +75,26 @@ class Root extends Sprite {
 		assets[1].enqueue("assets/era1/S.png");
 		assets[1].enqueue("assets/era1/projectile.png");
 		assets[1].enqueue("assets/era1/levels/level1.txt");
-		assets[1].enqueue("assets/era1/levels/level2.txt");
-		assets[1].enqueue("assets/era1/levels/level3.txt");
-		
+
+		//Era 2
+		assets[2] = new AssetManager();
+		assets[2].enqueue("assets/era2/assets.png");
+		assets[2].enqueue("assets/era2/assets.xml");
+
+		//Era 3
+		assets[3] = new AssetManager();
+		assets[3].enqueue("assets/era3/assets.png");
+		assets[3].enqueue("assets/era3/assets.xml");
+
+		//Era 4
+		assets[4] = new AssetManager();
+		assets[4].enqueue("assets/era4/assets.png");
+		assets[4].enqueue("assets/era4/assets.xml");
+
+		//Era 5
+		assets[5] = new AssetManager();
+		assets[5].enqueue("assets/era5/assets.png");
+		assets[5].enqueue("assets/era5/assets.xml");
 		
 		//Everything that has to do with era 2, etc.
 		
@@ -84,17 +102,17 @@ class Root extends Sprite {
 		for (i in 0...assets.length)
 		{
 			assets[i].loadQueue(function onProgress(ratio:Float) {
-				if (ratio == 1 && i == assets.length-1) {
+				if (ratio == 1 && i == 0) {
 
 					// fade the loading screen, start game
 					Starling.juggler.tween(startup.loadingBitmap, 1.0, {
-						transition:Transitions.EASE_OUT, delay:0.5, alpha: 0, onComplete: function() {
+						transition:Transitions.EASE_OUT, delay:1.0, alpha: 0, onComplete: function() {
 							startup.removeChild(startup.loadingBitmap);
 							Root.assets[0].playSound("tdintro", 120, 0);
 							repeatsong = Starling.juggler.repeatCall(musicLoop, 20.1, 0);
 						}
 					});
-					
+
 					//Starting point for the game
 					addChild(new Menu(this));
 				}
@@ -137,7 +155,7 @@ class Menu extends Sprite {
 
 		var background = new Image(Root.assets[0].getTexture("menu"));
 		addChild(background);
-		
+
 		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 		startImage.x = 200;
 		startImage.y = 200;
