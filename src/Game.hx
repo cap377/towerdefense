@@ -536,7 +536,7 @@ class Game extends Sprite
 					{
 						spawnedEnemies[waveEnemy].currentDirection = 2;
 					}
-					else if (map[Std.int((spawnedEnemies[waveEnemy].y - 24) / 32)][Std.int((spawnedEnemies[waveEnemy].x) / 32)] == 'p')
+					else if (map[Std.int((spawnedEnemies[waveEnemy].y - 8) / 32)][Std.int((spawnedEnemies[waveEnemy].x) / 32)] == 'p')
 					{
 						spawnedEnemies[waveEnemy].currentDirection = 0;
 					}
