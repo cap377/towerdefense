@@ -47,7 +47,7 @@ class BuildMenu extends Sprite
 		var w = 0;
 		for (i in 1...numOfTowers+1)
 		{
-			var towerButton = new Button(Root.assets[game.era].getTexture("towerButton" + i));
+			var towerButton = new Button(Root.assets[game.era].getTexture("tower" + i));
 			towerButton.fontName = "font";
 			towerButton.fontSize = 24;
 			towerButton.fontColor = 0xFFFFFF;
