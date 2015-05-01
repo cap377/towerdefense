@@ -129,7 +129,7 @@ class Game extends Sprite
 	}
 	
 	//Generate the next level
-	var cap = 3;
+	var cap = 5;
 
 	public function nextLevel()
 	{
