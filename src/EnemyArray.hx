@@ -10,10 +10,10 @@ class EnemyArray
 		data = new Array<Array<String>>();
 
 		//Era 1 enemies
-		data.push(["enemy-tank"]);
+		data.push(["sabertooth", "wolves", "mammoth"]);
 
 		//Era 2 enemies
-		data.push(["enemy-tank"]);
+		data.push(["chariot", "centurion", "trojan"]);
 
 		//Era 3 enemies
 		data.push(["enemy-tank"]);

@@ -83,10 +83,19 @@ class Enemy extends Sprite
 		if(this.name == "S") {
 			spriteName = game.enemyArray.data[game.era - 1][0];
 		}
+		if(this.name == "W") {
+			spriteName = game.enemyArray.data[game.era - 1][1];
+		}
+		if(this.name == "E") {
+			spriteName = game.enemyArray.data[game.era - 1][2];
+		}
+		if(this.name == "B") {
+			spriteName = game.enemyArray.data[game.era - 1][3];
+		}
 
 		//removeChild(image);
 		removeChild(animation);
-		var atlas = Root.assets[1].getTextureAtlas("assets");
+		var atlas = Root.assets[game.era].getTextureAtlas("assets");
 		animation = new MovieClipPlus(atlas.getTextures(spriteName + directionString + "_page_0"), 4);
 		animation.width = 32;
 		animation.height = 32;

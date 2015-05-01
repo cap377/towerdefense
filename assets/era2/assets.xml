@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:1061387a5de9ba7d5c43faf09d33e1e0:36d91d1abd488258f79056ae97085e29:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:2500c4d8c9ddccea7b362e48594e7cf0:b2e3772e73765ea05eefd536746db9dc:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
-    <SubTexture name="enemy-tank_page_01" x="2" y="2" width="192" height="192"/>
-    <SubTexture name="enemy-tank_page_02" x="196" y="2" width="192" height="192"/>
-    <SubTexture name="enemy-tankleft_page_01" x="390" y="2" width="192" height="192"/>
-    <SubTexture name="enemy-tankleft_page_02" x="584" y="2" width="192" height="192"/>
-    <SubTexture name="enemy-tankright_page_01" x="778" y="2" width="192" height="192"/>
-    <SubTexture name="enemy-tankright_page_02" x="972" y="2" width="192" height="192"/>
-    <SubTexture name="finish" x="1166" y="2" width="32" height="32"/>
-    <SubTexture name="lvl2tile1" x="1200" y="2" width="64" height="64"/>
-    <SubTexture name="lvl2tile2" x="1266" y="2" width="64" height="64"/>
-    <SubTexture name="lvl2tile3" x="1332" y="2" width="64" height="64"/>
-    <SubTexture name="lvl2tile4" x="1398" y="2" width="64" height="64"/>
-    <SubTexture name="lvl2tile5" x="1464" y="2" width="64" height="64"/>
+    <SubTexture name="centurion_page_01" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurion_page_02" x="196" y="2" width="192" height="192"/>
+    <SubTexture name="centurion_page_03" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurion_page_04" x="390" y="2" width="192" height="192"/>
+    <SubTexture name="centurionback_page_01" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurionback_page_02" x="196" y="2" width="192" height="192"/>
+    <SubTexture name="centurionback_page_03" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurionback_page_04" x="390" y="2" width="192" height="192"/>
+    <SubTexture name="centurionleft_page_01" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurionleft_page_02" x="196" y="2" width="192" height="192"/>
+    <SubTexture name="centurionleft_page_03" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurionleft_page_04" x="390" y="2" width="192" height="192"/>
+    <SubTexture name="centurionright_page_01" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurionright_page_02" x="196" y="2" width="192" height="192"/>
+    <SubTexture name="centurionright_page_03" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="centurionright_page_04" x="390" y="2" width="192" height="192"/>
+    <SubTexture name="chariot_page_01" x="584" y="2" width="192" height="192"/>
+    <SubTexture name="chariot_page_02" x="778" y="2" width="192" height="192"/>
+    <SubTexture name="chariotback_page_01" x="972" y="2" width="192" height="192"/>
+    <SubTexture name="chariotback_page_02" x="1166" y="2" width="192" height="192"/>
+    <SubTexture name="chariotleft_page_01" x="1360" y="2" width="192" height="192"/>
+    <SubTexture name="chariotleft_page_02" x="1554" y="2" width="192" height="192"/>
+    <SubTexture name="chariotright_page_01" x="2" y="196" width="192" height="192"/>
+    <SubTexture name="chariotright_page_02" x="196" y="196" width="192" height="192"/>
+    <SubTexture name="finish" x="390" y="196" width="32" height="32"/>
+    <SubTexture name="lvl2tile1" x="424" y="196" width="64" height="64"/>
+    <SubTexture name="lvl2tile2" x="490" y="196" width="64" height="64"/>
+    <SubTexture name="lvl2tile3" x="556" y="196" width="64" height="64"/>
+    <SubTexture name="lvl2tile4" x="622" y="196" width="64" height="64"/>
+    <SubTexture name="lvl2tile5" x="688" y="196" width="64" height="64"/>
+    <SubTexture name="projGiantArrow" x="754" y="196" width="20" height="10"/>
+    <SubTexture name="projRock" x="776" y="196" width="12" height="12"/>
+    <SubTexture name="tower1_1" x="790" y="196" width="192" height="192"/>
+    <SubTexture name="tower1_2" x="984" y="196" width="192" height="192"/>
+    <SubTexture name="tower2_1" x="1178" y="196" width="192" height="192"/>
+    <SubTexture name="tower2_2" x="1372" y="196" width="192" height="192"/>
+    <SubTexture name="tower3_1" x="1566" y="196" width="192" height="192"/>
+    <SubTexture name="tower3_2" x="2" y="390" width="192" height="192"/>
+    <SubTexture name="trojan_page_01" x="196" y="390" width="192" height="192"/>
+    <SubTexture name="trojan_page_02" x="390" y="390" width="192" height="192"/>
+    <SubTexture name="trojanback_page_01" x="584" y="390" width="192" height="192"/>
+    <SubTexture name="trojanback_page_02" x="778" y="390" width="192" height="192"/>
+    <SubTexture name="trojanleft_page_01" x="972" y="390" width="192" height="192"/>
+    <SubTexture name="trojanleft_page_02" x="1166" y="390" width="192" height="192"/>
+    <SubTexture name="trojanright_page_01" x="1360" y="390" width="192" height="192"/>
+    <SubTexture name="trojanright_page_02" x="1554" y="390" width="192" height="192"/>
 </TextureAtlas>

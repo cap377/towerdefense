@@ -301,16 +301,16 @@ class Game extends Sprite
 					case "1":
 						//Randomly choose a tree from all possible trees
 						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile1"));
-						tile.width = 32;
-						tile.height = 32;
+						tile.width = 33;
+						tile.height = 33;
 						tile.x = x * size;
 						tile.y = y * size;
 						addChild(tile);
 					case "2":
 						//Randomly choose a tree from all possible trees
 						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile2"));
-						tile.width = 32;
-						tile.height = 32;
+						tile.width = 33;
+						tile.height = 33;
 						tile.x = x * size;
 						tile.y = y * size;
 						addChild(tile);
@@ -334,8 +334,8 @@ class Game extends Sprite
 					case "3":
 						//Randomly choose a tree from all possible trees
 						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile3"));
-						tile.width = 32;
-						tile.height = 32;
+						tile.width = 33;
+						tile.height = 33;
 						tile.x = x * size;
 						tile.y = y * size;
 						addChild(tile);
@@ -354,16 +354,16 @@ class Game extends Sprite
 					case "4":
 						//Randomly choose a tree from all possible trees
 						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile4"));
-						tile.width = 32;
-						tile.height = 32;
+						tile.width = 33;
+						tile.height = 33;
 						tile.x = x * size;
 						tile.y = y * size;
 						addChild(tile);
 					case "5":
 						//Randomly choose a tree from all possible trees
 						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile5"));
-						tile.width = 32;
-						tile.height = 32;
+						tile.width = 33;
+						tile.height = 33;
 						tile.x = x * size;
 						tile.y = y * size;
 						addChild(tile);
