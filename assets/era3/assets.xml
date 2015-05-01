@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:dee114ec3a0430764f2e5d6952b92693:34a2d452b77508648a974d23df06675e:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:7f57667e5c38db4bda1c3036bb72c27c:558f9945a887be34a0eaeb84e5da480e:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
     <SubTexture name="batteringram_page_01" x="194" y="174" width="174" height="175"/>
     <SubTexture name="batteringram_page_02" x="898" y="174" width="174" height="176"/>
@@ -11,14 +11,14 @@
     <SubTexture name="batteringramright_page_01" x="546" y="174" width="174" height="176"/>
     <SubTexture name="batteringramright_page_02" x="370" y="174" width="174" height="176"/>
     <SubTexture name="cannon_page_03" x="1166" y="740" width="192" height="192"/>
-    <SubTexture name="deathdeatback_2" x="380" y="1529" width="378" height="393"/>
-    <SubTexture name="deathdeath_1" x="2" y="1529" width="376" height="393"/>
-    <SubTexture name="deathdeath_2" x="760" y="1529" width="378" height="393"/>
-    <SubTexture name="deathdeathback-1" x="990" y="1128" width="338" height="399"/>
-    <SubTexture name="deathdeathleft_1" x="2" y="1128" width="233" height="372"/>
-    <SubTexture name="deathdeathleft_2" x="731" y="1128" width="257" height="372"/>
-    <SubTexture name="deathdeathright_1" x="237" y="1128" width="233" height="372"/>
-    <SubTexture name="deathdeathright_2" x="472" y="1128" width="257" height="372"/>
+    <SubTexture name="deathdeath_page_01" x="2" y="1529" width="376" height="393"/>
+    <SubTexture name="deathdeath_page_02" x="380" y="1529" width="378" height="393"/>
+    <SubTexture name="deathdeathback_page_01" x="990" y="1128" width="338" height="399"/>
+    <SubTexture name="deathdeathback_page_02" x="760" y="1529" width="378" height="393"/>
+    <SubTexture name="deathdeathleft_page_01" x="2" y="1128" width="233" height="372"/>
+    <SubTexture name="deathdeathleft_page_02" x="731" y="1128" width="257" height="372"/>
+    <SubTexture name="deathdeathright_page_01" x="237" y="1128" width="233" height="372"/>
+    <SubTexture name="deathdeathright_page_02" x="472" y="1128" width="257" height="372"/>
     <SubTexture name="demon_page_01" x="904" y="2" width="190" height="144"/>
     <SubTexture name="demon_page_02" x="2" y="174" width="190" height="158"/>
     <SubTexture name="demonback_page_01" x="1096" y="2" width="190" height="144"/>
