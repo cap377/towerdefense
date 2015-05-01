@@ -3,4 +3,4 @@
 2;	-Radius
 1;	-Attack
 50;	-UpgradeBaseCost
-projGiantSpear;	-What Projectile the tower will use
+projGiantArrow;	-What Projectile the tower will use
