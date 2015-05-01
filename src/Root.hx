@@ -144,18 +144,18 @@ class Menu extends Sprite {
 		addChild(background);
 		
 		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
-		startImage.x = 65;
-		startImage.y = 250;
+		startImage.x = 175;
+		startImage.y = 300;
 		addChild(startImage);
 		var startText = new TextField(150, 75, "PLAY", "font", 24, 0xFFFFFF);
-		startText.x = 65;
-		startText.y = 250;
+		startText.x = 175;
+		startText.y = 300;
 		addChild(startText);
 		var startButton = new Button(Root.assets[0].getTexture("button"));
 		startButton.width = 150;
 		startButton.height = 75;
-		startButton.x = 65;
-		startButton.y = 250;
+		startButton.x = 175;
+		startButton.y = 300;
 		startButton.addEventListener(Event.TRIGGERED, function() {
 			root.removeChild(this);
 			root.addChild(new Levels(root));
@@ -163,18 +163,18 @@ class Menu extends Sprite {
 		addChild(startButton);
 
 		var creditsImage = new Image(Root.assets[0].getTexture("bluemenubutton"));
-		creditsImage.x = 420;
-		creditsImage.y = 250;
+		creditsImage.x = 920;
+		creditsImage.y = 300;
 		addChild(creditsImage);
 		var creditsText = new TextField(150, 75, "CREDITS", "font", 24, 0xFFFFFF);
-		creditsText.x = 420;
-		creditsText.y = 250;
+		creditsText.x = 920;
+		creditsText.y = 300;
 		addChild(creditsText);
 		var creditsButton = new Button(Root.assets[0].getTexture("button"));
 		creditsButton.width = 150;
 		creditsButton.height = 75;
-		creditsButton.x = 420;
-		creditsButton.y = 250;
+		creditsButton.x = 920;
+		creditsButton.y = 300;
 		creditsButton.addEventListener(Event.TRIGGERED, function() {
 			root.removeChild(this);
 			root.addChild(new Credits(root));
@@ -233,7 +233,7 @@ class Levels extends Sprite {
 		//Create a button for each level
 		var x = 0;
 		var y = 0;
-		for(i in 0...15) {
+		for(i in 0...5) {
 			//Check if level is unlocked
 			var levelImage : Image;
 			var levelText : TextField;
@@ -248,26 +248,26 @@ class Levels extends Sprite {
 				});
 				levelButton.width = 150;
 				levelButton.height = 75;
-				levelButton.x = 10 + x * (levelImage.width + 5);
-				levelButton.y = 200 + (levelImage.height + 5) * y;
-				levelImage.x = 10 + x * (levelImage.width + 5);
-				levelImage.y = 200 + (levelImage.height + 5) * y;
-				levelText.x = 10 + x * (levelImage.width + 5);
-				levelText.y = 200 + (levelImage.height + 5) * y;
+				levelButton.x = 250 + x * (levelImage.width + 5);
+				levelButton.y = 600 + (levelImage.height + 5) * y;
+				levelImage.x = 250 + x * (levelImage.width + 5);
+				levelImage.y = 600 + (levelImage.height + 5) * y;
+				levelText.x = 250 + x * (levelImage.width + 5);
+				levelText.y = 600 + (levelImage.height + 5) * y;
 				addChild(levelImage);
 				addChild(levelText);
 				addChild(levelButton);
 			} else {
 				levelImage = new Image(Root.assets[0].getTexture("bluemenubutton"));
 				levelText = new TextField(150, 75, "LEVEL " + i, "font", 24, 0xFFFFFF);
-				levelImage.x = 10 + x * (levelImage.width + 5);
-				levelImage.y = 200 + (levelImage.height + 5) * y;
-				levelText.x = 10 + x * (levelImage.width + 5);
-				levelText.y = 200 + (levelImage.height + 5) * y;
+				levelImage.x = 250 + x * (levelImage.width + 5);
+				levelImage.y = 600 + (levelImage.height + 5) * y;
+				levelText.x = 250 + x * (levelImage.width + 5);
+				levelText.y = 600 + (levelImage.height + 5) * y;
 				addChild(levelImage);
 				addChild(levelText);
 			}
-			if (levelImage.x + levelImage.width + 15 >= 640)
+			if (levelImage.x + levelImage.width + 15 >= 1280)
 			{
 				y++;
 				x = -1;
@@ -301,18 +301,18 @@ class LevelPreview extends Sprite {
 		addChild(backButton);
 
 		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
-		startImage.x = 200;
-		startImage.y = 200;
+		startImage.x = 560;
+		startImage.y = 500;
 		addChild(startImage);
 		var startText = new TextField(150, 75, "PLAY", "font", 24, 0xFFFFFF);
-		startText.x = 200;
-		startText.y = 200;
+		startText.x = 560;
+		startText.y = 500;
 		addChild(startText);
 		var startButton = new Button(Root.assets[0].getTexture("button"));
 		startButton.width = 150;
 		startButton.height = 75;
-		startButton.x = 200;
-		startButton.y = 200;
+		startButton.x = 560;
+		startButton.y = 500;
 		startButton.addEventListener(Event.TRIGGERED, function() {
 			root.removeChild(this);
 			root.addChild(new Game(root, level));
