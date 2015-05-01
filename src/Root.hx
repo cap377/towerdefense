@@ -144,18 +144,18 @@ class Menu extends Sprite {
 		addChild(background);
 		
 		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
-		startImage.x = 200;
-		startImage.y = 200;
+		startImage.x = 65;
+		startImage.y = 250;
 		addChild(startImage);
 		var startText = new TextField(150, 75, "PLAY", "font", 24, 0xFFFFFF);
-		startText.x = 200;
-		startText.y = 200;
+		startText.x = 65;
+		startText.y = 250;
 		addChild(startText);
 		var startButton = new Button(Root.assets[0].getTexture("button"));
 		startButton.width = 150;
 		startButton.height = 75;
-		startButton.x = 200;
-		startButton.y = 200;
+		startButton.x = 65;
+		startButton.y = 250;
 		startButton.addEventListener(Event.TRIGGERED, function() {
 			root.removeChild(this);
 			root.addChild(new Levels(root));
@@ -163,18 +163,18 @@ class Menu extends Sprite {
 		addChild(startButton);
 
 		var creditsImage = new Image(Root.assets[0].getTexture("bluemenubutton"));
-		creditsImage.x = 200;
-		creditsImage.y = 350;
+		creditsImage.x = 420;
+		creditsImage.y = 250;
 		addChild(creditsImage);
 		var creditsText = new TextField(150, 75, "CREDITS", "font", 24, 0xFFFFFF);
-		creditsText.x = 200;
-		creditsText.y = 350;
+		creditsText.x = 420;
+		creditsText.y = 250;
 		addChild(creditsText);
 		var creditsButton = new Button(Root.assets[0].getTexture("button"));
 		creditsButton.width = 150;
 		creditsButton.height = 75;
-		creditsButton.x = 200;
-		creditsButton.y = 350;
+		creditsButton.x = 420;
+		creditsButton.y = 250;
 		creditsButton.addEventListener(Event.TRIGGERED, function() {
 			root.removeChild(this);
 			root.addChild(new Credits(root));
