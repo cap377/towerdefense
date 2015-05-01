@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:5d96106d9da88adc893c74f0847a1bf9:31b4e31bfa700fe5e62669e973df4b2f:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:1cc10b2e244372ebd810dd391f78646e:31b4e31bfa700fe5e62669e973df4b2f:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
     <SubTexture name="deathbot_page_01" x="2" y="2" width="269" height="281"/>
     <SubTexture name="deathbot_page_02" x="273" y="2" width="269" height="281"/>
@@ -11,10 +11,10 @@
     <SubTexture name="deathbotright_page_01" x="1086" y="2" width="288" height="288"/>
     <SubTexture name="deathbotright_page_02" x="1376" y="2" width="247" height="288"/>
     <SubTexture name="finish" x="1625" y="2" width="64" height="64"/>
-    <SubTexture name="lv5tile1" x="1691" y="2" width="64" height="64"/>
-    <SubTexture name="lv5tile2" x="1757" y="2" width="64" height="64"/>
-    <SubTexture name="lv5tile3" x="1823" y="2" width="64" height="64"/>
-    <SubTexture name="lv5tile4" x="2" y="292" width="64" height="64"/>
+    <SubTexture name="lvl5tile1" x="1691" y="2" width="64" height="64"/>
+    <SubTexture name="lvl5tile2" x="1757" y="2" width="64" height="64"/>
+    <SubTexture name="lvl5tile3" x="1823" y="2" width="64" height="64"/>
+    <SubTexture name="lvl5tile4" x="2" y="292" width="64" height="64"/>
     <SubTexture name="missle_page_03" x="68" y="292" width="192" height="192"/>
     <SubTexture name="projLightning" x="262" y="292" width="24" height="10"/>
     <SubTexture name="projMissile" x="288" y="292" width="15" height="8"/>
