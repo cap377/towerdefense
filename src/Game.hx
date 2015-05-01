@@ -238,7 +238,7 @@ class Game extends Sprite
 		//Update the coin and villagers to reflect the new values
 		villagerText.text = "VILLAGERS:\n" + villagers;
 		var numEnemiesLeft = enemiesLeft();
-		numEnemies.text = "ENEMIES:\n" + numEnemiesLeft + "/" + waves[waveNum].getLength();
+		numEnemies.text = "ENEMIES:\n" + numEnemiesLeft + ":" + waves[waveNum].getLength();
 		
 		//Move all spawned enemies that are still alive and check their position
 		for (i in 0...spawnedEnemies.length)
