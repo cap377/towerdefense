@@ -13,10 +13,10 @@ class EnemyArray
 		data.push(["sabertooth", "wolves", "mammoth"]);
 
 		//Era 2 enemies
-		data.push(["chariot", "centurion", "trojan"]);
+		data.push(["chariot", "centurion", "batteringram", "trojan"]);
 
 		//Era 3 enemies
-		data.push(["rats", "knight", "demon"]);
+		data.push(["rats", "knight", "demon", "deathdeath"]);
 
 		//Era 4 enemies
 		data.push(["jeep", "zombies", "enemy-tank", "deathtank"]);
