@@ -228,11 +228,33 @@ class Game extends Sprite
 		//var mouseY = flash.Lib.current.stage.mouseY - object.y;
 		//var radians = Math.atan2(mouseY,mouseX);
 		
-		
+		gameOver();
 		coinText.text = "COINS:\n" + coins;
 		
 		if (!paused)
 			gameLogic();
+	}
+
+	public function gameOver(){
+		var gameOver = new TextField(300, 200, "GAME OVER", "font", 72, 0xFFFFFF);
+		gameOver.x = (Starling.current.stage.stageWidth - gameOver.width)/2;
+		gameOver.y = (Starling.current.stage.stageHeight - gameOver.height)/2 - 100;
+		if (villagers == 0){
+			pause();
+			var mainMenu = new Button(Root.assets[0].getTexture("button"), "MAIN MENU");
+			mainMenu.x = (Starling.current.stage.stageWidth - mainMenu.width)/2;
+			mainMenu.y = gameOver.y + gameOver.height + 5;
+			mainMenu.fontName = "font";
+			mainMenu.fontColor = 0xFFFFFF;
+			mainMenu.fontSize = 32;
+			mainMenu.addEventListener(Event.TRIGGERED, function()
+			{
+			rootObject.removeChild(this);
+			rootObject.addChild(new Menu(rootObject));
+			});
+			addChild(mainMenu);
+			addChild(gameOver);
+		}
 	}
 	
 	//Player movement, tower attacks, etc.
