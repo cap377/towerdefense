@@ -80,6 +80,7 @@ class Tower extends Sprite
 				attack += 1;
 		}
 		level++;
+		Root.assets[0].playSound("upgrade", 0, 0);
 	}
 
 	public function launchAttack(enemy : Enemy) {
@@ -96,6 +97,7 @@ class Tower extends Sprite
 		projectile.rotation = radians;
 		
 		addChild(projectile);
+		Root.assets[0].playSound("tower_hit", 0, 0);
 		Starling.juggler.tween(projectile, .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5), {
             delay: 0.0,
             x: (enemy.x + enemy.width/2) - this.x,

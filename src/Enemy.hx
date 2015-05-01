@@ -3,6 +3,7 @@ import starling.display.Image;
 import starling.core.Starling;
 
 
+
 ///////////////////////
 //
 //All other enemies should extend this class
@@ -16,9 +17,12 @@ class Enemy extends Sprite
 	private var animation : MovieClipPlus;
 	public var speed : Float;
 	public var health : Float;
+	public var maxHealth : Float;
+	public var healthBar : Image;
 	public var value : Int;
 	public var currentDirection : Int;
 	public var alive : Bool;
+
 	
 	public function new(game : Game, name : String, speed : Float, health : Float, value : Int)
 	{
@@ -28,16 +32,27 @@ class Enemy extends Sprite
 		this.name = name;
 		this.speed = speed;
 		this.health = health;
+		this.maxHealth = health;
 		this.value = value;
 		currentDirection = 2;
 		alive = true;
 		addChild(image);
+		
+		healthBar = new Image(Root.assets[0].getTexture("enemyHealth"));
+		healthBar.y = -12;
+		addChild(healthBar);
+		
 	}
 	
 	//Apply hit damage
 	public function hit(damage : Float)
 	{
 		health = health - damage;
+		
+
+		healthBar.scaleX = health / maxHealth;
+		
+
 		//If health is to low give the create a coin and kill the enemy
 		if (health <= 0)
 		{

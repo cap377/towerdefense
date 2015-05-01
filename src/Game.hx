@@ -409,6 +409,7 @@ class Game extends Sprite
 		//and round this down to a integer so that we can look it up in the map array
 		if (map[Std.int(spawnedEnemies[waveEnemy].y / size)][Std.int(spawnedEnemies[waveEnemy].x / size)] == 'f')
 		{
+			Root.assets[0].playSound("base_hit", 0, 0);
 			villagers -= 1;
 			spawnedEnemies[waveEnemy].alive = false;
 			removeChild(spawnedEnemies[waveEnemy]);

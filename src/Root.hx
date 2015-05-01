@@ -34,6 +34,9 @@ class Root extends Sprite {
 		
 		//Assets that are the same throughout each era should be loaded into assets 0
 		assets[0] = new AssetManager();
+		assets[0].enqueue("assets/tower_hit.mp3");
+		assets[0].enqueue("assets/base_hit.mp3");
+		assets[0].enqueue("assets/upgrade.mp3");
 		assets[0].enqueue("assets/menu.png");
 		assets[0].enqueue("assets/redmenubutton.png");
 		assets[0].enqueue("assets/bluemenubutton.png");
@@ -48,6 +51,7 @@ class Root extends Sprite {
 		assets[0].enqueue("assets/build.png");
 		assets[0].enqueue("assets/assets.png");
 		assets[0].enqueue("assets/assets.xml");
+		assets[0].enqueue("assets/enemyHealth.png");
 		
 		
 		//Everything that has to do with era 1
@@ -154,6 +158,7 @@ class Menu extends Sprite {
 		super();
 
 		var background = new Image(Root.assets[0].getTexture("menu"));
+		background.width = background.width / 2;
 		addChild(background);
 
 		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
@@ -204,6 +209,7 @@ class Credits extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets[0].getTexture("menu"));
+		background.width = background.width / 2;
 		addChild(background);
 		
 		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
@@ -228,6 +234,7 @@ class Levels extends Sprite {
 	public function new(root:Root) {
 		super();
 		var background = new Image(Root.assets[0].getTexture("menu"));
+		background.width = background.width / 2;
 		addChild(background);
 
 		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
