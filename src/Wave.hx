@@ -75,11 +75,11 @@ class Wave
 					//Set up as the (current game, the enemy name, speed, health, value)
 					wave.push(new Enemy(game, stringWave[i], .7, 15, 20));
 				case 'E':
-					wave.push(new Enemy(game, stringWave[i], .3, 50, 100));
+					wave.push(new Enemy(game, stringWave[i], .45, 50, 100));
 				case 'S':
 					wave.push(new Enemy(game, stringWave[i], 1.1, 15, 30));
 				case 'B':
-					wave.push(new Enemy(game, stringWave[i], .2, 100, 200));
+					wave.push(new Enemy(game, stringWave[i], .4, 100, 200));
 				//////////////////////////////
 				//
 				//Case for each possible enemy
