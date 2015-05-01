@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:2bf91ca59a3bb91e2bc025708f0f77db:b298c25c1b8b40f948daaa2a6b4cccfb:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:6f97136bf221011cc4da416c442c72ba:0a250759462576099324b3b6c96d5bb8:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
     <SubTexture name="deathsloth_page_01" x="1250" y="565" width="273" height="394"/>
     <SubTexture name="deathsloth_page_02" x="1525" y="565" width="289" height="398"/>
