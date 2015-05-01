@@ -85,20 +85,16 @@ class Game extends Sprite
 	public function initialize()
 	{
 		removeChildren();
-		
+
 		//Hold the entry points
 		entryX = new Array();
 		entryY = new Array();
-		
 		//Hold the enemies
 		spawnedEnemies = new Array();
-		
 		//Hold the towers
 		towerList = new Array();
-		
 		//Make sure the game isn't pause or vice versa
 		paused = false;
-		
 		
 		//Load in the text (map and waves) based on the current level
 		var rawData = LoadMap.load("level" + currentLevel, this);
@@ -142,30 +138,36 @@ class Game extends Sprite
 		addChild(bg);
 		
 		var score = villagers * 5 + coins;
-		var scoreText = new TextField(100, 50, "Score: " + score);
+		var scoreText = new TextField(100, 50, "SCORE: " + score, "font", 24, 0xFFFFFF);
 		scoreText.x = bg.x + (bg.width - scoreText.width) / 2;
 		scoreText.y = bg.y + (bg.height - scoreText.height) / 2;
 		addChild(scoreText);
 		addChild(scoreText);
 
-		var nextLevelButton = new Button(Root.assets[0].getTexture("button"), "Next Level");
+		var nextLevelButton = new Button(Root.assets[0].getTexture("button"), "NEXT LEVEL");
 			nextLevelButton.x = bg.x + (bg.width - 2 * nextLevelButton.width) / 2;
 			nextLevelButton.y = bg.y + bg.height - (nextLevelButton.height + 15);
+			nextLevelButton.fontName = "font";
+			nextLevelButton.fontColor = 0xFFFFFF;
+			nextLevelButton.fontSize = 24;
 			nextLevelButton.addEventListener(Event.TRIGGERED, function()
 			{
-			currentLevel++;
-			rootObject.level++;
-			initialize();
-			startWave();
+				currentLevel++;
+				rootObject.level++;
+				initialize();
+				startWave();
 			});
 		
 		if (currentLevel < cap){
 			addChild(nextLevelButton);
 		}
 		
-		var mainMenu = new Button(Root.assets[0].getTexture("button"), "Main Menu");
+		var mainMenu = new Button(Root.assets[0].getTexture("button"), "MAIN MENU");
 		mainMenu.x = nextLevelButton.x + nextLevelButton.width + mainMenu.width;
 		mainMenu.y = nextLevelButton.y;
+		mainMenu.fontName = "font";
+		mainMenu.fontColor = 0xFFFFFF;
+		mainMenu.fontSize = 24;
 		mainMenu.addEventListener(Event.TRIGGERED, function()
 		{
 			rootObject.level++;
@@ -185,9 +187,12 @@ class Game extends Sprite
 			
 			
 			
-			var nextWave = new Button(Root.assets[0].getTexture("button"), "Next Wave");
+			var nextWave = new Button(Root.assets[0].getTexture("button"), "NEXT WAVE");
 			nextWave.x = Starling.current.stage.stageWidth - nextWave.width;
 			nextWave.y = Starling.current.stage.stageHeight - nextWave.height;
+			nextWave.fontName = "font";
+			nextWave.fontColor = 0xFFFFFF;
+			nextWave.fontSize = 24;
 			
 			var nextWaveTimer = new Timer(3000, 3);
 			nextWaveTimer.start();
@@ -292,18 +297,25 @@ class Game extends Sprite
 			{
 				switch (map[y][x])
 				{
-					case "g":
-						var grass = new Image(Root.assets[era].getTexture("grass"));
-						grass.x = x * size;
-						grass.y = y * size;
-						addChild(grass);
+					case "1":
+						//Randomly choose a tree from all possible trees
+						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile1"));
+						tile.x = x * size;
+						tile.y = y * size;
+						addChild(tile);
+					case "2":
+						//Randomly choose a tree from all possible trees
+						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile2"));
+						tile.x = x * size;
+						tile.y = y * size;
+						addChild(tile);
 					case "p":
-						var dirt = new Image(Root.assets[era].getTexture("dirt"));
+						var dirt = new Image(Root.assets[0].getTexture("path"));
 						dirt.x = x * size;
 						dirt.y = y * size;
 						addChild(dirt);
 					case "e":
-						var entry = new Image(Root.assets[era].getTexture("dirt"));
+						var entry = new Image(Root.assets[0].getTexture("path"));
 						entry.x = x * size;
 						entry.y = y * size;
 						entryX.push(entry.x);
@@ -314,14 +326,14 @@ class Game extends Sprite
 						finish.x = x * size;
 						finish.y = y * size;
 						addChild(finish);
-					case "t":
+					case "3":
 						//Randomly choose a tree from all possible trees
-						var rock = new Image(Root.assets[era].getTexture("rock"));
-						rock.x = x * size;
-						rock.y = y * size;
-						addChild(rock);
+						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile3"));
+						tile.x = x * size;
+						tile.y = y * size;
+						addChild(tile);
 					case "b":
-						var build = new Button(Root.assets[era].getTexture("build"));
+						var build = new Button(Root.assets[0].getTexture("build"));
 						build.x = x * size;
 						build.y = y * size;
 						build.addEventListener(Event.TRIGGERED, function()
@@ -332,11 +344,18 @@ class Game extends Sprite
 							
 						});
 						addChild(build);
-					case "h":
-						var stone = new Image(Root.assets[era].getTexture("stone"));
-						stone.x = x * size;
-						stone.y = y * size;
-						addChild(stone);
+					case "4":
+						//Randomly choose a tree from all possible trees
+						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile4"));
+						tile.x = x * size;
+						tile.y = y * size;
+						addChild(tile);
+					case "5":
+						//Randomly choose a tree from all possible trees
+						var tile = new Image(Root.assets[era].getTexture("lvl" + this.era + "tile5"));
+						tile.x = x * size;
+						tile.y = y * size;
+						addChild(tile);
 				}
 			}
 		}

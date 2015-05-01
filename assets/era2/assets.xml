@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:1061387a5de9ba7d5c43faf09d33e1e0:36d91d1abd488258f79056ae97085e29:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<TextureAtlas imagePath="assets.png">
+    <SubTexture name="enemy-tank_page_01" x="2" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tank_page_02" x="196" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankleft_page_01" x="390" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankleft_page_02" x="584" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankright_page_01" x="778" y="2" width="192" height="192"/>
+    <SubTexture name="enemy-tankright_page_02" x="972" y="2" width="192" height="192"/>
+    <SubTexture name="finish" x="1166" y="2" width="32" height="32"/>
+    <SubTexture name="lvl2tile1" x="1200" y="2" width="64" height="64"/>
+    <SubTexture name="lvl2tile2" x="1266" y="2" width="64" height="64"/>
+    <SubTexture name="lvl2tile3" x="1332" y="2" width="64" height="64"/>
+    <SubTexture name="lvl2tile4" x="1398" y="2" width="64" height="64"/>
+    <SubTexture name="lvl2tile5" x="1464" y="2" width="64" height="64"/>
+</TextureAtlas>
