@@ -139,14 +139,14 @@ class TowerMenu extends Sprite
 		level.y = bg.y + 5;
 		
 		//Create a textfield that lists the stats of the tower
-		var text = new TextField(150, 150, "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUpgrade Cost: " + tower.upgradeBaseCost, "font", 24, 0xFFFFFF);
+		var text = new TextField(150, 150, "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUPGRADE COST: " + tower.upgradeBaseCost, "font", 24, 0xFFFFFF);
 		text.x = bg.x + 5;
 		text.y = bg.y + (bg.width - text.width) / 2;
 		
 		//Allow the player to upgrade the tower
 		var upgrade = new Button(Root.assets[0].getTexture("button"), "UPGRADE");
 		upgrade.fontName = "font";
-		upgrade.fontSize = 24;
+		upgrade.fontSize = 26;
 		upgrade.fontColor = 0xFFFFFF;
 		upgrade.x = text.x + text.width + upgrade.width;
 		upgrade.y = text.y + (text.height - upgrade.height) / 2;
@@ -162,7 +162,7 @@ class TowerMenu extends Sprite
 					game.setCoins( -tower.upgradeBaseCost);
 					tower.upgrade();
 					level.text = "LEVEL: " + tower.level;
-					text.text = "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUpgrade Cost: " + tower.upgradeBaseCost;
+					text.text = "RANGE: " + tower.radius + "\nSPEED: " + tower.speed + "\nATTACK: " + tower.attack + "\nUPGRADE COST: " + tower.upgradeBaseCost;
 				}
 				//Otherwise inform the player they don't have enough coins
 				else
