@@ -90,11 +90,12 @@ class Tower extends Sprite
 		var projectile = new Image(Root.assets[game.era].getTexture(projectile));
 		projectile.x = projectile.x + this.width / 2;
 		
-		//Rotate the arrow to face the enemy
+		//Rotate the projectile to face the enemy
 		var rx = (enemy.x + enemy.width/2) - this.x;
 		var ry = (enemy.y + enemy.height/2) - this.y;
 		var radians = Math.atan2(ry,rx);
 		projectile.rotation = radians;
+		
 		
 		addChild(projectile);
 		Root.assets[0].playSound("tower_hit", 0, 0);
