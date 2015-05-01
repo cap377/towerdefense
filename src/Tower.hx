@@ -167,8 +167,8 @@ class TowerMenu extends Sprite
 				else
 				{
 					Root.assets[0].playSound("nope");
-					var poor = new TextField(100, 100, "YOU DON'T HAVE ENOUGH COINS", "font", 24, 0xFFFFFF);
-					poor.x = bg.x + (bg.width - poor.width) / 2;
+					var poor = new TextField(100, 100, "NOT ENOUGH\n COINS!", "font", 24, 0xFFFFFF);
+					poor.x = bg.x + (bg.width - poor.width) / 2 + 100;
 					poor.y = bg.y + 10;
 					addChild(poor);
 					var timer = new Timer(500, 3);

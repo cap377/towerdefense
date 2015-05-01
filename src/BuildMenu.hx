@@ -153,7 +153,7 @@ class BuildMenu extends Sprite
 			//Create a textfield informing the player they don't have enough coins
 			//Remove it from the screen after some short time
 			Root.assets[0].playSound("nope");
-			var text = new TextField(100, 100, "YOU DON'T HAVE ENOUGH COINS", "font", 24, 0xFFFFFF);
+			var text = new TextField(100, 100, "NOT ENOUGH COINS!", "font", 24, 0xFFFFFF);
 			text.x = (Starling.current.stage.stageWidth - text.width) / 2;
 			text.y = bg.y + 10;
 			//Make sure that it is added to the current child and not the overall game child
