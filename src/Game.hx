@@ -142,15 +142,18 @@ class Game extends Sprite
 		addChild(bg);
 		
 		var score = villagers * 5 + coins;
-		var scoreText = new TextField(100, 50, "Score: " + score);
+		var scoreText = new TextField(100, 50, "SCORE: " + score, "font", 24, 0xFFFFFF);
 		scoreText.x = bg.x + (bg.width - scoreText.width) / 2;
 		scoreText.y = bg.y + (bg.height - scoreText.height) / 2;
 		addChild(scoreText);
 		addChild(scoreText);
 
-		var nextLevelButton = new Button(Root.assets[0].getTexture("button"), "Next Level");
+		var nextLevelButton = new Button(Root.assets[0].getTexture("button"), "NEXT LEVEL");
 			nextLevelButton.x = bg.x + (bg.width - 2 * nextLevelButton.width) / 2;
 			nextLevelButton.y = bg.y + bg.height - (nextLevelButton.height + 15);
+			nextLevelButton.fontName = "font";
+			nextLevelButton.fontColor = 0xFFFFFF;
+			nextLevelButton.fontSize = 24;
 			nextLevelButton.addEventListener(Event.TRIGGERED, function()
 			{
 			currentLevel++;
@@ -163,9 +166,12 @@ class Game extends Sprite
 			addChild(nextLevelButton);
 		}
 		
-		var mainMenu = new Button(Root.assets[0].getTexture("button"), "Main Menu");
+		var mainMenu = new Button(Root.assets[0].getTexture("button"), "MAIN MENU");
 		mainMenu.x = nextLevelButton.x + nextLevelButton.width + mainMenu.width;
 		mainMenu.y = nextLevelButton.y;
+		mainMenu.fontName = "font";
+		mainMenu.fontColor = 0xFFFFFF;
+		mainMenu.fontSize = 24;
 		mainMenu.addEventListener(Event.TRIGGERED, function()
 		{
 			rootObject.level++;
@@ -185,9 +191,12 @@ class Game extends Sprite
 			
 			
 			
-			var nextWave = new Button(Root.assets[0].getTexture("button"), "Next Wave");
+			var nextWave = new Button(Root.assets[0].getTexture("button"), "NEXT WAVE");
 			nextWave.x = Starling.current.stage.stageWidth - nextWave.width;
 			nextWave.y = Starling.current.stage.stageHeight - nextWave.height;
+			nextWave.fontName = "font";
+			nextWave.fontColor = 0xFFFFFF;
+			nextWave.fontSize = 24;
 			
 			var nextWaveTimer = new Timer(3000, 3);
 			nextWaveTimer.start();
