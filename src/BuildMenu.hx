@@ -7,6 +7,8 @@ import flash.events.TimerEvent;
 import starling.text.TextField;
 import starling.core.Starling;
 import starling.text.TextField;
+import Root;
+
 
 
 class BuildMenu extends Sprite
@@ -130,12 +132,14 @@ class BuildMenu extends Sprite
 				
 			//Add the new tower to the game
 			game.addChild(tower);
+
 			//Remove the coins from the player
 			game.setCoins( -cost);
 			//Remove the menu as no more towers should be purchased in this location
 			game.removeChild(this);
 			//Adding tower to the tower array
 			game.towerList.push(tower);
+			Root.assets[0].playSound("build");
 			//trace("Xpos: "+tower.x + ", Ypos: "+tower.y);
 			//trace(game.towerList);
 			
@@ -148,6 +152,7 @@ class BuildMenu extends Sprite
 		{
 			//Create a textfield informing the player they don't have enough coins
 			//Remove it from the screen after some short time
+			Root.assets[0].playSound("nope");
 			var text = new TextField(100, 100, "YOU DON'T HAVE ENOUGH COINS", "font", 24, 0xFFFFFF);
 			text.x = (Starling.current.stage.stageWidth - text.width) / 2;
 			text.y = bg.y + 10;

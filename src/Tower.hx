@@ -167,6 +167,7 @@ class TowerMenu extends Sprite
 				//Otherwise inform the player they don't have enough coins
 				else
 				{
+					Root.assets[0].playSound("nope");
 					var poor = new TextField(100, 100, "YOU DON'T HAVE ENOUGH COINS", "font", 24, 0xFFFFFF);
 					poor.x = bg.x + (bg.width - poor.width) / 2;
 					poor.y = bg.y + 10;
@@ -194,6 +195,7 @@ class TowerMenu extends Sprite
 			game.removeChild(tower);
 			game.towerList.remove(tower);
 			game.removeChild(this);
+			Root.assets[0].playSound("sell");
 			
 			//Unpause the game
 			game.unpause();
