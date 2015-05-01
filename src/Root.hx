@@ -212,6 +212,11 @@ class Credits extends Sprite {
 		super();
 		var background = new Image(Root.assets[0].getTexture("menu"));
 		addChild(background);
+
+		var creditText = new TextField(300, 250, "CHERIE PARSONS\nJORDAN HARRIS\nALEXANDER SEARS\nHAYDEN WESTBROOK\nTJ O'BRIEN", "font", 32, 0xFFFFFF);
+		creditText.x = (Starling.current.stage.stageWidth - creditText.width)/2;
+		creditText.y = 470;
+		addChild(creditText);
 		
 		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
 		addChild(backImage);
