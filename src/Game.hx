@@ -85,7 +85,9 @@ class Game extends Sprite
 	public function initialize()
 	{
 		removeChildren();
-
+		
+		coins = 0;
+		
 		//Hold the entry points
 		entryX = new Array();
 		entryY = new Array();
