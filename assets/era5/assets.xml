@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:1cc10b2e244372ebd810dd391f78646e:31b4e31bfa700fe5e62669e973df4b2f:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
+<!-- $TexturePacker:SmartUpdate:78d8b42391673516ec080b4488b7ead5:f8590442f755c66bc1d9148475720c29:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="assets.png">
     <SubTexture name="deathbot_page_01" x="2" y="2" width="269" height="281"/>
     <SubTexture name="deathbot_page_02" x="273" y="2" width="269" height="281"/>
@@ -15,17 +15,18 @@
     <SubTexture name="lvl5tile2" x="1757" y="2" width="64" height="64"/>
     <SubTexture name="lvl5tile3" x="1823" y="2" width="64" height="64"/>
     <SubTexture name="lvl5tile4" x="2" y="292" width="64" height="64"/>
-    <SubTexture name="missle_page_03" x="68" y="292" width="192" height="192"/>
-    <SubTexture name="projLightning" x="262" y="292" width="24" height="10"/>
-    <SubTexture name="projMissile" x="288" y="292" width="15" height="8"/>
-    <SubTexture name="robot1_page_01" x="305" y="292" width="192" height="192"/>
-    <SubTexture name="robot1_page_02" x="499" y="292" width="192" height="192"/>
-    <SubTexture name="robot1back_page_01" x="693" y="292" width="192" height="192"/>
-    <SubTexture name="robot1back_page_02" x="887" y="292" width="192" height="192"/>
-    <SubTexture name="robot1left_page_01" x="1081" y="292" width="192" height="192"/>
-    <SubTexture name="robot1left_page_02" x="1275" y="292" width="192" height="192"/>
-    <SubTexture name="robot1right_page_01" x="1469" y="292" width="192" height="192"/>
-    <SubTexture name="robot1right_page_02" x="1663" y="292" width="192" height="192"/>
+    <SubTexture name="lvl5tile5" x="68" y="292" width="64" height="64"/>
+    <SubTexture name="missle_page_03" x="134" y="292" width="192" height="192"/>
+    <SubTexture name="projLightning" x="328" y="292" width="24" height="10"/>
+    <SubTexture name="projMissile" x="354" y="292" width="15" height="8"/>
+    <SubTexture name="robot1_page_01" x="371" y="292" width="192" height="192"/>
+    <SubTexture name="robot1_page_02" x="565" y="292" width="192" height="192"/>
+    <SubTexture name="robot1back_page_01" x="759" y="292" width="192" height="192"/>
+    <SubTexture name="robot1back_page_02" x="953" y="292" width="192" height="192"/>
+    <SubTexture name="robot1left_page_01" x="1147" y="292" width="192" height="192"/>
+    <SubTexture name="robot1left_page_02" x="1341" y="292" width="192" height="192"/>
+    <SubTexture name="robot1right_page_01" x="1535" y="292" width="192" height="192"/>
+    <SubTexture name="robot1right_page_02" x="1729" y="292" width="192" height="192"/>
     <SubTexture name="robot2_page_01" x="2" y="486" width="192" height="192"/>
     <SubTexture name="robot2_page_02" x="196" y="486" width="192" height="192"/>
     <SubTexture name="robot2back_page_01" x="390" y="486" width="192" height="192"/>
