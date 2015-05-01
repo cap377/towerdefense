@@ -84,23 +84,25 @@ class Root extends Sprite {
 		assets[2] = new AssetManager();
 		assets[2].enqueue("assets/era2/assets.png");
 		assets[2].enqueue("assets/era2/assets.xml");
+		assets[2].enqueue("assets/era2/levels/level2.txt");
 
 		//Era 3
 		assets[3] = new AssetManager();
 		assets[3].enqueue("assets/era3/assets.png");
 		assets[3].enqueue("assets/era3/assets.xml");
+		assets[3].enqueue("assets/era3/levels/level3.txt");
 
 		//Era 4
 		assets[4] = new AssetManager();
 		assets[4].enqueue("assets/era4/assets.png");
 		assets[4].enqueue("assets/era4/assets.xml");
+		assets[4].enqueue("assets/era4/levels/level4.txt");
 
 		//Era 5
 		assets[5] = new AssetManager();
 		assets[5].enqueue("assets/era5/assets.png");
 		assets[5].enqueue("assets/era5/assets.xml");
-		
-		//Everything that has to do with era 2, etc.
+		assets[5].enqueue("assets/era5/levels/level5.txt");
 		
 		
 		for (i in 0...assets.length)
