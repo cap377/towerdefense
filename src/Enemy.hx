@@ -38,7 +38,7 @@ class Enemy extends Sprite
 		alive = true;
 		//addChild(image);
 		
-		healthBar = new Image(Root.assets[0].getTexture("enemyHealth"));
+		healthBar = new Image(Root.assets.getTexture("enemyHealth"));
 		healthBar.y = -12;
 		addChild(healthBar);
 		
@@ -95,7 +95,7 @@ class Enemy extends Sprite
 
 		//removeChild(image);
 		removeChild(animation);
-		var atlas = Root.assets[game.era].getTextureAtlas("assets");
+		var atlas = Root.assets.getTextureAtlas("assets");
 		animation = new MovieClipPlus(atlas.getTextures(spriteName + directionString + "_page_0"), 4);
 		animation.width = 32;
 		animation.height = 32;

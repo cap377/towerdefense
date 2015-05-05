@@ -25,7 +25,7 @@ class BuildMenu extends Sprite
 		selected = new Array();
 		
 		//Create a simple background the represent the menu
-		bg = new Image(Root.assets[0].getTexture("createTowerMenu"));
+		bg = new Image(Root.assets.getTexture("createTowerMenu"));
 		bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
 		bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
 		addChild(bg);
@@ -49,7 +49,7 @@ class BuildMenu extends Sprite
 		var w = 0;
 		for (i in 1...numOfTowers+1)
 		{
-			var towerButton = new Button(Root.assets[game.era].getTexture("tower" + i + "_1"));
+			var towerButton = new Button(Root.assets.getTexture(game.era + "_tower" + i + "_1"));
 			towerButton.width = 64;
 			towerButton.height = 64;
 			towerButton.fontName = "font";
@@ -76,7 +76,7 @@ class BuildMenu extends Sprite
 		}
 		
 		//Create an exit button to close the create tower menu
-		var buy = new Button(Root.assets[0].getTexture("button"), "BUY");
+		var buy = new Button(Root.assets.getTexture("button"), "BUY");
 		buy.fontName = "font";
 		buy.fontSize = 24;
 		buy.fontColor = 0xFFFFFF;
@@ -90,7 +90,7 @@ class BuildMenu extends Sprite
 		addChild(buy);
 		
 		//Create an exit button to close the create tower menu
-		var exit = new Button(Root.assets[0].getTexture("button"), "EXIT");
+		var exit = new Button(Root.assets.getTexture("button"), "EXIT");
 		exit.fontName = "font";
 		exit.fontSize = 24;
 		exit.fontColor = 0xFFFFFF;
@@ -141,7 +141,7 @@ class BuildMenu extends Sprite
 			game.removeChild(this);
 			//Adding tower to the tower array
 			game.towerList.push(tower);
-			Root.assets[0].playSound("build");
+			Root.assets.playSound("build");
 			//trace("Xpos: "+tower.x + ", Ypos: "+tower.y);
 			//trace(game.towerList);
 			
@@ -154,7 +154,7 @@ class BuildMenu extends Sprite
 		{
 			//Create a textfield informing the player they don't have enough coins
 			//Remove it from the screen after some short time
-			Root.assets[0].playSound("nope");
+			Root.assets.playSound("nope");
 			var text = new TextField(100, 100, "NOT ENOUGH COINS!", "font", 24, 0xFFFFFF);
 			text.x = (Starling.current.stage.stageWidth - text.width) / 2;
 			text.y = bg.y + 10;
@@ -172,7 +172,7 @@ class BuildMenu extends Sprite
 	
 	private function getTower()
 	{
-		var str: String = new String(Root.assets[game.era].getByteArray("towerValues" + selected[2]).toString());
+		var str: String = new String(Root.assets.getByteArray(game.era + "_towerValues" + selected[2]).toString());
 		var info = str.split("\n");
 		for (i in 0...info.length-1)
 		{
@@ -194,7 +194,7 @@ class BuildMenu extends Sprite
 	}
 	private function getTowerProjectile()
 	{
-		var str: String = new String(Root.assets[game.era].getByteArray("towerValues" + selected[2]).toString());
+		var str: String = new String(Root.assets.getByteArray(game.era + "_towerValues" + selected[2]).toString());
 		var info = str.split("\n");
 		var pos = 0;
 		var projectile = "";

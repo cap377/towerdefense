@@ -42,17 +42,17 @@ class Tower extends Sprite
 		attack = initialStats[2];
 		upgradeBaseCost = initialStats[3];
 		
-		var img = new Image(Root.assets[game.era].getTexture("lvl" + game.era + "tile1"));
+		var img = new Image(Root.assets.getTexture("lvl" + game.era + "tile1"));
 		img.width = 32;
 		img.height = 32;
 		addChild(img);
-		image = new Image(Root.assets[game.era].getTexture("tower" + towerNum + "_1"));
+		image = new Image(Root.assets.getTexture(game.era + "_tower" + towerNum + "_1"));
 		image.width = 32;
 		image.height = 32;
 		addChild(image);
 		
 		//Create a new tower based on the tower clicked and set it to the correct position
-		button = new Button(Root.assets[0].getTexture("button"));
+		button = new Button(Root.assets.getTexture("button"));
 		button.height = image.height;
 		button.width = image.width;
 		button.addEventListener(Event.TRIGGERED, function()
@@ -88,15 +88,15 @@ class Tower extends Sprite
 				attack += 1;
 		}
 		level++;
-		Root.assets[0].playSound("upgrade", 0, 0);
+		Root.assets.playSound("upgrade", 0, 0);
 	}
 
 	public function launchAttack(enemy : Enemy) {
 		//Creates a projectile and tweens it to the target
 		this.attacking = true;
-		image.texture = Root.assets[game.era].getTexture("tower" + towerNum + "_2");
+		image.texture = Root.assets.getTexture(game.era + "_tower" + towerNum + "_2");
 		
-		var projectile = new Image(Root.assets[game.era].getTexture(projectile));
+		var projectile = new Image(Root.assets.getTexture(projectile));
 		projectile.x = projectile.x + this.width / 2;
 		
 		//Rotate the projectile to face the enemy
@@ -107,14 +107,14 @@ class Tower extends Sprite
 		
 		
 		addChild(projectile);
-		Root.assets[0].playSound("tower_hit", 0, 0);
+		Root.assets.playSound("tower_hit", 0, 0);
 		Starling.juggler.tween(projectile, .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5), {
             delay: 0.0,
             x: (enemy.x + enemy.width/2) - this.x,
             y: (enemy.y + enemy.height/2) - this.y,
             onComplete: function() {
             	removeChild(projectile);
-            	image.texture = Root.assets[game.era].getTexture("tower" + towerNum + "_1");
+            	image.texture = Root.assets.getTexture(game.era + "_tower" + towerNum + "_1");
             	enemy.hit(this.attack);
             	Starling.juggler.delayCall(function() { this.attacking = false; }, (1 - .2 * this.speed) - .003 * Math.pow((Math.pow((enemy.x - this.x), 2) + Math.pow(enemy.y - this.y, 2)), .5));
             }
@@ -130,7 +130,7 @@ class TowerMenu extends Sprite
 	{
 		super();
 		//Create a simple background to hold the tower menu together
-		var bg = new Image(Root.assets[0].getTexture("towerMenu"));
+		var bg = new Image(Root.assets.getTexture("towerMenu"));
 		bg.x = (Starling.current.stage.stageWidth - bg.width) / 2;
 		bg.y = (Starling.current.stage.stageHeight - bg.height) / 2;
 		
@@ -154,7 +154,7 @@ class TowerMenu extends Sprite
 		text.y = bg.y + (bg.width - text.width) / 2;
 		
 		//Allow the player to upgrade the tower
-		var upgrade = new Button(Root.assets[0].getTexture("button"), "UPGRADE");
+		var upgrade = new Button(Root.assets.getTexture("button"), "UPGRADE");
 		upgrade.fontName = "font";
 		upgrade.fontSize = 26;
 		upgrade.fontColor = 0xFFFFFF;
@@ -177,7 +177,7 @@ class TowerMenu extends Sprite
 				//Otherwise inform the player they don't have enough coins
 				else
 				{
-					Root.assets[0].playSound("nope");
+					Root.assets.playSound("nope");
 					var poor = new TextField(100, 100, "NOT ENOUGH\n COINS!", "font", 24, 0xFFFFFF);
 					poor.x = bg.x + (bg.width - poor.width) / 2 + 100;
 					poor.y = bg.y + 10;
@@ -193,7 +193,7 @@ class TowerMenu extends Sprite
 		}
 		
 		//Create sell button to sell the tower for the current tower upgrade amount
-		var sell = new Button(Root.assets[0].getTexture("button"), "SELL");
+		var sell = new Button(Root.assets.getTexture("button"), "SELL");
 		sell.fontName = "font";
 		sell.fontSize = 24;
 		sell.fontColor = 0xFFFFFF;
@@ -205,7 +205,7 @@ class TowerMenu extends Sprite
 			game.removeChild(tower);
 			game.towerList.remove(tower);
 			game.removeChild(this);
-			Root.assets[0].playSound("sell");
+			Root.assets.playSound("sell");
 			
 			//Unpause the game
 			game.unpause();
@@ -214,7 +214,7 @@ class TowerMenu extends Sprite
 		
 		
 		//Create an exit button to close the tower menu
-		var exit = new Button(Root.assets[0].getTexture("button"), "EXIT");
+		var exit = new Button(Root.assets.getTexture("button"), "EXIT");
 		exit.fontName = "font";
 		exit.fontSize = 24;
 		exit.fontColor = 0xFFFFFF;

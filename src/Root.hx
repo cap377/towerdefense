@@ -12,7 +12,7 @@ import starling.animation.IAnimatable;
 class Root extends Sprite {
 
 	public var level:Int;
-	public static var assets : Array<AssetManager>;
+	public static var assets : AssetManager;
 	public var tdintro: SoundChannel;
 	public var repeatsong: IAnimatable;
 
@@ -24,134 +24,66 @@ class Root extends Sprite {
 
 	public function start(startup:Startup) {
 		
-		assets = new Array();
-		//////////////////////////
-		//
-		//assets that are from different eras should have the same name just be in a different folder
-		//ie. era1/tower1, era2/tower1, etc.
-		//
-		//////////////////////////
-		
-		//Assets that are the same throughout each era should be loaded into assets 0
-		assets[0] = new AssetManager();
-		assets[0].enqueue("assets/tower_hit.mp3");
-		assets[0].enqueue("assets/base_hit.mp3");
-		assets[0].enqueue("assets/nope.mp3");
-		assets[0].enqueue("assets/build.mp3");
-		assets[0].enqueue("assets/upgrade.mp3");
-		assets[0].enqueue("assets/sell.mp3");
-		assets[0].enqueue("assets/menu.png");
-		assets[0].enqueue("assets/redmenubutton.png");
-		assets[0].enqueue("assets/bluemenubutton.png");
-		assets[0].enqueue("assets/font.png");
-		assets[0].enqueue("assets/font.fnt");
-		assets[0].enqueue("assets/tdintro.mp3");
-		assets[0].enqueue("assets/Pickup_Coin.mp3");
-		assets[0].enqueue("assets/createTowerMenu.png");
-		assets[0].enqueue("assets/towerMenu.png");
-		assets[0].enqueue("assets/button.png");
-		assets[0].enqueue("assets/path.png");
-		assets[0].enqueue("assets/build.png");
-		assets[0].enqueue("assets/assets.png");
-		assets[0].enqueue("assets/assets.xml");
-		assets[0].enqueue("assets/enemyHealth.png");
+		assets = new AssetManager();
 
-		assets[0].enqueue("assets/levels/level1.txt");
-		assets[0].enqueue("assets/levels/level2.txt");
-		assets[0].enqueue("assets/levels/level3.txt");
-		assets[0].enqueue("assets/levels/level4.txt");
-		assets[0].enqueue("assets/levels/level5.txt");
-		
-		
-		//Everything that has to do with era 1
-		assets[1] = new AssetManager();
-		assets[1].enqueue("assets/era1/assets.png");
-		assets[1].enqueue("assets/era1/assets.xml");
-		assets[1].enqueue("assets/era1/towers/towerValues1.txt");
-		assets[1].enqueue("assets/era1/towers/towerValues2.txt");
-		assets[1].enqueue("assets/era1/towers/towerValues3.txt");
-		//Era 2
-		assets[2] = new AssetManager();
-		assets[2].enqueue("assets/era2/assets.png");
-		assets[2].enqueue("assets/era2/assets.xml");
-		assets[2].enqueue("assets/era2/towers/towerValues1.txt");
-		assets[2].enqueue("assets/era2/towers/towerValues2.txt");
-		assets[2].enqueue("assets/era2/towers/towerValues3.txt");
+		assets.enqueue("assets/assets.png");
+		assets.enqueue("assets/assets.xml");
 
-		//Era 3
-		assets[3] = new AssetManager();
-		assets[3].enqueue("assets/era3/assets.png");
-		assets[3].enqueue("assets/era3/assets.xml");
-		assets[3].enqueue("assets/era3/towers/towerValues1.txt");
-		assets[3].enqueue("assets/era3/towers/towerValues2.txt");
-		assets[3].enqueue("assets/era3/towers/towerValues3.txt");
+		assets.enqueue("assets/tower_hit.mp3");
+		assets.enqueue("assets/base_hit.mp3");
+		assets.enqueue("assets/nope.mp3");
+		assets.enqueue("assets/build.mp3");
+		assets.enqueue("assets/upgrade.mp3");
+		assets.enqueue("assets/sell.mp3");
+		assets.enqueue("assets/font.png");
+		assets.enqueue("assets/font.fnt");
+		assets.enqueue("assets/tdintro.mp3");
+		assets.enqueue("assets/Pickup_Coin.mp3");
 
+		assets.enqueue("assets/levels/level1.txt");
+		assets.enqueue("assets/levels/level2.txt");
+		assets.enqueue("assets/levels/level3.txt");
+		assets.enqueue("assets/levels/level4.txt");
+		assets.enqueue("assets/levels/level5.txt");
 
-		//Era 4
-		assets[4] = new AssetManager();
-		assets[4].enqueue("assets/era4/assets.png");
-		assets[4].enqueue("assets/era4/assets.xml");
-		assets[4].enqueue("assets/era4/towers/towerValues1.txt");
-		assets[4].enqueue("assets/era4/towers/towerValues2.txt");
-		assets[4].enqueue("assets/era4/towers/towerValues3.txt");
-
-
-		//Era 5
-		assets[5] = new AssetManager();
-		assets[5].enqueue("assets/era5/assets.png");
-		assets[5].enqueue("assets/era5/assets.xml");
-		assets[5].enqueue("assets/era5/towers/towerValues1.txt");
-		assets[5].enqueue("assets/era5/towers/towerValues2.txt");
-		assets[5].enqueue("assets/era5/towers/towerValues3.txt");
+		assets.enqueue("assets/towerValues/1_towerValues1.txt");
+		assets.enqueue("assets/towerValues/1_towerValues2.txt");
+		assets.enqueue("assets/towerValues/1_towerValues3.txt");
+		assets.enqueue("assets/towerValues/2_towerValues1.txt");
+		assets.enqueue("assets/towerValues/2_towerValues2.txt");
+		assets.enqueue("assets/towerValues/2_towerValues3.txt");
+		assets.enqueue("assets/towerValues/3_towerValues1.txt");
+		assets.enqueue("assets/towerValues/3_towerValues2.txt");
+		assets.enqueue("assets/towerValues/3_towerValues3.txt");
+		assets.enqueue("assets/towerValues/4_towerValues1.txt");
+		assets.enqueue("assets/towerValues/4_towerValues2.txt");
+		assets.enqueue("assets/towerValues/4_towerValues3.txt");
+		assets.enqueue("assets/towerValues/5_towerValues1.txt");
+		assets.enqueue("assets/towerValues/5_towerValues2.txt");
+		assets.enqueue("assets/towerValues/5_towerValues3.txt");
 
 		
 		
-		for (i in 0...assets.length)
-		{
-			assets[i].loadQueue(function onProgress(ratio:Float) {
-				if (ratio == 1 && i == 0) {
-
-					// fade the loading screen, start game
-					Starling.juggler.tween(startup.loadingBitmap, 1.0, {
-						transition:Transitions.EASE_OUT, delay:1.0, alpha: 0, onComplete: function() {
-							startup.removeChild(startup.loadingBitmap);
-							Root.assets[0].playSound("tdintro", 120, 0);
-							repeatsong = Starling.juggler.repeatCall(musicLoop, 20.1, 0);
-						}
-					});
-
-					//Starting point for the game
-					addChild(new Menu(this));
-				}
-			});
-		}
-		
-		/*
-		assets[0].loadQueue(function onProgress(ratio:Float) {
-		});
-		
-		
-		assets[1].loadQueue(function onProgress(ratio:Float) {
+		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
 
 				// fade the loading screen, start game
 				Starling.juggler.tween(startup.loadingBitmap, 1.0, {
-					transition:Transitions.EASE_OUT, delay:0.5, alpha: 0, onComplete: function() {
+					transition:Transitions.EASE_OUT, delay:1.0, alpha: 0, onComplete: function() {
 						startup.removeChild(startup.loadingBitmap);
-						Root.assets[0].playSound("tdintro", 120, 0);
+						Root.assets.playSound("tdintro", 120, 0);
 						repeatsong = Starling.juggler.repeatCall(musicLoop, 20.1, 0);
 					}
 				});
-				
+
 				//Starting point for the game
 				addChild(new Menu(this));
 			}
 		});
-		*/
 		
 	}
 	public function musicLoop(){
-		Root.assets[0].playSound("tdintro", 120, 0);
+		Root.assets.playSound("tdintro", 120, 0);
 	}
 }
 
@@ -160,10 +92,10 @@ class Menu extends Sprite {
 	public function new(root:Root) {
 		super();
 
-		var background = new Image(Root.assets[0].getTexture("menu"));
+		var background = new Image(Root.assets.getTexture("menu"));
 		addChild(background);
 
-		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
+		var startImage = new Image(Root.assets.getTexture("redmenubutton"));
 		startImage.x = 175;
 		startImage.y = 300;
 		addChild(startImage);
@@ -171,7 +103,7 @@ class Menu extends Sprite {
 		startText.x = 175;
 		startText.y = 300;
 		addChild(startText);
-		var startButton = new Button(Root.assets[0].getTexture("button"));
+		var startButton = new Button(Root.assets.getTexture("button"));
 		startButton.width = 150;
 		startButton.height = 75;
 		startButton.x = 175;
@@ -182,7 +114,7 @@ class Menu extends Sprite {
 		});
 		addChild(startButton);
 
-		var creditsImage = new Image(Root.assets[0].getTexture("bluemenubutton"));
+		var creditsImage = new Image(Root.assets.getTexture("bluemenubutton"));
 		creditsImage.x = 920;
 		creditsImage.y = 300;
 		addChild(creditsImage);
@@ -190,7 +122,7 @@ class Menu extends Sprite {
 		creditsText.x = 920;
 		creditsText.y = 300;
 		addChild(creditsText);
-		var creditsButton = new Button(Root.assets[0].getTexture("button"));
+		var creditsButton = new Button(Root.assets.getTexture("button"));
 		creditsButton.width = 150;
 		creditsButton.height = 75;
 		creditsButton.x = 920;
@@ -210,7 +142,7 @@ class Credits extends Sprite {
 
 	public function new(root:Root) {
 		super();
-		var background = new Image(Root.assets[0].getTexture("menu"));
+		var background = new Image(Root.assets.getTexture("menu"));
 		addChild(background);
 
 		var creditText = new TextField(300, 250, "CHERIE PARSONS\nJORDAN HARRIS\nALEXANDER SEARS\nHAYDEN WESTBROOK\nTJ O'BRIEN", "font", 32, 0xFFFFFF);
@@ -218,11 +150,11 @@ class Credits extends Sprite {
 		creditText.y = 470;
 		addChild(creditText);
 		
-		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
+		var backImage = new Image(Root.assets.getTexture("redmenubutton"));
 		addChild(backImage);
 		var backText = new TextField(150, 75, "BACK", "font", 24, 0xFFFFFF);
 		addChild(backText);
-		var backButton = new Button(Root.assets[0].getTexture("button"));
+		var backButton = new Button(Root.assets.getTexture("button"));
 		backButton.width = 150;
 		backButton.height = 75;
 		backButton.addEventListener(Event.TRIGGERED, function() {
@@ -239,14 +171,14 @@ class Levels extends Sprite {
 
 	public function new(root:Root) {
 		super();
-		var background = new Image(Root.assets[0].getTexture("menu"));
+		var background = new Image(Root.assets.getTexture("menu"));
 		addChild(background);
 
-		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
+		var backImage = new Image(Root.assets.getTexture("redmenubutton"));
 		addChild(backImage);
 		var backText = new TextField(150, 75, "BACK", "font", 24, 0xFFFFFF);
 		addChild(backText);
-		var backButton = new Button(Root.assets[0].getTexture("button"));
+		var backButton = new Button(Root.assets.getTexture("button"));
 		backButton.width = 150;
 		backButton.height = 75;
 		backButton.addEventListener(Event.TRIGGERED, function() {
@@ -263,10 +195,10 @@ class Levels extends Sprite {
 			var levelImage : Image;
 			var levelText : TextField;
 			if(i <= root.level) {
-				levelImage = new Image(Root.assets[0].getTexture("redmenubutton"));
+				levelImage = new Image(Root.assets.getTexture("redmenubutton"));
 				levelText = new TextField(150, 75, "LEVEL " + i, "font", 24, 0xFFFFFF);
 				var levelButton : Button;
-				levelButton = new Button(Root.assets[0].getTexture("button"));
+				levelButton = new Button(Root.assets.getTexture("button"));
 				levelButton.addEventListener(Event.TRIGGERED, function() {
 					root.removeChild(this);
 					root.addChild(new LevelPreview(root, i));
@@ -283,7 +215,7 @@ class Levels extends Sprite {
 				addChild(levelText);
 				addChild(levelButton);
 			} else {
-				levelImage = new Image(Root.assets[0].getTexture("bluemenubutton"));
+				levelImage = new Image(Root.assets.getTexture("bluemenubutton"));
 				levelText = new TextField(150, 75, "LEVEL " + i, "font", 24, 0xFFFFFF);
 				levelImage.x = 250 + x * (levelImage.width + 5);
 				levelImage.y = 600 + (levelImage.height + 5) * y;
@@ -309,14 +241,14 @@ class LevelPreview extends Sprite {
 
 	public function new(root:Root, level:Int) {
 		super();
-		var background = new Image(Root.assets[0].getTexture("menu"));
+		var background = new Image(Root.assets.getTexture("menu"));
 		addChild(background);
 
-		var backImage = new Image(Root.assets[0].getTexture("redmenubutton"));
+		var backImage = new Image(Root.assets.getTexture("redmenubutton"));
 		addChild(backImage);
 		var backText = new TextField(150, 75, "BACK", "font", 24, 0xFFFFFF);
 		addChild(backText);
-		var backButton = new Button(Root.assets[0].getTexture("button"));
+		var backButton = new Button(Root.assets.getTexture("button"));
 		backButton.width = 150;
 		backButton.height = 75;
 		backButton.addEventListener(Event.TRIGGERED, function() {
@@ -325,7 +257,7 @@ class LevelPreview extends Sprite {
 		});
 		addChild(backButton);
 
-		var startImage = new Image(Root.assets[0].getTexture("redmenubutton"));
+		var startImage = new Image(Root.assets.getTexture("redmenubutton"));
 		startImage.x = 560;
 		startImage.y = 500;
 		addChild(startImage);
@@ -333,7 +265,7 @@ class LevelPreview extends Sprite {
 		startText.x = 560;
 		startText.y = 500;
 		addChild(startText);
-		var startButton = new Button(Root.assets[0].getTexture("button"));
+		var startButton = new Button(Root.assets.getTexture("button"));
 		startButton.width = 150;
 		startButton.height = 75;
 		startButton.x = 560;
